@@ -1,0 +1,5 @@
+Porsche crest favicon assets, copied unchanged from the official Porsche website icon links on 2026-09-07.
+https://www.porsche.com/usa/
+https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon.ed9a926.ico
+https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon-32x32.d42ac28.png
+https://cdn.ui.porsche.com/porsche-design-system/meta-icons/apple-touch-icon-180x180.bdf11cc.png

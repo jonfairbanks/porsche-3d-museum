@@ -1,0 +1,1659 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Porsche Museum — 3D Collection</title><link rel="icon" href="./assets/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png"><link rel="apple-touch-icon" href="./assets/apple-touch-icon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet"><style>
+:root{--p:#e8e2d8;--b:#090a09;--a:#d3a76f;--l:rgba(232,226,216,.18)}*{box-sizing:border-box}html,body,#app{margin:0;width:100%;height:100%;overflow:hidden;background:var(--b);color:var(--p);font:14px Manrope,Arial}button{font:inherit;color:inherit}button:focus-visible{outline:2px solid var(--a);outline-offset:3px}canvas{position:fixed;inset:0;display:block;touch-action:none}.veil{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 49%,transparent 28%,rgba(0,0,0,.57) 100%);z-index:1}.top{position:fixed;z-index:4;inset:0 0 auto;display:flex;justify-content:space-between;align-items:flex-start;padding:28px 32px;background:linear-gradient(#050505a0,transparent);pointer-events:none}.brand{font-size:12px;letter-spacing:.17em;font-weight:600}.brand small{display:block;margin-top:4px;color:#b7b1a7;font:9px 'DM Mono';letter-spacing:.11em}.top button,.map button{pointer-events:auto;background:#0c0d0b9c;border:1px solid var(--l);padding:10px 13px;cursor:pointer;font:10px 'DM Mono';letter-spacing:.11em;text-transform:uppercase;transition:.2s}.top button:hover,.map button:hover{background:var(--p);color:#111}.hud{position:fixed;z-index:3;inset:auto 32px 28px;display:flex;justify-content:space-between;align-items:end;pointer-events:none}.keys{font:10px/1.8 'DM Mono';color:#cac4ba}.keys b{color:white}.near{text-align:right;max-width:320px}.near h2{margin:0 0 5px;font:500 27px/1 'Playfair Display'}.near p{margin:0;color:#cfaa7b;font:10px 'DM Mono';letter-spacing:.09em;text-transform:uppercase}.cross{position:fixed;z-index:2;left:50%;top:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}.cross:before,.cross:after{content:"";position:absolute;background:#fff8}.cross:before{left:6px;width:1px;height:13px}.cross:after{top:6px;width:13px;height:1px}.map{position:fixed;z-index:4;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:5px;max-width:48vw;overflow:auto;padding:4px;background:#0809088a;backdrop-filter:blur(8px)}.map button{min-width:76px;padding:7px 8px;color:#bbb6ac;font-size:8px}.map button.active{color:#fff;border-color:#d3a76f}.panel{position:fixed;z-index:7;inset:0 0 0 auto;width:min(500px,100%);padding:40px 44px;overflow:auto;background:#e7e2d8;color:#191a17;transform:translateX(104%);transition:transform .55s cubic-bezier(.2,.8,.2,1)}.panel.open{transform:none}.panel button{float:right;width:38px;height:38px;border-radius:50%;border:1px solid #aaa198;background:none;cursor:pointer;font-size:22px}.panel .eyebrow{padding-top:80px;color:#806343;font:10px 'DM Mono';letter-spacing:.15em;text-transform:uppercase}.panel h1{margin:16px 0 22px;font:500 clamp(45px,5vw,70px)/.9 'Playfair Display';letter-spacing:-.06em}.panel .lede{font-size:18px;line-height:1.5}.specs{display:grid;grid-template-columns:1fr 1fr;gap:18px;border-top:1px solid #aaa198;border-bottom:1px solid #aaa198;padding:18px 0;margin:28px 0}.specs small{display:block;color:#786f64;font:9px 'DM Mono';letter-spacing:.11em;text-transform:uppercase}.story{color:#4e4a43;line-height:1.75}.card-section{margin:30px 0}.card-section h2{margin:0 0 9px;color:#262722;font:600 10px 'DM Mono';letter-spacing:.13em;text-transform:uppercase}.card-section p{margin:0;color:#4e4a43;line-height:1.75}.displayed-reference{padding:18px 18px 17px;border-left:2px solid #806343;background:rgba(128,99,67,.075)}.asset-credit{margin:38px -2px 0;padding:13px 2px 0;border-top:1px solid #bbb2a7;color:#756f66;font-size:11px;line-height:1.55}.asset-credit span{display:block;margin-bottom:3px;color:#8a8278;font:9px 'DM Mono';letter-spacing:.11em;text-transform:uppercase}.asset-credit a{color:#70512c;text-underline-offset:2px}.intro{position:fixed;z-index:8;inset:0;display:grid;place-items:center;background:#070807bd;backdrop-filter:blur(5px);transition:.5s}.intro.off{opacity:0;pointer-events:none}.intro>div{width:min(470px,calc(100% - 48px));text-align:center}.intro .k{color:#d7ac76;font:10px 'DM Mono';letter-spacing:.17em;text-transform:uppercase}.intro h1{margin:18px 0;font:500 54px/.9 'Playfair Display';letter-spacing:-.06em}.intro p{color:#c5c0b7;line-height:1.65}.begin{margin-top:12px;padding:14px 19px;border:1px solid #e6dfd2;background:#e6dfd2;color:#121310;cursor:pointer;font:600 10px 'DM Mono';letter-spacing:.14em;text-transform:uppercase}.begin:hover{background:var(--a);border-color:var(--a)}.fallback{display:none;position:fixed;z-index:9;inset:0;padding:40px;overflow:auto;background:#e7e2d8;color:#181916}.fallback h1{font:500 48px 'Playfair Display'}@media(max-width:760px){.top{padding:18px}.top button{display:none}.hud{inset:auto 18px 94px}.keys{display:none}.map{left:18px;right:18px;bottom:19px;transform:none;max-width:none}.near h2{font-size:22px}.panel{padding:28px 25px}.panel .eyebrow{padding-top:58px}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style><style id="exhibit-card-typography-refinement">.panel{width:clamp(430px,38vw,560px);padding:30px 38px 34px;scrollbar-color:#aa9f92 transparent;scrollbar-width:thin}.panel #close{position:absolute;top:24px;right:26px;float:none;display:grid;place-items:center;width:36px;height:36px;line-height:1;border-color:#b8afa4;color:#302e29;z-index:1}.panel .eyebrow{padding:2px 52px 0 0;margin:0 0 11px;color:#735c40;font:9.5px/1.45 "DM Mono";letter-spacing:.12em;text-transform:uppercase}.panel h1{max-inline-size:17ch;margin:0 0 15px;color:#1e201d;font:500 clamp(34px,3.25vw,51px)/.98 "Playfair Display";letter-spacing:-.045em;text-wrap:balance;overflow-wrap:normal}.panel .lede{max-inline-size:34ch;margin:0;color:#3f3c36;font-size:16px;line-height:1.5}.specs{gap:0;margin:23px 0 24px;padding:0;border-color:#b9b0a5}.specs>div{min-height:68px;padding:12px 12px 11px 0;font-size:13px;line-height:1.35}.specs>div:nth-child(odd){padding-left:0;border-right:1px solid #c9c1b7}.specs>div:nth-child(even){padding-left:14px}.specs>div:nth-child(-n+2){border-bottom:1px solid #c9c1b7}.specs small{margin-bottom:5px;font-size:8px;letter-spacing:.12em}.card-section{margin:22px 0}.card-section h2{margin-bottom:8px;font-size:9px;letter-spacing:.14em}.card-section p,.story{font-size:13px;line-height:1.67}.displayed-reference{margin-top:24px;padding:15px 16px 16px;border-left-width:2px}.asset-credit{margin:25px 0 0;padding:10px 0 0;color:#8b8379;font-size:9px;line-height:1.4;opacity:.86}.asset-credit span{margin-bottom:3px;font-size:8px;letter-spacing:.1em}.asset-credit a{color:inherit}@media(max-width:620px){.panel{width:100%;padding:25px 24px 28px}.panel #close{top:17px;right:18px}.panel .eyebrow{padding-right:48px;font-size:8.5px}.panel h1{max-inline-size:18ch;font-size:clamp(32px,10.5vw,42px)}.panel .lede{font-size:15px}.specs>div{font-size:12px}}@media(max-height:720px) and (min-width:621px){.panel{padding-top:22px;padding-bottom:24px}.panel #close{top:16px}.panel .eyebrow{padding-top:0;margin-bottom:8px}.panel h1{margin-bottom:11px;font-size:clamp(31px,3vw,43px)}.panel .lede{font-size:15px}.specs{margin:17px 0 18px}.specs>div{min-height:58px;padding-top:9px;padding-bottom:8px}.card-section{margin:17px 0}.displayed-reference{margin-top:18px}.asset-credit{margin-top:18px}}</style><style id="collection-index-refinement">/* Every chapter remains reachable: a compact grid on wide displays and a deliberate, keyboard-accessible horizontal rail below 1120px. */.map{left:50%;bottom:22px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(var(--chapter-count),minmax(0,1fr));gap:4px;width:min(860px,calc(100vw - 44px));max-width:none;overflow:visible}.map button{min-width:0;min-height:60px;padding:6px 4px;font:clamp(7.2px,.55vw,8.25px)/1.24 'DM Mono';letter-spacing:.035em;white-space:normal;overflow-wrap:anywhere;word-break:normal;hyphens:auto;text-align:center;text-wrap:balance;display:flex;align-items:center;justify-content:center;overflow:hidden}.map button:focus-visible{position:relative;z-index:1}@media(min-width:761px){.hud{bottom:104px}.top{z-index:9}}@media(max-width:1120px){.map{left:18px;right:18px;width:auto;grid-template-columns:repeat(var(--chapter-count),minmax(112px,1fr));overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scroll-padding-inline:2px;overscroll-behavior-inline:contain;transform:none;scrollbar-width:thin;scrollbar-color:rgba(232,226,216,.34) rgba(8,9,8,.62)}.map button{min-height:64px;padding-inline:8px;font-size:8.5px;scroll-snap-align:start}}@media(max-width:760px){.map{bottom:19px;grid-template-columns:repeat(var(--chapter-count),104px)}.map button{min-height:62px;padding-inline:7px;font-size:8px}.hud{inset:auto 18px 94px}.keys{display:none}.top{padding:18px}.top button{display:none}.near h2{font-size:22px}.panel{padding:28px 25px}}@media(prefers-reduced-motion:reduce){.map{scroll-behavior:auto}}</style><style id="museum-refinement">.begin:disabled{opacity:.55;cursor:progress}#collection-progress{font:10px/1.5 'DM Mono',monospace;margin-top:12px;min-height:15px;color:#c5c0b7}.intro{z-index:20}.panel #close{width:44px;height:44px}.top button:disabled{opacity:.4;cursor:progress}@media(max-width:760px){.top button{display:block;padding:10px;font-size:8px;min-height:44px}.brand{font-size:10px}.brand small{font-size:8px}.map::after{display:none}}.map button[aria-current="step"]{border-color:var(--a)}.guide-status{z-index:13}@media(max-width:760px){.guide-status{left:12px;top:74px;max-width:calc(100vw - 24px);font-size:8px;gap:6px}}</style></head><body><div id="app"></div><div class="veil"></div><header class="top"><div class="brand">PORSCHE MUSEUM<small>STUTTGART / WORLDWIDE</small></div><button id="guided">Guided timeline</button></header><div class="cross"></div><div class="hud"><div class="keys">MOVE&nbsp; <b>W A S D</b> / ARROWS<br>LOOK&nbsp; <b>MOUSE / TOUCH</b><br>DISCOVER&nbsp; <b>E</b></div><div class="near" id="near"><h2>The collection awaits</h2><p>Move through the galleries</p></div></div><nav class="map" id="map" aria-label="Accessible exhibit map"></nav><aside class="panel" id="panel" role="dialog" aria-label="Exhibit details" aria-hidden="true" inert><button id="close" aria-label="Close exhibit">×</button><div id="detail"></div></aside><section class="intro" id="intro"><div><span class="anniversary-mark"><img src="./assets/porsche-75-anniversary.png" alt="Porsche 75 anniversary mark"></span><div class="k">A navigable 3D collection</div><h1>There is no substitute.</h1><p>Walk through a cinematic museum of engineering, racing, and the sports cars that changed Porsche.</p><button class="begin" id="begin" disabled>Preparing the collection</button><p id="collection-progress" role="status" aria-live="polite">Preparing 13 exhibits…</p></div></section><section class="fallback" id="fallback"><h1>Collection index</h1><p>Your device does not support the 3D gallery. Explore the collection below.</p><div id="fallbackList"></div></section>
+<script src="./vendor/three-r126.min.js"></script><script src="./vendor/GLTFLoader-r126.js"></script><script src="./assets/archive-photos.js"></script><style id="landing-anniversary-mark">.intro .anniversary-mark{display:block;width:clamp(72px,7vw,94px);margin:0 auto 12px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}.intro .anniversary-mark img{display:block;width:100%;height:auto}@media(max-width:760px){.intro .anniversary-mark{width:72px;margin-bottom:10px}}</style><script>
+
+const required=[["1948–1962","Lightweight beginnings","Agility began with making every kilogram count.","The compact 356 and the purpose-built 550 and 718 racers established a recurring Porsche idea: performance could come from reducing mass as well as adding power. Road and competition cars placed their engines differently, but shared small dimensions and an emphasis on efficiency. This culture of lightweight engineering helped shape the cars that followed.","Low weight · compact size","Road and competition","Foundations of the 911","#9f251c","roadster"],["1963","901 / early 911","A new six-cylinder car gave Porsche an enduring silhouette.","Presented as the 901 in Frankfurt in 1963, the successor to the 356 brought a rear-mounted flat-six into a more spacious 2+2 body. Production began in 1964, followed shortly by the change of name to 911. F. A. Porsche’s design made the new car recognisable without simply enlarging its predecessor.","2.0L flat-six","130 hp","F. A. Porsche","#d8d2c4","coupe"],["1964","First production 911","The 911 evolved by testing how far its original architecture could go.","From the first production cars in 1964, Porsche developed the 911 around a rear-mounted flat-six. The 930 Turbo brought a new scale of performance to that arrangement when customer deliveries began in 1975. Wider bodywork and a prominent rear spoiler made the engineering change visible while preserving the familiar roofline.","1,991 cc flat-six","130 hp","Rear-engine / RWD","#315b5e","coupe"],["1970","917K","Winning at Le Mans required stability and endurance as well as speed.","The 917 turned Porsche’s long pursuit of overall victory into a breakthrough at Le Mans in 1970. Developing the short-tail body helped make its formidable performance more manageable. Hans Herrmann and Richard Attwood won in the red-and-white Salzburg entry, establishing the 917 as a defining endurance racer.","4.5L flat-12","630 hp","First overall Le Mans win","#d8d5ce","race"],["1986","959","The 959 treated the road car as a laboratory for interacting technologies.","Conceived during the Group B era, the 959 combined all-wheel drive, sequential turbocharging and advanced materials. Its significance lay in how these systems worked together to make performance usable across changing conditions. Ideas developed here later entered more familiar Porsche road cars.","2.85L twin-turbo","450 hp","PSK variable AWD","#aeb0aa","super"],["1996","986 Boxster","The Boxster paired a new business direction with an old roadster instinct.","Introduced in 1996, the Boxster broadened Porsche’s range at a difficult moment for the company. Its mid-engine layout and open body recalled the compact sports racers of earlier decades. Shared development and production thinking with the 911 helped make that return to the roadster commercially viable.","2.5L flat-six","201 hp","Mid-engine / RWD","#a7927c","roadster"],["1996","911 GT1","A familiar face concealed a racing car built around a different layout.","The 1996 911 GT1 explored the boundary between production sports cars and purpose-built racers. Its mid-engine architecture departed from the road-going 911, while recognisable styling maintained the family connection. The rules required road versions, making the relationship between racing and showroom cars unusually direct.","3.2L twin-turbo flat-six","~600 hp","Le Mans / GT1","#e8e3da","race"],["2002","Cayenne","The Cayenne tested whether Porsche’s identity could extend beyond the sports car.","When it arrived in 2002, the Cayenne joined the 911 and Boxster as a third model line. Its combination of everyday space, all-wheel drive and performance brought Porsche into a different market. The resulting growth changed the company’s scale and broadened the possibilities for future development.","4.5L V8 Turbo","450 hp","All-wheel drive","#725943","suv"],["2004","Carrera GT","Racing-derived construction met the direct demands of a manual road car.","The Carrera GT brought a naturally aspirated V10 and carbon-fibre structure into a road-going supercar. Its six-speed manual gearbox placed gear selection firmly with the driver. At a time when high-performance cars were becoming increasingly automated, it made light construction and mechanical involvement central to the experience.","5.7L V10","612 hp","Carbon-fibre monocoque","#a9a7a1","super"],["2000s","The GT lineage","Porsche’s GT cars bring different answers to the same road-and-track question.","From the 1990s onward, GT2, GT3 and RS models connected road-car development with the demands of competition. Turbocharged power and naturally aspirated response offered different experiences, while weight reduction, aerodynamics and chassis precision remained recurring concerns. There was never just one way to make a 911 more focused.","Naturally aspirated + turbo","GT2 · GT3 · RS","Road and circuit","#d84b28","race"],["2013","918 Spyder","Electrification became a means of adding performance as well as efficiency.","Introduced in 2013, the 918 Spyder combined a high-revving V8 with two electric motors. The motors could contribute immediately while the combustion engine built speed, and recovered braking energy could be used again. The result expanded the engineering possibilities of a Porsche supercar.","V8 + two e-motors","887 hp","Carbon monocoque","#b2b4aa","super"],["2019","Taycan","The electric transition brought new engineering demands to a familiar performance brief.","The Taycan’s arrival in 2019 made a battery-electric sports saloon part of Porsche’s core range. Its 800-volt architecture, thermal management and low-mounted battery addressed charging, repeatable performance and weight distribution. The challenge was to make these new systems serve the driver as coherently as the mechanical systems they replaced.","800-volt architecture","Dual-motor AWD","Performance EV","#e0ddd2","electric",{"x":-7,"z":-125}],["Contemporary","Classic 911, reimagined","The classic 911 has become a starting point for competing ideas of renewal.","Independent builders reinterpret the air-cooled 911 in distinct ways. Singer combines restoration with bespoke design and engineering; RWB is known for dramatic wide-body conversions; Gunther Werks develops the 993 around modern materials and performance. Together they show how preservation and reinvention can lead to very different cars.","Classic 911 foundations","Singer · RWB · Gunther Werks","Restoration and reinvention","#453c32","restomod",{"x":7,"z":-125}]];
+// One measured 11 m cadence runs the whole collection.  The former finale
+// overrode three anchors into two shared bays, which collapsed the last gallery
+// into a parking row.  This keeps every plinth, label, partition and collision
+// volume on its own chronological stop while preserving an open route to the
+// rear wall.
+const exhibitAnchors=[
+  {x:7,z:8},{x:-7,z:-3},{x:7,z:-14},{x:-7,z:-25},{x:7,z:-36},
+  {x:-7,z:-47},{x:7,z:-58},{x:-7,z:-69},{x:7,z:-80},{x:-7,z:-91},
+  {x:7,z:-102},{x:-7,z:-113},{x:7,z:-124}
+];
+required.forEach((chapter,index)=>{chapter[9]=exhibitAnchors[index]});
+const displayNames={0:'Porsche 718 RSK',3:'Porsche 917K',5:'Porsche Boxster Spyder',12:'Porsche 911 RAUH-Welt (RWB)'};
+const plaqueThemes=['LIGHTNESS COMES FIRST','THE DEFINING SILHOUETTE','THE ARCHITECTURE ENDURES','LE MANS, FINALLY WON','THE SUPERCAR AS LABORATORY','THE ROADSTER RETURNS','HOMOLOGATION, REIMAGINED','BEYOND THE SPORTS CAR','THE ANALOGUE APEX','THE GT PHILOSOPHY','PERFORMANCE, ELECTRIFIED','A NEW ELECTRIC ERA','THE PAST, REAUTHORED'];
+
+const map=document.querySelector('#map'),panel=document.querySelector('#panel'),detail=document.querySelector('#detail'),nearEl=document.querySelector('#near');map.style.setProperty('--chapter-count',required.length);let active=null,locked=false;
+const chapterRailLabels=['Lightness','The 901','First 911','Le Mans','959','Boxster','911 GT1','Cayenne','Carrera GT','GT lineage','918 Spyder','Taycan','Restomods'];
+function buildCollectionIndex(){
+  // The rail is organised by visitor-facing gallery themes, not a list of
+  // historical models. Its accessible name makes the distinction explicit:
+  // each destination is a historical chapter with a named reference vehicle
+  // on the plinth, rather than a claim that the original car is physically here.
+  required.forEach((e,i)=>{let b=document.createElement('button'),display=displayVehicleNames[i]||e[1];b.innerHTML='<span class=chapter-meta>'+String(i+1).padStart(2,'0')+' / '+(i===12?'TODAY':e[0])+'</span><span>'+chapterRailLabels[i]+'</span>';b.title=plaqueThemes[i];b.setAttribute('aria-label',plaqueThemes[i]+' · '+e[0]+'. '+display+'.');b.onclick=()=>goTo(i,true);map.append(b)});
+  document.querySelector('#fallbackList').innerHTML=required.map((e,i)=>{const display=displayVehicleNames[i]||e[1];return '<article class="fallback-exhibit"><h2>'+plaqueThemes[i]+'</h2><p><strong>'+display+'</strong></p><p>'+e[2]+'</p><p>'+e[3]+'</p><p>'+displayedVehicleNotes[i]+'</p></article>'}).join('');
+}
+// One restrained, neutral calibration governs the whole gallery.  The museum is
+// deliberately bright, but its white architecture must still leave room for panel
+// gaps, tyre rubber and paint reflections to read.
+// Keep the volume bright enough to read as a public museum, but retain a cool
+// distance value so the architecture does not collapse into a featureless white
+// tunnel.  Warm local keys then give the collection its own visual priority.
+const museumLighting=Object.freeze({background:'#b5beb8',fogNear:46,fogFar:66,exposure:.64,ceiling:'#fffdf7',key:'#fff1df'});
+const scene=new THREE.Scene();scene.background=new THREE.Color(museumLighting.background);scene.fog=new THREE.Fog(museumLighting.background,museumLighting.fogNear,museumLighting.fogFar);const camera=new THREE.PerspectiveCamera(62,innerWidth/innerHeight,.1,180);camera.position.set(0,1.72,12);const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=false;renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=museumLighting.exposure;
+document.querySelector('#app').append(renderer.domElement);
+// A compact, procedural gallery light map supplies the long ceiling highlights
+// that automotive paint, glazing, and lamp lenses need to read as real materials.
+function galleryEnvironment(){
+  const canvas=document.createElement('canvas');canvas.width=512;canvas.height=256;
+  const context=canvas.getContext('2d');
+  const sky=context.createLinearGradient(0,0,0,256);sky.addColorStop(0,'#f3f2ec');sky.addColorStop(.34,'#c4c9c4');sky.addColorStop(.47,'#4c5653');sky.addColorStop(.55,'#e7e7e1');sky.addColorStop(.68,'#87908c');sky.addColorStop(1,'#333d3a');context.fillStyle=sky;context.fillRect(0,0,512,256);
+  // Broad ceiling apertures and a narrow, dark floor reveal make curved paint
+  // and glass reflect the room, rather than a single pale grey value.
+  context.fillStyle='#fffdf6';context.globalAlpha=.68;[44,140,238,336,430].forEach(x=>context.fillRect(x,72,22,82));context.globalAlpha=.38;context.fillStyle='#26302d';context.fillRect(0,207,512,16);context.globalAlpha=1;
+  const source=new THREE.CanvasTexture(canvas);source.encoding=THREE.sRGBEncoding;source.mapping=THREE.EquirectangularReflectionMapping;
+  const pmrem=new THREE.PMREMGenerator(renderer);const environment=pmrem.fromEquirectangular(source).texture;scene.environment=environment;source.dispose();pmrem.dispose();
+}galleryEnvironment();
+// Porsche Museum interiors are intentionally quiet: broad, nearly seamless white surfaces,
+// a pale slab floor, and only a few charcoal metal joints. The previous stone/wood/bronze
+// maps read as visual static at walking height and competed with the collection.
+//
+// Surface finish pass: these tiny, deterministic canvases give the architectural pieces
+// material character without adding a downloaded bitmap, another request, or a large
+// texture decode to the walk-through.  The reference rooms have near-white albedo: their
+// depth comes from construction joints and very broad changes in reflection, not stains
+// or a visibly printed wall pattern.  Keep the albedo as the material swatch and use two
+// independent, low-frequency response maps for relief and roughness only.
+function makeMuseumFinish(kind){
+  /*
+   * The maps deliberately omit one-pixel random grain.  In a moving first-person view,
+   * that detail aliases into sparkle and makes clean architectural paint look dusty.
+   * The two fields use unrelated seeds and scales so a bump crest is not automatically
+   * a roughness crest; this produces quiet, believable grazing response instead of a
+   * single procedural "noise" signature.
+   */
+  const size=128,bumpCanvas=document.createElement('canvas'),roughCanvas=document.createElement('canvas');
+  bumpCanvas.width=bumpCanvas.height=roughCanvas.width=roughCanvas.height=size;
+  const bumpContext=bumpCanvas.getContext('2d'),roughContext=roughCanvas.getContext('2d'),bumpImage=bumpContext.createImageData(size,size),roughImage=roughContext.createImageData(size,size),bumpPixels=bumpImage.data,roughPixels=roughImage.data;
+  const hash=(x,y)=>{let n=((x*374761393)+(y*668265263))>>>0;n=(n^(n>>>13))*1274126177;return ((n^(n>>>16))>>>0)/4294967295};
+  const smooth=t=>t*t*(3-2*t);
+  const valueNoise=(x,y,scale)=>{const xx=x/scale,yy=y/scale,x0=Math.floor(xx),y0=Math.floor(yy),fx=smooth(xx-x0),fy=smooth(yy-y0),a=hash(x0,y0),b=hash(x0+1,y0),c=hash(x0,y0+1),d=hash(x0+1,y0+1);return ((a+(b-a)*fx)+(c+(d-c)*fx-(a+(b-a)*fx))*fy)-.5};
+  const finishProfile={
+    plaster:{relief:5.0,rough:7.5},
+    acoustic:{relief:1.8,rough:3.0},
+    powder:{relief:3.0,rough:4.5},
+    satin:{relief:1.25,rough:3.8},
+    steel:{relief:.8,rough:2.7},
+    // Honed composite is only on exhibit decks: a wide, quiet relief catches a
+    // raking light without reading as a decorative stone texture.
+    honed:{relief:3.2,rough:5.0}
+  }[kind]||{relief:3,rough:5};
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+    const index=(y*size+x)*4;
+    const relief=valueNoise(x+31,y-57,54)*finishProfile.relief+valueNoise(x-73,y+19,23)*finishProfile.relief*.34;
+    const roughField=valueNoise(x-47,y+83,71)*finishProfile.rough+valueNoise(x+109,y-29,31)*finishProfile.rough*.35;
+    const bumpValue=Math.round(Math.max(0,Math.min(255,128+relief)));
+    bumpPixels[index]=bumpPixels[index+1]=bumpPixels[index+2]=bumpValue;bumpPixels[index+3]=255;
+    // Roughness maps multiply the material's baseline roughness.  Keeping this
+    // close to white preserves each named finish while still separating a broad
+    // satin highlight from matte painted plaster.
+    const roughness=Math.round(Math.max(0,Math.min(255,246+roughField)));
+    roughPixels[index]=roughPixels[index+1]=roughPixels[index+2]=roughness;roughPixels[index+3]=255;
+  }
+  bumpContext.putImageData(bumpImage,0,0);roughContext.putImageData(roughImage,0,0);
+  const bump=new THREE.CanvasTexture(bumpCanvas);bump.wrapS=bump.wrapT=THREE.RepeatWrapping;bump.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+  const roughnessMap=new THREE.CanvasTexture(roughCanvas);roughnessMap.wrapS=roughnessMap.wrapT=THREE.RepeatWrapping;roughnessMap.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+  return {bump,roughnessMap};
+}
+function finishMaterial({color,roughness,metalness=0,kind='plaster',repeat=[1,1],bumpScale=.012,emissive='#000000',emissiveIntensity=0}){
+  const finish=makeMuseumFinish(kind),finishScale={plaster:1.8,acoustic:1.55,powder:1.65,satin:1.45,steel:1.6,honed:1.25}[kind]||1;
+  [finish.bump,finish.roughnessMap].forEach(texture=>texture.repeat.set(repeat[0],repeat[1]));
+  // r126 accepts linear color factors; authored CSS swatches are sRGB.
+  const material=new THREE.MeshStandardMaterial({color:new THREE.Color(color).convertSRGBToLinear(),bumpMap:finish.bump,roughnessMap:finish.roughnessMap,bumpScale:bumpScale*finishScale,roughness,metalness,emissive,emissiveIntensity});material.userData.museumFinish=kind;return material;
+}
+function makeMuseumFloorTexture(){const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');x.fillStyle='#e8e8e3';x.fillRect(0,0,512,512);x.strokeStyle='rgba(71,78,76,.12)';x.lineWidth=.72;for(let n=0;n<=512;n+=256){x.beginPath();x.moveTo(n,0);x.lineTo(n,512);x.stroke()}for(let n=0;n<=512;n+=170.66){x.beginPath();x.moveTo(0,n);x.lineTo(512,n);x.stroke()}const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(4.2,20);t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());return t}
+const museumFloorTexture=makeMuseumFloorTexture(),floorMat=new THREE.MeshStandardMaterial({color:'#c9d0cc',map:museumFloorTexture,roughness:.36,metalness:.07,emissive:'#202320',emissiveIntensity:.004}),stone=finishMaterial({color:'#f5f3ed',roughness:.79,metalness:.01,kind:'plaster',repeat:[.7,9],bumpScale:.008,emissive:'#242724',emissiveIntensity:.003}),dark=finishMaterial({color:'#202624',roughness:.48,metalness:.22,kind:'powder',repeat:[2,4],bumpScale:.007}),brass=finishMaterial({color:'#26312e',roughness:.36,metalness:.62,kind:'powder',repeat:[1.4,8],bumpScale:.006});
+scene.add(new THREE.AmbientLight('#fffdf8',.10));
+scene.add(new THREE.HemisphereLight('#fbfaf5','#78837e',.50));
+
+function fabricatedBoxGeometry(w,h,d){
+  // Millimetre-scale eased edges give fabricated metal/composite parts a real
+  // grazing highlight. Overall dimensions remain unchanged.
+  const bevel=Math.min(.006,Math.min(w,h,d)*.12),shape=new THREE.Shape(),hw=w/2-bevel,hd=d/2-bevel;
+  shape.moveTo(-hw,-hd);shape.lineTo(hw,-hd);shape.lineTo(hw,hd);shape.lineTo(-hw,hd);shape.closePath();
+  const geometry=new THREE.ExtrudeGeometry(shape,{depth:h-bevel*2,bevelEnabled:true,bevelThickness:bevel,bevelSize:bevel,bevelSegments:1,steps:1,curveSegments:1});
+  geometry.rotateX(-Math.PI/2);geometry.translate(0,-(h-bevel*2)/2,0);return geometry;
+}
+function box(x,y,z,w,h,d,m=stone){let o=new THREE.Mesh(['powder','steel','satin','honed'].includes(m.userData.museumFinish)?fabricatedBoxGeometry(w,h,d):new THREE.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;scene.add(o);return o}
+// The ceiling is a fitted architectural surface, not a collection of light boxes.
+// Recess housings sit above a matte plaster soffit, then reveal a narrow diffuser
+// and a shadow gap. This gives the illumination a physical source when looking up.
+const ceilingPanel=finishMaterial({color:'#faf9f4',roughness:.74,metalness:.01,kind:'acoustic',repeat:[3.8,25],bumpScale:.005,emissive:'#252825',emissiveIntensity:.003});
+const ceilingRecess=finishMaterial({color:'#47524e',roughness:.43,metalness:.38,kind:'powder',repeat:[1,12],bumpScale:.006});
+const diffuser=new THREE.MeshStandardMaterial({color:'#fcfcf8',roughness:.22,metalness:.015,emissive:'#fffdf8',emissiveIntensity:.7});
+function recessedLinear(x,z){
+  box(x,7.675,z,.62,.10,5.52,ceilingRecess);
+  box(x,7.611,z,.25,.026,5.18,diffuser);
+}
+function downlight(x,z){
+  const housing=new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.032,20),ceilingRecess);housing.position.set(x,7.645,z);housing.castShadow=false;housing.receiveShadow=true;scene.add(housing);
+  const lens=new THREE.Mesh(new THREE.CylinderGeometry(.145,.145,.018,20),diffuser);lens.position.set(x,7.622,z);lens.castShadow=false;lens.receiveShadow=true;scene.add(lens);
+}
+box(0,-.14,-56,24.8,.18,150,floorMat);box(-12,4,-56,.45,8,150,stone);box(12,4,-56,.45,8,150,stone);box(0,7.8,-56,24.8,.25,150,ceilingPanel);
+for(let z=8;z>-136;z-=12){
+  // Flush wall joints provide rhythm without bars crossing the archive images.
+  recessedLinear(-6.15,z-2);recessedLinear(6.15,z-2);
+  // Only the four primary gallery nodes need feature downlights. Their fixtures
+  // remain decorative; the established light calibration stays untouched.
+  if(z===8||z===-28||z===-64||z===-100){
+    downlight(-2.65,z-2);downlight(2.65,z-2);
+    let p=new THREE.SpotLight(museumLighting.ceiling,1.8,19,.7,.8,1.8);p.position.set(0,7.4,z-2);p.target.position.set(0,0,z);scene.add(p,p.target);
+    let pool=new THREE.PointLight('#eef6f2',.16,13,2);pool.position.set(0,1.8,z);scene.add(pool);
+  }
+}
+function label(text){
+  const canvas=document.createElement('canvas');canvas.width=768;canvas.height=138;
+  const context=canvas.getContext('2d');context.fillStyle='#151918';context.fillRect(0,0,768,138);
+  context.fillStyle='#eee9df';context.textAlign='center';context.textBaseline='middle';context.font='500 '+(text.length>27?29:34)+'px monospace';context.fillText(text,384,69);
+  const texture=new THREE.CanvasTexture(canvas);texture.encoding=THREE.sRGBEncoding;texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+  const plaque=new THREE.Group(),back=new THREE.Mesh(fabricatedBoxGeometry(2.57,.482,.028),dark),face=new THREE.Mesh(new THREE.PlaneGeometry(2.55,.46),new THREE.MeshStandardMaterial({map:texture,roughness:.70,metalness:.02,emissive:'#eee9df',emissiveMap:texture,emissiveIntensity:.035}));
+  face.position.z=.015;face.userData.role='exhibit-caption-face';back.userData.role='exhibit-caption-backing';plaque.add(back,face);return plaque;
+}
+// Exhibit anchors deliberately contain no procedural vehicle geometry. They keep
+// labels, route targets, and authentic-model placement stable while sourced assets load.
+// A first-person browser view benefits from a small presentation-scale allowance:
+// sourced dimensions remain proportional, but read as life-size against the hall.
+const vehiclePresentationScale=1.14;
+// Collision is intentionally authored from the fixed exhibit plan—not calculated from
+// glTF geometry while walking. It keeps the visitor out of every car and plinth without
+// adding per-frame scene traversal as assets stream in.
+const visitorRadius=.34,galleryBounds={minX:-9.65,maxX:9.65,minZ:-128,maxZ:15},exhibitCollisionVolumes=[];
+function addExhibitCollision(x,z,width,depth,index){const inset=visitorRadius;exhibitCollisionVolumes.push({index,minX:x-width/2-inset,maxX:x+width/2+inset,minZ:z-depth/2-inset,maxZ:z+depth/2+inset})}
+function collisionAt(x,z){return exhibitCollisionVolumes.find(volume=>x>volume.minX&&x<volume.maxX&&z>volume.minZ&&z<volume.maxZ)||null}
+function edgeClearance(volume,x,z){return Math.min(x-volume.minX,volume.maxX-x,z-volume.minZ,volume.maxZ-z)}
+function canOccupyGalleryPosition(nextX,nextZ,fromX,fromZ){const next=collisionAt(nextX,nextZ);if(!next)return true;const previous=collisionAt(fromX,fromZ);return previous===next&&edgeClearance(next,nextX,nextZ)<=edgeClearance(previous,fromX,fromZ)+.001}
+function moveVisitor(deltaX,deltaZ){const startX=camera.position.x,startZ=camera.position.z;const nextX=THREE.MathUtils.clamp(startX+deltaX,galleryBounds.minX,galleryBounds.maxX);if(canOccupyGalleryPosition(nextX,startZ,startX,startZ))camera.position.x=nextX;const nextZ=THREE.MathUtils.clamp(startZ+deltaZ,galleryBounds.minZ,galleryBounds.maxZ);if(canOccupyGalleryPosition(camera.position.x,nextZ,camera.position.x,startZ))camera.position.z=nextZ}
+function car(e,z,i){let g=new THREE.Group(),left=i%2?-7:7;if(e[9]){left=e[9].x;z=e[9].z}g.position.set(left,0,z);g.rotation.y=i%2?.42:-.42;let large=e[8]==='suv'||e[8]==='restomod',L=(large?4.6:4.15)*vehiclePresentationScale,W=(large?2.08:1.86)*vehiclePresentationScale,plinthWidth=W+1.4,plinthDepth=L+1.25;let plinth=box(left,-.02,z,plinthWidth,.13,plinthDepth,new THREE.MeshStandardMaterial({color:'#c9cfcb',roughness:.3,metalness:.13}));addExhibitCollision(left,z,plinthWidth,plinthDepth,i);g.userData={e,z,plinth};scene.add(g);return g}
+const cars=required.map((e,i)=>car(e,exhibitAnchors[i].z,i));
+cars.forEach(placeholder=>{
+    const side=placeholder.position.x<0?-1:1;
+    const key=new THREE.SpotLight(museumLighting.key,1.18,9,.68,.82,1.25);key.position.set(placeholder.position.x-side*2.15,6.45,placeholder.position.z+2.25);key.target.position.set(placeholder.position.x,.5,placeholder.position.z);scene.add(key,key.target);
+    const rim=new THREE.SpotLight('#d9ebf2',.46,8,.58,.82,1.35);rim.position.set(placeholder.position.x+side*2.5,4.8,placeholder.position.z-2.65);rim.target.position.set(placeholder.position.x,.72,placeholder.position.z-.25);scene.add(rim,rim.target);
+});
+
+const displayedVehicleNotes=[
+  "The 1959 718 RSK makes those priorities visible. Its low nose, close-fitting body and open cockpit wrap tightly around the mechanical parts. Beside the later 911s, its scale is a reminder of Porsche’s beginnings in small sports cars.",
+  "Follow the raised front wings from the driver’s sightline to the round headlamps, then the roof’s continuous fall toward the rear. These relationships, visible in this early 911, became reference points for generations of designers.",
+  "On this 1975 Turbo, compare the broad rear arches and spoiler with the quieter shape of the early 911 nearby. The contrast shows how Porsche adapted an established design to greater power, cooling demands and tyre grip.",
+  "The Gulf blue and orange seen here belong to another celebrated part of the 917 story. Look beyond the livery to the low cockpit and abbreviated tail: body shape was central to controlling the air around this exceptionally powerful car.",
+  "This Bruce Canepa-developed 1988 example carries the 959’s story beyond its original specification. The integrated rear wing, smooth body and carefully placed cooling openings express a different approach from the visibly muscular 930: technology packaged within a continuous shape.",
+  "The 2010 Boxster Spyder gives that idea a more focused expression. Its low windscreen, open cockpit and sculpted rear deck recall lightweight sports cars, while the engine ahead of the rear axle distinguishes its proportions from a 911.",
+  "Read the body from front to rear. The recognisable nose leads into a low cockpit, long tail and substantial wing. Those proportions reveal how racing requirements could transform a car bearing the 911 name.",
+  "This 2011 example belongs to the second generation, introduced in 2010. The higher roof and larger cabin are an obvious departure, but the sloping bonnet and front-wing shapes keep a visual connection to Porsche’s sports cars.",
+  "On this 2004 example, the low cockpit and long rear body make room for the engine behind the occupants. The contrast between the passenger compartment and the exposed-looking rear deck gives the car much of its character.",
+  "The 1995 993 GT2 represents the turbocharged branch of that family. Its widened arches and large rear wing make the priorities legible: accommodate more tyre and manage airflow. Later GT3 and RS models would pursue related goals through different combinations of engine and chassis.",
+  "This 2015 production example places that complex powertrain within a compact, low body. The exhaust outlets behind the cockpit provide a visible clue to the V8’s position; much of the electrical system remains concealed beneath the surface.",
+  "The Turbo GT with Weissach Package takes that platform toward circuit use. The fixed rear wing and aerodynamic additions visible on this example show how an electric saloon can adopt the priorities of Porsche’s most focused performance cars.",
+  "This RWB interpretation makes its changes deliberately visible. Extended arches, deep wheels and a large wing transform the stance while the roofline remains recognisably 911. It is one builder’s approach to a shared inheritance, with its own priorities and visual language."
+];
+const exhibitFacts=[
+  [
+    [
+      "Era",
+      "1948–1962"
+    ],
+    [
+      "Design principle",
+      "Low mass"
+    ],
+    [
+      "Road lineage",
+      "356"
+    ],
+    [
+      "Competition lineage",
+      "550 · 718"
+    ]
+  ],
+  [
+    [
+      "Debut",
+      "Frankfurt · 1963"
+    ],
+    [
+      "Engine layout",
+      "Rear-mounted flat-six"
+    ],
+    [
+      "Body",
+      "2+2 coupé"
+    ],
+    [
+      "Designer",
+      "F. A. Porsche"
+    ]
+  ],
+  [
+    [
+      "Evolution",
+      "1964–1975"
+    ],
+    [
+      "Induction",
+      "Turbocharged flat-six"
+    ],
+    [
+      "Layout",
+      "Rear engine · rear-wheel drive"
+    ],
+    [
+      "Visible changes",
+      "Wide arches · rear spoiler"
+    ]
+  ],
+  [
+    [
+      "Breakthrough",
+      "Le Mans · 1970"
+    ],
+    [
+      "Engine architecture",
+      "Flat-twelve"
+    ],
+    [
+      "Body designation",
+      "K · Kurzheck / short tail"
+    ],
+    [
+      "Livery on display",
+      "Gulf blue and orange"
+    ]
+  ],
+  [
+    [
+      "Origins",
+      "Group B era"
+    ],
+    [
+      "Drivetrain",
+      "All-wheel drive"
+    ],
+    [
+      "Induction",
+      "Sequential twin turbochargers"
+    ],
+    [
+      "Construction",
+      "Mixed-material body"
+    ]
+  ],
+  [
+    [
+      "Boxster introduced",
+      "1996"
+    ],
+    [
+      "Layout",
+      "Mid-engine roadster"
+    ],
+    [
+      "Variant on display",
+      "2010 Spyder"
+    ],
+    [
+      "Design priority",
+      "Weight reduction"
+    ]
+  ],
+  [
+    [
+      "Competition era",
+      "1996"
+    ],
+    [
+      "Engine position",
+      "Mid-mounted"
+    ],
+    [
+      "Induction",
+      "Twin turbochargers"
+    ],
+    [
+      "Road connection",
+      "Homologation versions"
+    ]
+  ],
+  [
+    [
+      "Cayenne introduced",
+      "2002"
+    ],
+    [
+      "Generation on display",
+      "Second generation"
+    ],
+    [
+      "Body",
+      "Five-door SUV"
+    ],
+    [
+      "Drivetrain",
+      "All-wheel drive"
+    ]
+  ],
+  [
+    [
+      "Engine",
+      "Naturally aspirated V10"
+    ],
+    [
+      "Transmission",
+      "Six-speed manual"
+    ],
+    [
+      "Structure",
+      "Carbon-fibre monocoque"
+    ],
+    [
+      "Layout",
+      "Mid-engine · rear-wheel drive"
+    ]
+  ],
+  [
+    [
+      "Lineage",
+      "1990s onward"
+    ],
+    [
+      "Branches",
+      "GT2 · GT3 · RS"
+    ],
+    [
+      "Common priorities",
+      "Grip · response · low mass"
+    ],
+    [
+      "Example on display",
+      "993-generation GT2"
+    ]
+  ],
+  [
+    [
+      "Introduced",
+      "2013"
+    ],
+    [
+      "Powertrain",
+      "V8 + two electric motors"
+    ],
+    [
+      "Architecture",
+      "Plug-in hybrid"
+    ],
+    [
+      "Structure",
+      "Carbon-fibre monocoque"
+    ]
+  ],
+  [
+    [
+      "Taycan introduced",
+      "2019"
+    ],
+    [
+      "Electrical architecture",
+      "800 volts"
+    ],
+    [
+      "Propulsion",
+      "Battery electric"
+    ],
+    [
+      "Variant on display",
+      "Turbo GT · Weissach Package"
+    ]
+  ],
+  [
+    [
+      "Foundation",
+      "Air-cooled 911"
+    ],
+    [
+      "Approaches",
+      "Restoration · modification"
+    ],
+    [
+      "Builders discussed",
+      "Singer · RWB · Gunther Werks"
+    ],
+    [
+      "Interpretation on display",
+      "RAUH-Welt / RWB"
+    ]
+  ]
+];
+const displayVehicleNames=[
+  '1959 Porsche 718 RSK',
+  'Early Porsche 911',
+  '1975 Porsche 911 (930) Turbo',
+  '1970 Porsche 917K',
+  '1988 Porsche 959 Bruce Canepa Upgrade',
+  '2010 Porsche Boxster Spyder',
+  '1996 Porsche 911 GT1',
+  '2011 Porsche Cayenne',
+  '2004 Porsche Carrera GT',
+  '1995 Porsche 911 GT2 (993)',
+  '2015 Porsche 918 Spyder',
+  '2025 Porsche Taycan Turbo GT Weissach Package',
+  'Porsche 911 RAUH-Welt (RWB)'
+];
+const assetAttributions=[
+  '1959 Porsche 718 RSK · user-supplied museum reference asset',
+  'Original Porsche 911 · user-supplied museum reference asset',
+  '<a href="https://sketchfab.com/3d-models/free-1975-porsche-911-930-turbo-8568d9d14a994b9cae59499f0dbed21e" target="_blank" rel="noopener">FREE 1975 Porsche 911 (930) Turbo</a> by Lionsharp Studios · CC BY 4.0',
+  '1970 Porsche 917K · user-supplied asset, optimized for the museum runtime',
+  '<a href="https://sketchfab.com/3d-models/1988-porsche-959-bruce-canepa-upgrade-7765513274d2486d882f755794fefc89" target="_blank" rel="noopener">1988 Porsche 959 Bruce Canepa Upgrade</a> by Ddiaz Design · CC BY 4.0',
+  '<a href="https://sketchfab.com/3d-models/2010-porsche-boxster-spyder-c0dee1a7f11e4650a9c54814abdba459" target="_blank" rel="noopener">2010 Porsche Boxster Spyder</a> by Ddiaz Design · CC BY-NC-SA',
+  '<a href="https://sketchfab.com/3d-models/1996-porsche-911-gt1-9930af5fcd30467a84247d15d75896a5" target="_blank" rel="noopener">1996 Porsche 911 GT1</a> by Dave Love SketchFab · CC BY 4.0',
+  '<a href="https://sketchfab.com/3d-models/2011-porsche-cayenne-c781eeb2c0e14f6e94d21feef6b5e7b3" target="_blank" rel="noopener">2011 Porsche Cayenne</a> by Ddiaz Design · CC BY-NC-SA',
+  '<a href="https://sketchfab.com/3d-models/2004-porsche-carrera-gt-a43be10ac0174dc0a35984c2d41d4058" target="_blank" rel="noopener">2004 Porsche Carrera GT</a> by Ddiaz Design · CC BY 4.0',
+  '1995 Porsche 911 GT2 (993) · user-supplied museum reference asset',
+  '<a href="https://sketchfab.com/3d-models/2015-porsche-918-spyder-f6d03ef13bf243c8b632ca7bacd8c0f3" target="_blank" rel="noopener">2015 Porsche 918 Spyder</a> by Ddiaz Design · CC BY 4.0',
+  '<a href="https://sketchfab.com/3d-models/2025-porsche-taycan-turbo-gt-weissach-package-4e1abafe7cf5413587a421377624ba08" target="_blank" rel="noopener">2025 Porsche Taycan Turbo GT Weissach Package</a> by Ddiaz Design · CC BY-NC-SA',
+  '<a href="https://sketchfab.com/3d-models/porsche-911-rauh-welt-free-0e1f5e1c0ddc4c3f88b8484461146a79" target="_blank" rel="noopener">Porsche 911 RAUH-Welt [FREE]</a> by autoNgraphic · CC BY 4.0'
+];
+buildCollectionIndex();
+function base64Buffer(value){const raw=atob(value),bytes=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);return bytes.buffer}
+// r126 cannot select arbitrary glTF UV channels per texture. The patched loader
+// records each authored channel; this pass makes an explicit, conservative choice
+// for it. Materials whose primary paint/albedo texture is wholly authored on UV1
+// use the mesh's second UV set. Secondary-only maps (normal/emissive/etc.) are
+// omitted rather than sampled through a different UV layout. That is closer to the
+// source asset than the old silent UV0 substitution and does not alter alpha,
+// colour-space, or texture filtering on supported maps.
+const gltfTextureSlots=['map','metalnessMap','roughnessMap','normalMap','emissiveMap','clearcoatMap','clearcoatRoughnessMap','clearcoatNormalMap','transmissionMap','thicknessMap','specularMap'];
+function authoredUv(texture){return texture?.userData?.museumGltfTexCoord||0}
+function stabilizeGltfUvCompatibility(vehicle){
+  vehicle.traverse(mesh=>{
+    if(!mesh.isMesh)return;
+    const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
+    let shouldUseUv2=false;
+    materials.forEach(material=>{
+      if(!material)return;
+      // Paint, metalness, and roughness must agree on a coordinate set. If the
+      // albedo is on UV1, that map is visually more important than a UV0 normal.
+      if(authoredUv(material.map)===1||authoredUv(material.metalnessMap)===1||authoredUv(material.roughnessMap)===1)shouldUseUv2=true;
+    });
+    if(shouldUseUv2&&mesh.geometry?.attributes?.uv2){
+      // Keep the original geometry shared by the remaining model and create this
+      // one draw's UV0 view. UV2 stays available for aoMap in the legacy shader.
+      mesh.geometry=mesh.geometry.clone();
+      mesh.geometry.setAttribute('uv',mesh.geometry.attributes.uv2.clone());
+    }
+    materials.forEach(material=>{
+      if(!material)return;
+      gltfTextureSlots.forEach(slot=>{
+        const texture=material[slot],channel=authoredUv(texture);
+        if(!texture||channel===0)return;
+        // The mesh is now sampling UV1 through the legacy shader only when a
+        // primary PBR map required it. Otherwise, keep the correct base paint
+        // and remove an incompatible secondary texture rather than corrupt it.
+        const primary=slot==='map'||slot==='metalnessMap'||slot==='roughnessMap';
+        if(!shouldUseUv2&&!primary)material[slot]=null;
+        if(channel>1)material[slot]=null;
+      });
+      if(shouldUseUv2){
+        // A UV0-only secondary detail cannot coexist with a UV1 albedo in r126.
+        // Disable just those conflicting details; never touch supported alpha or
+        // base-colour maps.
+        ['normalMap','emissiveMap','clearcoatMap','clearcoatRoughnessMap','clearcoatNormalMap','transmissionMap','thicknessMap','specularMap'].forEach(slot=>{
+          if(material[slot]&&authoredUv(material[slot])===0)material[slot]=null;
+        });
+      }
+      material.needsUpdate=true;
+    });
+  });
+}
+// GLTF transmission is not consistently available in this r126 runtime. Give glazing
+// and lamp lenses a dependable museum-render fallback instead of letting them vanish.
+function calibrateUntexturedLens(mesh,material,kind,order){
+  const color=kind==='amber'?'#8b4302':'#760006';
+  material.transparent=true;
+  material.opacity=kind==='amber'?.82:.88;
+  material.color.set(color).convertSRGBToLinear();
+  if('transmission'in material)material.transmission=0;
+  material.metalness=0;
+  material.roughness=.10;
+  if('clearcoat'in material)material.clearcoat=.28;
+  if('clearcoatRoughness'in material)material.clearcoatRoughness=.10;
+  material.depthWrite=false;
+  material.depthTest=true;
+  // This is an exterior lens shell, not a two-sided pane rendered twice.
+  material.side=THREE.FrontSide;
+  if(material.emissive){material.emissive.setRGB(0,0,0);material.emissiveIntensity=0}
+  mesh.renderOrder=order;
+  mesh.visible=true;
+  material.needsUpdate=true;
+}
+function calibrateAuthoredLens(material,kind){
+  // Most source assets already contain a painted lens atlas: preserve its red,
+  // amber, white-reverse, and dark divider pixels.  Replacing those maps with a
+  // single coloured overlay was the reason segmented lights read as one flat bar.
+  material.metalness=.025;material.roughness=.24;
+  if('envMapIntensity'in material)material.envMapIntensity=Math.min(material.envMapIntensity??.5,.32);
+  if('clearcoat'in material)material.clearcoat=Math.min(Math.max(material.clearcoat??0,.18),.42);
+  if('clearcoatRoughness'in material)material.clearcoatRoughness=.18;
+  material.transparent=!!material.transparent;material.opacity=1;
+  material.depthWrite=!material.transparent;
+  // A nearly-white tint maintains the texture's colour segmentation instead of
+  // washing amber/reverse sections into the red housing.
+  material.color?.set(kind==='amber'?'#fff1dc':'#fff1ed');
+  if(material.emissive){
+    material.emissive.set(kind==='amber'?'#180b01':'#140102');
+    material.emissiveIntensity=.018;
+  }
+  material.needsUpdate=true;
+}
+// A thin coloured cover filters its reflector instead of mixing a white alpha
+// veil over it. Keep the separate clear cover for the Cayenne's surface sheen.
+function applyThinRedFilter(material){
+  material.blending=THREE.MultiplyBlending;material.opacity=1;
+  material.color.set('#a21d27').convertSRGBToLinear();material.needsUpdate=true;
+}
+function calibrateCarreraGtLamps(index,vehicle){
+  if(index!==8)return;
+  vehicle.traverse(mesh=>{
+    if(!mesh.isMesh)return;
+    const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
+    materials.forEach(material=>{
+      if(!material||(material.name||'').toLowerCase()!=='c1_light')return;
+      material.vertexColors=true;
+      material.transparent=false;material.opacity=1;material.depthWrite=true;
+      material.color.multiplyScalar(.5);
+      material.metalness=0;material.roughness=.14;material.envMapIntensity=.45;
+      if('clearcoat'in material)material.clearcoat=.18;
+      if('clearcoatRoughness'in material)material.clearcoatRoughness=.16;
+      if(material.emissive){material.emissive.setRGB(0,0,0);material.emissiveIntensity=0}
+      material.needsUpdate=true;
+    });
+  });
+}
+
+function calibrateCayenneRedGlass(mesh,material){
+  material.transparent=true;material.opacity=.88;
+  material.color.set('#760006').convertSRGBToLinear();
+  if('transmission'in material)material.transmission=0;
+  material.metalness=0;material.roughness=.10;
+  if('clearcoat'in material)material.clearcoat=.28;
+  if('clearcoatRoughness'in material)material.clearcoatRoughness=.10;
+  material.depthWrite=false;material.depthTest=true;material.side=THREE.FrontSide;
+  if(material.emissive){material.emissive.setRGB(0,0,0);material.emissiveIntensity=0}
+  mesh.renderOrder=2;mesh.visible=true;applyThinRedFilter(material);
+}
+
+function calibrateCayenneOuterLampGlass(mesh,material){
+  material.transparent=true;material.opacity=.10;
+  material.color.set('#a9b7b5').convertSRGBToLinear();
+  if('transmission'in material)material.transmission=0;
+  material.metalness=0;material.roughness=.08;
+  if('clearcoat'in material)material.clearcoat=.38;
+  if('clearcoatRoughness'in material)material.clearcoatRoughness=.08;
+  material.depthWrite=false;material.depthTest=true;material.side=THREE.FrontSide;
+  if(material.emissive){material.emissive.setRGB(0,0,0);material.emissiveIntensity=0}
+  mesh.renderOrder=3;mesh.visible=true;material.needsUpdate=true;
+}
+function calibrateCayenneMetalwork(vehicle){
+  const seen=new Set();
+  vehicle.traverse(mesh=>{
+    if(!mesh.isMesh)return;
+    const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
+    materials.forEach(material=>{
+      if(!material||seen.has(material.uuid))return;
+      seen.add(material.uuid);
+      const name=(material.name||'').toLowerCase();
+      if(name==='material'&&/lod12_rim/i.test(mesh.name||'')){
+        // Rim albedo remains its authored texture; reduce only its neutral
+        // reflectance so the white atlas reads as machined silver.
+        material.color.multiplyScalar(.52);
+        material.metalness=1;
+        material.roughness=.28;
+        if('envMapIntensity'in material)material.envMapIntensity=.65;
+      }else if(name==='disk'){
+        material.color.multiplyScalar(.78);
+        material.metalness=.70;
+        material.roughness=.46;
+        if('envMapIntensity'in material)material.envMapIntensity=.34;
+      }else if(name==='chrome'){
+        // Source has one shared chrome primitive, including exhaust tips and
+        // trim. This gives both a satin-silver response without changing maps.
+        material.color.multiplyScalar(.72);
+        material.metalness=.82;
+        material.roughness=.22;
+        if('envMapIntensity'in material)material.envMapIntensity=.65;
+      }
+      if(name==='chrome'||name==='disk'||(name==='material'&&/lod12_rim/i.test(mesh.name||''))){
+        if('clearcoat'in material)material.clearcoat=0;
+        material.emissiveIntensity=0;
+      }
+      material.needsUpdate=true;
+    });
+  });
+}
+
+// Wheel materials are shared with trim in the early 911. Clone only the four
+// rim/hubcap meshes so the metal response does not recolor its cabin or paint.
+function calibrateEarly911Wheels(vehicle){
+  vehicle.traverse(mesh=>{
+    const rim=['Object_35','Object_40'].includes(mesh.name),hubcap=['Object_36','Object_41'].includes(mesh.name);
+    if(!mesh.isMesh||(!rim&&!hubcap))return;
+    const tune=source=>{
+      const material=source.clone();
+      material.color.set(rim?'#b6bcc0':'#d0d5d8').convertSRGBToLinear();
+      material.metalness=1;material.roughness=rim?.25:.12;
+      if('clearcoat'in material)material.clearcoat=0;
+      material.envMapIntensity=1;material.emissiveIntensity=0;
+      material.needsUpdate=true;return material;
+    };
+    mesh.material=Array.isArray(mesh.material)?mesh.material.map(tune):tune(mesh.material);
+  });
+}
+
+function stabilizeVehicleMaterials(vehicle,index){
+  vehicle.traverse(mesh=>{
+    if(!mesh.isMesh)return;
+    const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
+    materials.forEach(material=>{
+      if(!material)return;
+      const name=(material.name||'').toLowerCase();
+      if(index===1&&mesh.name==='Object_6'&&material.name==='Material.002'){
+        material.color.set('#fff3df').convertSRGBToLinear();
+        if('transmission'in material)material.transmission=0;
+        material.opacity=.95;material.transparent=true;material.depthWrite=false;
+        material.metalness=0;material.roughness=.23;material.emissiveIntensity=0;
+        if('clearcoat'in material)material.clearcoat=.28;
+        material.needsUpdate=true;
+      }
+      if(index===5&&material.name==='GEOMETRYMAGSILVER_TIRE1'){
+        material.color.set('#b6bdc3').convertSRGBToLinear();
+        material.metalness=1;material.roughness=.25;material.envMapIntensity=1;
+        material.emissiveIntensity=0;if('clearcoat'in material)material.clearcoat=0;
+        material.needsUpdate=true;
+      }
+      const redLamp=/red[_ -]?glass|rojo|(?:^|_)r_glass|brake[_ -]?light|brakelight|rear[_ -]?lamps?|rearlamps?|tail[_ -]?lamps?|taillights?|lightssss+/.test(name);
+      const amberLamp=/orange[_ -]?glass|(?:^|_)o_glass|amber[_ -]?glass|indicators?|intermitente/.test(name);
+      const windshield=!(index===7&&name==='glasssurr')&&/window|windshield|glass|vidri/.test(name)&&!redLamp&&!amberLamp&&!/headlight|light[_ -]?glass|brake|rear[_ -]?lamp|tail[_ -]?lamp/.test(name);
+      if(redLamp){
+        if(index===7&&name==='red_glass')calibrateCayenneRedGlass(mesh,material);
+        else if(material.map)calibrateAuthoredLens(material,'red');
+        else {calibrateUntexturedLens(mesh,material,'red',2);if(index===10)applyThinRedFilter(material)}
+      }else if(amberLamp){
+        if(material.map)calibrateAuthoredLens(material,'amber');
+        else calibrateUntexturedLens(mesh,material,'amber',2);
+      }else if(index===7&&name==='light_glass'){
+        calibrateCayenneOuterLampGlass(mesh,material);
+      }else if(windshield){
+        material.transparent=true;material.opacity=.32;material.depthWrite=false;material.side=THREE.DoubleSide;
+        mesh.renderOrder=1;material.vertexColors=false;material.color?.set('#3d5a62');material.metalness=.03;material.roughness=.12;material.needsUpdate=true;
+      }
+    });
+  });
+}
+// Calibrate only the identified exterior paint materials. The legacy Three.js
+// version expects linear color factors: CSS swatches must be converted explicitly.
+// White lacquer needs headroom for highlights, while authored race-car atlases
+// retain their hue and decals with a modest, uniform reflectance adjustment.
+const vehiclePaintProfiles={
+  0:{match:/^Vehicle_Exterior_mm_ext$/,gain:.90,roughness:.16,environment:.66},
+  1:{match:/^Lack$/,color:'#b6251c',roughness:.16,environment:.62},
+  3:{match:/^body$/,gain:.96,roughness:.20,environment:.66},
+  4:{match:/Porsche_Canepa959_1988Paint_Material/i,gain:.90,metalness:0,roughness:.14,environment:.58},
+  5:{match:/GEOMETRYCARSKIN_SKIN2/i,color:'#b0b5ad',roughness:.24,environment:.42},
+  // User-selected Jet Green Metallic, a display interpretation of the 2011 color.
+  7:{match:/^CarPaint$/,color:'#28473a',metalness:.38,roughness:.25,environment:.62},
+  9:{match:/^PaletteMaterial003$/,gain:.88,roughness:.85,environment:.68}
+};
+function calibrateVehiclePaint(index,vehicle){
+  const profile=vehiclePaintProfiles[index];if(!profile)return;
+  const seen=new Set();
+  vehicle.traverse(mesh=>{
+    if(!mesh.isMesh)return;
+    (Array.isArray(mesh.material)?mesh.material:[mesh.material]).forEach(material=>{
+      if(!material||seen.has(material.uuid)||!profile.match.test(material.name||''))return;
+      seen.add(material.uuid);
+      if(profile.color)material.color.set(profile.color).convertSRGBToLinear();
+      else material.color.multiplyScalar(profile.gain);
+      material.roughness=profile.roughness;
+      if(profile.metalness!==undefined)material.metalness=profile.metalness;
+      material.envMapIntensity=profile.environment;
+      // Body panels reflect the room; only the separate lamp materials emit light.
+      material.emissiveIntensity=0;
+      material.toneMapped=true;
+      material.needsUpdate=true;
+    });
+  });
+}
+function calibrateCayenneHeadlamps(index,vehicle){
+  if(index!==7)return;
+  vehicle.traverse(mesh=>{
+    if(!mesh.isMesh)return;
+    const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
+    materials.forEach(material=>{
+      if(!material||(material.name||'').toLowerCase()!=='lights')return;
+      // This one source material is shared by the front projectors and the
+      // rear lamp facets. Removing the green atlas is necessary, but imposing
+      // a warm-white glow here is what bleaches the rear lamp through its lens.
+      // Retain its authored neutral base map and normal map as unlit reflector
+      // segments; the real red comes from the separate Red_glass geometry.
+      material.emissiveMap=null;
+      material.emissive?.setRGB(0,0,0);
+      material.emissiveIntensity=0;
+      material.metalness=.06;
+      material.roughness=.25;
+      if('envMapIntensity'in material)material.envMapIntensity=.28;
+      material.needsUpdate=true;
+    });
+  });
+}
+
+function placeAuthenticVehicle(index,gltf,targetLength){
+  const placeholder=cars[index];
+  try{
+    const vehicle=gltf.scene,anchor=new THREE.Group();
+    // The downloaded 930 has a handful of malformed exporter shards. They are
+    // duplicate body/chrome fragments with absurd 9–244 m bounds; treating
+    // those as vehicle geometry reduces the real 4.29 m car to a model-car.
+    // The intact, overlapping body meshes remain, so remove only the bad
+    // shards before *any* centering or physical-dimension calculation.
+    if(index===2){['Plane.007_28','Object_76','Object_49','Object_55','Object_68','Object_34','Object_61','Plane.015_62','Object_140'].forEach(name=>{const stray=vehicle.getObjectByName(name)||vehicle.getObjectByName(name.replace(/\./g,''));if(stray?.parent)stray.parent.remove(stray)})}
+    vehicle.visible=true;
+    vehicle.traverse(object=>{
+      if(!object.isMesh)return;
+    // Preserve full-quality assets, but let Three.js skip meshes outside the visitor's
+    // camera frustum. Rendering every mesh in all 13 glTF files made movement choppy.
+    object.visible=true;object.castShadow=object.receiveShadow=true;object.frustumCulled=true;
+      const materials=Array.isArray(object.material)?object.material:[object.material];
+      materials.forEach(material=>{if(!material)return;material.visible=true;const materialName=(material.name||'').toLowerCase();if(material.map){material.map.encoding=THREE.sRGBEncoding;material.map.needsUpdate=true}if(material.emissiveMap){material.emissiveMap.encoding=THREE.sRGBEncoding;material.emissiveMap.needsUpdate=true}if(material.emissive&&!/(light|lamp|headlight|taillight|brake)/.test(materialName))material.emissiveIntensity=Math.min(material.emissiveIntensity||0,.05);const bodyPaint=/(?:^|[_ -])(paint|skin|carbody)(?:[_ .-]|$)/.test(materialName);if(bodyPaint&&'roughness'in material)material.roughness=Math.max(material.roughness??.5,.14);if(bodyPaint&&'envMapIntensity'in material)material.envMapIntensity=Math.min(material.envMapIntensity??1,.72);material.needsUpdate=true});
+    });
+    stabilizeGltfUvCompatibility(vehicle);
+    stabilizeVehicleMaterials(vehicle,index);
+    calibrateCarreraGtLamps(index,vehicle);
+    calibrateVehiclePaint(index,vehicle);
+    calibrateCayenneHeadlamps(index,vehicle);
+    if(index===7)calibrateCayenneMetalwork(vehicle);
+    if(index===1)calibrateEarly911Wheels(vehicle);
+    anchor.add(vehicle);anchor.updateMatrixWorld(true);
+    const sourceBox=new THREE.Box3().setFromObject(anchor),sourceSize=sourceBox.getSize(new THREE.Vector3()),longest=Math.max(sourceSize.x,sourceSize.z);
+    if(!Number.isFinite(longest)||longest<=0)throw new Error('Vehicle has no measurable geometry');
+    anchor.scale.setScalar(targetLength/longest);
+    // The RWB source faces -Z. Turn it toward the +Z gallery approach.
+    anchor.rotation.y=placeholder.rotation.y+(index===12?Math.PI:0);anchor.updateMatrixWorld(true);
+    const scaledBox=new THREE.Box3().setFromObject(anchor),center=scaledBox.getCenter(new THREE.Vector3());
+    anchor.position.set(placeholder.position.x-center.x,placeholder.position.y-scaledBox.min.y+.19,placeholder.position.z-center.z);anchor.updateMatrixWorld(true);anchor.userData.exhibit=index;scene.add(anchor);
+    placeholder.visible=false;placeholder.userData.authentic=anchor;
+  }catch(error){console.error('Vehicle placement failed: '+error.message,error)}
+}
+// [width, height, length] in metres. Width allows for the model's exterior mirrors and aero, where present.
+// The 930 includes an oversized authored shadow plane (Plane.015_62), removed
+// before measuring. Fit its remaining body uniformly by length: independent axis
+// targets would distort the intact Turbo silhouette, wheel track, and tyre profiles.
+// All vehicles now use uniform length fitting; width/height stay source-proportional.
+// This also removes the roughly 7% width squeeze on the 917K and GT2.
+const physicalDimensions={0:[1.55,.95,3.90],1:[1.61,1.32,4.163],2:[2.15,1.31,4.29],3:[2.00,.94,4.29],4:[1.86,1.28,4.26],5:[1.98,1.23,4.342],6:[2.07,1.38,4.75],7:[2.16,1.705,4.846],8:[2.00,1.166,4.613],9:[1.88,1.29,4.56],10:[2.06,1.167,4.645],11:[2.144,1.378,4.968],12:[1.89,1.29,4.30]};
+// Rotated mesh AABBs overestimate visible size. Measure the vertices once during
+// queued preparation; no bounds traversal is performed while the visitor walks.
+function preciseModelBounds(root){
+  root.updateMatrixWorld(true);
+  const bounds=new THREE.Box3(),point=new THREE.Vector3();
+  root.traverse(mesh=>{
+    if(!mesh.isMesh||!mesh.visible)return;
+    const positions=mesh.geometry?.attributes?.position;if(!positions)return;
+    for(let vertex=0;vertex<positions.count;vertex++){
+      point.fromBufferAttribute(positions,vertex).applyMatrix4(mesh.matrixWorld);
+      bounds.expandByPoint(point);
+    }
+  });
+  return bounds;
+}
+function fitPhysicalDimensions(index){
+  const anchor=cars[index]?.userData?.authentic,base=physicalDimensions[index];
+  if(!anchor||!base)return;
+  const yaw=anchor.rotation.y,placeholder=cars[index];
+  anchor.position.set(0,0,0);anchor.rotation.y=0;
+  const sourceBox=preciseModelBounds(anchor),sourceSize=sourceBox.getSize(new THREE.Vector3());
+  const targetLength=base[2]*vehiclePresentationScale;
+  if(!Number.isFinite(sourceSize.z)||sourceSize.z<=0)return;
+  const fit=targetLength/sourceSize.z;
+  anchor.scale.multiplyScalar(fit);anchor.rotation.y=yaw;
+  const fittedBox=preciseModelBounds(anchor),center=fittedBox.getCenter(new THREE.Vector3());
+  anchor.position.set(placeholder.position.x-center.x,placeholder.position.y-fittedBox.min.y+.19,placeholder.position.z-center.z);
+  anchor.updateMatrixWorld(true);
+  anchor.userData.fittedDimensions={length:targetLength,width:sourceSize.x*fit,height:sourceSize.y*fit,nominalLength:base[2],presentationScale:vehiclePresentationScale};
+}
+
+// Several source assets represent a wheel, brake, or interior assembly as hundreds
+// of tiny opaque meshes which all use the same material.  They look correct, but
+// each mesh is a separate WebGL draw call.  Bake only these repeated, static parts
+// into one local-space geometry per material.  Paint, glass, lamps, transparent
+// surfaces and all unique/detail meshes remain untouched, so this changes runtime
+// submission cost without lowering the visible vehicle quality.
+function batchRepeatedStaticMeshes(root,minMeshes=16){
+  if(!root)return 0;
+  root.updateMatrixWorld(true);
+  const buckets=new Map(),signature=geometry=>Object.keys(geometry.attributes).sort().map(name=>{const attribute=geometry.attributes[name];return name+':'+attribute.itemSize+':'+attribute.array.constructor.name+':'+attribute.normalized}).join('|');
+  root.traverse(mesh=>{
+    if(!mesh.isMesh||mesh.isSkinnedMesh||Array.isArray(mesh.material)||!mesh.material||mesh.material.transparent||!mesh.geometry?.index||Object.keys(mesh.morphTargetInfluences||{}).length)return;
+    const geometry=mesh.geometry,attrs=signature(geometry);
+    if(!attrs||geometry.drawRange.start||geometry.drawRange.count!==Infinity&&geometry.drawRange.count!==geometry.index.count)return;
+    const key=mesh.material.uuid+'|'+attrs;
+    (buckets.get(key)||buckets.set(key,[]).get(key)).push(mesh);
+  });
+  let reduced=0;
+  const inverseRoot=new THREE.Matrix4().copy(root.matrixWorld).invert(),relative=new THREE.Matrix4(),normalMatrix=new THREE.Matrix3(),position=new THREE.Vector3(),normal=new THREE.Vector3(),tangent=new THREE.Vector3();
+  buckets.forEach(meshes=>{
+    if(meshes.length<minMeshes)return;
+    const first=meshes[0],names=Object.keys(first.geometry.attributes).sort();
+    if(!names.includes('position'))return;
+    const vertexTotal=meshes.reduce((total,mesh)=>total+mesh.geometry.attributes.position.count,0),indexTotal=meshes.reduce((total,mesh)=>total+mesh.geometry.index.count,0);
+    const geometry=new THREE.BufferGeometry(),attributes={};
+    names.forEach(name=>{const attribute=first.geometry.attributes[name];attributes[name]={attribute,array:new attribute.array.constructor(vertexTotal*attribute.itemSize)}});
+    const IndexArray=vertexTotal>65535?Uint32Array:Uint16Array,index=new IndexArray(indexTotal);
+    let vertexOffset=0,indexOffset=0;
+    meshes.forEach(mesh=>{
+      relative.multiplyMatrices(inverseRoot,mesh.matrixWorld);normalMatrix.getNormalMatrix(relative);
+      names.forEach(name=>{
+        const source=mesh.geometry.attributes[name],target=attributes[name].array,itemSize=source.itemSize,base=vertexOffset*itemSize;
+        target.set(source.array,base);
+        if(name==='position')for(let vertex=0;vertex<source.count;vertex++){const at=base+vertex*itemSize;position.set(target[at],target[at+1],target[at+2]).applyMatrix4(relative);target[at]=position.x;target[at+1]=position.y;target[at+2]=position.z}
+        if(name==='normal')for(let vertex=0;vertex<source.count;vertex++){const at=base+vertex*itemSize;normal.set(target[at],target[at+1],target[at+2]).applyMatrix3(normalMatrix).normalize();target[at]=normal.x;target[at+1]=normal.y;target[at+2]=normal.z}
+        if(name==='tangent')for(let vertex=0;vertex<source.count;vertex++){const at=base+vertex*itemSize;tangent.set(target[at],target[at+1],target[at+2]).applyMatrix3(normalMatrix).normalize();target[at]=tangent.x;target[at+1]=tangent.y;target[at+2]=tangent.z}
+      });
+      const sourceIndex=mesh.geometry.index;for(let entry=0;entry<sourceIndex.count;entry++)index[indexOffset+entry]=sourceIndex.getX(entry)+vertexOffset;
+      vertexOffset+=mesh.geometry.attributes.position.count;indexOffset+=sourceIndex.count;
+    });
+    names.forEach(name=>{const {attribute,array}=attributes[name];geometry.setAttribute(name,new THREE.BufferAttribute(array,attribute.itemSize,attribute.normalized))});geometry.setIndex(new THREE.BufferAttribute(index,1));geometry.computeBoundingSphere();geometry.computeBoundingBox();
+    const merged=new THREE.Mesh(geometry,first.material);merged.name='museum-batched-'+(first.material.name||'asset-part');merged.frustumCulled=true;merged.castShadow=merged.receiveShadow=true;root.add(merged);
+    meshes.forEach(mesh=>mesh.parent?.remove(mesh));reduced+=meshes.length-1;
+  });
+  return reduced;
+}
+// Shared, low-resolution contact shading grounds the cars on their display
+// caps. The footprint stays inside each cap; the preserved museum floor is untouched.
+function addVehicleContactShade(index){
+  if(cars[index].userData.contactShade)return;
+  if(!addVehicleContactShade.material){
+    const canvas=document.createElement('canvas');canvas.width=canvas.height=128;
+    const context=canvas.getContext('2d'),gradient=context.createRadialGradient(64,64,8,64,64,62);
+    gradient.addColorStop(0,'rgba(0,0,0,.8)');gradient.addColorStop(.48,'rgba(0,0,0,.52)');gradient.addColorStop(1,'rgba(0,0,0,0)');
+    context.fillStyle=gradient;context.fillRect(0,0,128,128);
+    const texture=new THREE.CanvasTexture(canvas);
+    addVehicleContactShade.material=new THREE.MeshBasicMaterial({map:texture,transparent:true,opacity:.38,depthWrite:false,toneMapped:false});
+  }
+  const dims=physicalDimensions[index],shade=new THREE.Mesh(new THREE.PlaneGeometry(dims[0]*vehiclePresentationScale*.86,dims[2]*vehiclePresentationScale*.86),addVehicleContactShade.material);
+  shade.rotation.set(-Math.PI/2,0,-cars[index].rotation.y);shade.position.set(cars[index].position.x,.188,cars[index].position.z);
+  shade.userData.role='vehicle-contact-shade';shade.renderOrder=1;scene.add(shade);freezeStaticTransforms(shade);cars[index].userData.contactShade=shade;
+}
+
+
+// The collection is deliberately static: visitor movement changes only the camera.
+// Freeze completed asset transforms so Three.js does not recalculate every node in
+// every high-detail glTF on each frame. Visibility changes still work normally.
+function freezeStaticTransforms(root){if(!root)return;root.traverse(object=>{object.updateMatrix();object.matrixAutoUpdate=false});root.updateMatrix();root.updateMatrixWorld(true)}
+
+// Fixed shader light counts: recycle the original, finite-range fixture settings
+// around the visitor. Far-away lights cannot illuminate nearby surfaces, so do
+// not pay their fragment-shader cost on every pixel of the laptop viewport.
+const museumLightSources={spots:[],points:[]},museumLightPools={spots:[],points:[]};
+let museumLightingCell='';
+function syncMuseumLightSources(){
+  for(const light of [...scene.children]){
+    const kind=light.isSpotLight?'spots':light.isPointLight?'points':null;
+    if(kind&&!light.userData.museumPool){museumLightSources[kind].push(light);scene.remove(light)}
+  }
+  for(const [kind,count] of [['spots',10],['points',3]]){
+    if(museumLightPools[kind].length)continue;
+    for(let i=0;i<count;i++){
+      const light=kind==='spots'?new THREE.SpotLight():new THREE.PointLight();
+      light.userData.museumPool=true;light.castShadow=false;
+      museumLightPools[kind].push(light);scene.add(light);if(light.target)scene.add(light.target);
+    }
+  }
+  museumLightingCell='';updateMuseumLights();
+}
+function updateMuseumLights(){
+  const cell=Math.round(camera.position.x)+':'+Math.round(camera.position.z);
+  if(cell===museumLightingCell)return;museumLightingCell=cell;
+  for(const kind of ['spots','points']){
+    const nearest=museumLightSources[kind].slice().sort((a,b)=>a.position.distanceToSquared(camera.position)-b.position.distanceToSquared(camera.position));
+    museumLightPools[kind].forEach((light,index)=>{
+      const source=nearest[index];light.intensity=source?.intensity||0;if(!source)return;
+      light.color.copy(source.color);light.distance=source.distance;light.decay=source.decay;light.position.copy(source.position);light.updateMatrix();light.updateMatrixWorld(true);
+      if(light.isSpotLight){light.angle=source.angle;light.penumbra=source.penumbra;light.target.position.copy(source.target.position);light.target.updateMatrix();light.target.updateMatrixWorld(true)}
+    });
+  }
+}
+const modelWarmTarget=new THREE.WebGLRenderTarget(32,32),modelWarmCamera=new THREE.PerspectiveCamera(62,1,.05,300);
+function warmModelResources(root){
+  // Prime vertex buffers and textures behind the intro, including later galleries.
+  // A tiny offscreen draw avoids first-approach GPU uploads during the walk.
+  const bounds=new THREE.Box3().setFromObject(root),center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3()),span=Math.max(size.x,size.y,size.z,1);
+  modelWarmCamera.position.copy(center).add(new THREE.Vector3(span,span*.45,span*1.6));modelWarmCamera.lookAt(center);
+  const previous=renderer.getRenderTarget();renderer.setRenderTarget(modelWarmTarget);renderer.render(scene,modelWarmCamera);renderer.setRenderTarget(previous);
+}
+const museumJobs=[],museumJobMetrics=[];
+let museumJobBusy=false,museumJobTimer=null;
+function museumMayPrepare(){return !document.querySelector('#intro').classList.contains('off')||visitorIsStationary()}
+function updateCollectionProgress(){
+  const completed=authenticLoadMetrics.filter(item=>item.ok).length;
+  const settled=authenticLoadState.size===13&&[...authenticLoadState.values()].every(item=>['ready','failed'].includes(item.status));
+  const ready=settled&&!museumJobBusy&&!museumJobs.length;
+  const button=document.querySelector('#begin'),status=document.querySelector('#collection-progress');
+  button.disabled=!ready;button.textContent=ready?'Enter the museum':'Preparing the collection';
+  document.querySelector('#guided').disabled=!ready;
+  map.inert=introIsVisible();
+  status.textContent=ready?(completed===13?'13 exhibits ready · WASD to walk · E to discover':'Some exhibits could not load. Select their chapter to retry.'):`Preparing the collection · ${completed} / 13`;
+}
+function queueMuseumAsset(spec,onLoad){
+  return new Promise(resolve=>{museumJobs.push({spec,onLoad,resolve});scheduleMuseumJob()});
+}
+function scheduleMuseumJob(){
+  if(museumJobBusy||museumJobTimer!==null)return;
+  museumJobTimer=setTimeout(async()=>{
+    museumJobTimer=null;
+    if(!museumJobs.length){updateCollectionProgress();return}
+    if(!museumMayPrepare()){scheduleMuseumJob();return}
+    museumJobBusy=true;
+    const job=museumJobs.shift(),started=performance.now();
+    let element=null,ok=false;
+    try{
+      if(job.spec.source&&!window[job.spec.global])await new Promise((resolve,reject)=>{
+        element=document.createElement('script');element.src=job.spec.source;
+        element.onload=resolve;element.onerror=()=>reject(new Error('Asset unavailable: '+job.spec.source));document.head.append(element);
+      });
+      // A visitor can start moving during fetch. Recheck before base64 decode,
+      // parsing, texture upload preparation, and placement begin.
+      while(!museumMayPrepare())await new Promise(resolve=>setTimeout(resolve,160));
+      const parseStarted=performance.now(),quiet=visitorIsStationary(),intro=introIsVisible();
+      const payload=job.spec.global?window[job.spec.global]:job.spec.payload;
+      if(!payload)throw new Error('Empty museum asset');
+      const gltf=await new Promise((resolve,reject)=>new THREE.GLTFLoader().parse(base64Buffer(payload),'',resolve,reject));
+      limitAssetTextures(gltf.scene);
+      job.onLoad(gltf);syncMuseumLightSources();renderer.compile(scene,camera);warmModelResources(gltf.scene);ok=true;
+      museumJobMetrics.push({asset:job.spec.global||'asset',ok,parseStarted,intro,quiet,elapsed:Math.round(performance.now()-started)});
+    }catch(error){console.warn('Museum asset failed',job.spec.source||job.spec.global,error);museumJobMetrics.push({asset:job.spec.global,ok:false,error:String(error)})}
+    finally{
+      if(job.spec.global)delete window[job.spec.global];element?.remove();
+      job.resolve(ok);museumJobBusy=false;updateCollectionProgress();scheduleMuseumJob();
+    }
+  },180);
+}
+const limitedTextures=new WeakSet(),limitedImages=new WeakMap();
+function limitTexture(texture,maxSize=1024){
+  if(!texture?.image||limitedTextures.has(texture))return;
+  limitedTextures.add(texture);
+  const original=texture.image,width=original.width||original.videoWidth,height=original.height||original.videoHeight;
+  if(Math.max(width,height)>maxSize){
+    let resized=limitedImages.get(original);
+    if(!resized){const ratio=maxSize/Math.max(width,height);resized=document.createElement('canvas');resized.width=Math.max(1,Math.round(width*ratio));resized.height=Math.max(1,Math.round(height*ratio));resized.getContext('2d').drawImage(original,0,0,resized.width,resized.height);limitedImages.set(original,resized)}
+    texture.image=resized;
+  }
+  texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());texture.needsUpdate=true;
+}
+function limitAssetTextures(root){root.traverse(object=>{if(!object.isMesh)return;for(const material of (Array.isArray(object.material)?object.material:[object.material])){if(material)for(const value of Object.values(material))if(value?.isTexture)limitTexture(value)}})}
+
+function loadAuthenticVehicle(index,spec,targetLength,onSettled){
+  queueMuseumAsset(spec,gltf=>{
+    placeAuthenticVehicle(index,gltf,targetLength);
+    fitPhysicalDimensions(index);addVehicleContactShade(index);
+    const anchor=cars[index].userData.authentic,batches=batchRepeatedStaticMeshes(anchor);
+    if(batches)anchor.userData.batchedMeshes=batches;
+    freezeStaticTransforms(anchor);
+    if(!anchor)throw new Error('Vehicle placement failed');
+  }).then(ok=>onSettled?.(ok));
+}
+// Exhibition photographs are locally cached and retain their full source aspect
+// ratio inside proportional apertures. Source/provenance notes live in
+// assets/media/MANIFEST.md; the gallery itself carries no credit plaques.
+const chapterPhotos={
+  0:{file:'assets/media/lightness-finds-america.jpg',ratio:1.4326},
+  1:{file:'assets/media/architecture-endures.jpg',ratio:1.9048},
+  2:{file:'assets/media/architecture-endures.jpg',ratio:1.9048},
+  3:{file:'assets/media/le-mans-finally-won.webp',ratio:1.7778},
+  4:{file:'assets/media/959-laboratory.jpg',ratio:1.4981},
+  5:{file:'assets/media/boxster-sports-car-concept.jpeg',ratio:1.7734},
+  6:{file:'assets/media/gt1-homologation.jpg',ratio:1.7781},
+  7:{file:'assets/media/cayenne-strategy.png',ratio:1.9666},
+  8:{file:'assets/media/carrera-gt.jpg',ratio:1.3806},
+  9:{file:'assets/media/gt2-motorsport-road-legal.jpg',ratio:1.4993},
+  10:{file:'assets/media/918-spyder.jpg',ratio:1.7769},
+  11:{file:'assets/media/taycan-new-current.jpg',ratio:1.7769},
+  12:{file:'assets/media/singer-reauthored.jpg',ratio:1.7778}
+};
+const localPhotoLoader=new THREE.TextureLoader();
+function localPhotoTexture(file){const texture=localPhotoLoader.load(window.PORSCHE_MEDIA_DATA?.[file]||file,loaded=>limitTexture(loaded,1600));texture.encoding=THREE.sRGBEncoding;texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());return texture}
+function mountArchivePhoto(index,side,z,frameMaterial,wallMaterial){
+  const spec=chapterPhotos[index];if(!spec)return;
+  // Every archive image now uses the same built-in wall-mount construction:
+  // a 160 mm backing panel fixed to the side wall, a 50 mm dark frame, and an
+  // image set 10 mm behind the frame face. The old 1.82 m-deep partitions
+  // projected into the aisle and made some photographs read as billboards.
+  const imageWidth=Math.min(7.38,4.16*spec.ratio),imageHeight=imageWidth/spec.ratio;
+  const frameBorder=.11,outerHeight=imageHeight+frameBorder*2,outerWidth=imageWidth+frameBorder*2;
+  const panelDepth=.16,frameDepth=.05,wallMountX=11.69,frameX=11.585,imageX=11.57;
+  const backing=box(side*wallMountX,3.55,z,panelDepth,outerHeight,outerWidth,wallMaterial);
+  backing.userData.role='archive-photo-wall-backing';backing.userData.depth=panelDepth;
+  // This must be a real aperture, not a dark rectangular slab in front of the
+  // photograph. A solid BoxGeometry here occluded every image in Chrome once
+  // the image was correctly recessed. Four frame bars leave the centre open.
+  const bars=[
+    [frameX,3.55,z-imageWidth/2-frameBorder/2,frameDepth,outerHeight,frameBorder],
+    [frameX,3.55,z+imageWidth/2+frameBorder/2,frameDepth,outerHeight,frameBorder],
+    [frameX,3.55-imageHeight/2-frameBorder/2,z,frameDepth,frameBorder,imageWidth],
+    [frameX,3.55+imageHeight/2+frameBorder/2,z,frameDepth,frameBorder,imageWidth]
+  ];
+  bars.forEach(([x,y,barZ,depth,height,width])=>{
+    const bar=new THREE.Mesh(new THREE.BoxGeometry(depth,height,width),frameMaterial);
+    bar.position.set(side*x,y,barZ);bar.castShadow=bar.receiveShadow=true;bar.userData.role='archive-photo-slim-frame-bar';bar.userData.depth=depth;scene.add(bar);
+  });
+  const art=new THREE.Mesh(new THREE.PlaneGeometry(imageWidth,imageHeight),new THREE.MeshBasicMaterial({map:localPhotoTexture(spec.file),side:THREE.DoubleSide}));
+  art.position.set(side*imageX,3.55,z);art.rotation.y=side>0?-Math.PI/2:Math.PI/2;art.userData.role='archive-photo-recessed-image';art.userData.frameRecess=.01;scene.add(art);
+}
+function enrichGallery(){
+// All exhibition architecture shares a small, coherent material language.  The
+// distinct pale values preserve gallery rhythm, while their quiet micro-finish
+// prevents the long corridor from reading as unlit flat-color geometry.
+const trim=finishMaterial({color:'#293532',roughness:.44,metalness:.54,kind:'powder',repeat:[1.5,6],bumpScale:.005}),endWall=finishMaterial({color:'#faf8f2',roughness:.78,metalness:.01,kind:'plaster',repeat:[2.7,1.2],bumpScale:.008,emissive:'#383a35',emissiveIntensity:.003}),plinthBase=finishMaterial({color:'#586560',roughness:.49,metalness:.20,kind:'satin',repeat:[1.1,2.2],bumpScale:.006}),plinthTop=finishMaterial({color:'#303633',roughness:.44,metalness:.16,kind:'honed',repeat:[1.18,2.72],bumpScale:.012}),plinthEdge=finishMaterial({color:'#202a27',roughness:.33,metalness:.61,kind:'powder',repeat:[1.4,4],bumpScale:.005}),warm=finishMaterial({color:'#f2efe8',roughness:.70,metalness:.025,kind:'plaster',repeat:[1.3,1],bumpScale:.007,emissive:'#383a35',emissiveIntensity:.003}),ceilingReveal=finishMaterial({color:'#79857f',roughness:.43,metalness:.35,kind:'powder',repeat:[1,7],bumpScale:.005}),wallJoint=finishMaterial({color:'#b8c1ba',roughness:.82,metalness:0,kind:'plaster',repeat:[1,4],bumpScale:.004}),floorJoint=new THREE.MeshStandardMaterial({color:'#929e99',roughness:.5,metalness:.05}),eraWalls=[
+    finishMaterial({color:'#f2efe8',roughness:.78,metalness:.01,kind:'plaster',repeat:[1,5],bumpScale:.008,emissive:'#32342f',emissiveIntensity:.003}),
+    finishMaterial({color:'#e4e9e4',roughness:.76,metalness:.025,kind:'plaster',repeat:[1.1,5],bumpScale:.008,emissive:'#30332f',emissiveIntensity:.003}),
+    finishMaterial({color:'#f8f6ef',roughness:.76,metalness:.02,kind:'plaster',repeat:[1,5],bumpScale:.007,emissive:'#353630',emissiveIntensity:.003}),
+    finishMaterial({color:'#e8ede8',roughness:.76,metalness:.025,kind:'plaster',repeat:[1,5],bumpScale:.007,emissive:'#303530',emissiveIntensity:.003})
+  ];
+  // Each chapter is a room, not a parking bay: portals, collection walls, gallery vitrines, and a layered ceiling create visual rhythm while preserving a clear route.
+  // The route ends in light-catching archive walls — never a black WebGL void when visitors turn around.
+  for(const z of [19,-131]){box(0,4,z,64,8,.28,endWall);if(z<0){const frame=z+.26;box(0,3.74,z+.17,28,4.9,.05,warm);box(0,6.42,z+.22,28.35,.06,.12,brass);box(0,1.08,z+.22,28.35,.06,.12,brass);box(0,5.88,frame,7.7,.08,.04,brass);box(0,1.56,frame,7.7,.08,.04,brass);box(-3.82,3.72,frame,.08,4.4,.04,brass);box(3.82,3.72,frame,.08,4.4,.04,brass);const portal=new THREE.PointLight(museumLighting.ceiling,1.7,15,2);portal.position.set(0,4.3,z+1.5);scene.add(portal)}}
+  // A restrained ceiling datum: continuous edge coves, a central service joint,
+  // and twelve transverse panel joins.  This reads as fitted construction rather
+  // than the old field of generic rectangles and still costs very little to render.
+  for(const x of[-10.72,0,10.72])box(x,7.625,-56,.028,.025,149.2,ceilingReveal);
+  for(let z=7;z>-136;z-=12){
+    box(0,.008,z,.045,.008,10.8,floorJoint);
+    box(0,7.625,z,21.42,.025,.028,ceilingReveal);
+    // Nearly flush mineral-joint lines break the otherwise featureless long
+    // sidewalls into real architectural bays.  They are deliberately lighter
+    // than a shadow gap, so their texture reads before the seam does.
+    box(-11.758,3.86,z,.012,7.58,.028,wallJoint);
+    box(11.758,3.86,z,.012,7.58,.028,wallJoint);
+  }
+  cars.forEach((c,i)=>{let e=required[i],s=(e[8]==='suv'?1.12:1)*vehiclePresentationScale,w=1.86*s,l=4.15*s,side=i%2?-1:1,px=side*7;
+    // A fabricated plinth has three legible finishes: a low-sheen steel body,
+    // a thinner satin display surface, and a powder-coated perimeter reveal.
+    // This is intentionally architecture, not a change to the vehicle asset.
+    let deck=box(px,.08,c.position.z,w+2.05,.16,l+1.8,plinthBase);deck.receiveShadow=true;
+    let cap=box(px,.173,c.position.z,w+1.98,.026,l+1.73,plinthTop);cap.castShadow=false;cap.receiveShadow=true;cap.userData.role="plinth-display-cap";
+    // The old "rim" was a solid plate laid across the deck, so it completely
+    // hid the textured cap beneath it.  These four narrow perimeter rails are
+    // an actual reveal: they preserve the dark structural edge while leaving
+    // the honed display surface visibly exposed.
+    const rimY=.199,rimH=.022,rimW=w+2.22,rimD=l+1.98,rail=.075;
+    for(const dz of[-(rimD-rail)/2,(rimD-rail)/2]){let rim=box(px,rimY,c.position.z+dz,rimW,rimH,rail,plinthEdge);rim.castShadow=false;rim.userData.role='plinth-perimeter-rail'}
+    for(const dx of[-(rimW-rail)/2,(rimW-rail)/2]){let rim=box(px+dx,rimY,c.position.z,rail,rimH,rimD-rail*2,plinthEdge);rim.castShadow=false;rim.userData.role='plinth-perimeter-rail'}
+    // The archive image is a shallow, proportioned wall mount instead of a deep
+    // partition slab. Frame, backing, and photo all share exact offsets across
+    // every chapter so an oblique walk-down reads as fitted exhibition hardware.
+    if(chapterPhotos[i])mountArchivePhoto(i,side,c.position.z,trim,eraWalls[Math.min(3,Math.floor(i/3))]);
+    let plaque=label(plaqueThemes[i]||displayNames[i]||e[1].toUpperCase());plaque.position.set(px,.368,c.position.z+rimD/2-.18);plaque.rotation.x=-.8;scene.add(plaque);
+  });
+  for(let z=3;z>-132;z-=24){box(0,.012,z-4.5,8.2,.008,.018,floorJoint);}
+}
+function museumDetails(){
+  // Archival storytelling is deliberately wall-mounted in enrichGallery().  The former
+  // repeated free-standing "vitrine" kit read as unfinished set dressing: it placed a
+  // floating canopy, a dark media rectangle and stacked blocks beside every car.  It
+  // also created visual competition with the collection.  Keep only the three framed,
+  // proportioned archive images integrated into their actual gallery partitions.
+}
+enrichGallery();
+// The arrival sign is the supplied Porsche logo model, converted from its original
+// 3DS source to GLB. It is mounted as an actual illuminated channel-letter sign:
+// a slim shadow box, two visible support rails, and a separate black return behind
+// the supplied letter geometry give it real construction without redrawing a logo.
+function installArrivalWordmarkFrom3DS(){
+  if(window.__arrivalWordmarkMounting)return;
+  window.__arrivalWordmarkMounting=true;
+  queueMuseumAsset({source:'./models/porsche-wordmark/porsche-logo.js',global:'PORSCHE_WORDMARK_3DS_BASE64'},gltf=>{
+    const source=gltf.scene,sourceBounds=new THREE.Box3().setFromObject(source),sourceSize=sourceBounds.getSize(new THREE.Vector3());
+    if(!Number.isFinite(sourceSize.x)||sourceSize.x<=0)return;
+    const targetWidth=11.35,scale=targetWidth/sourceSize.x,sign=new THREE.Group();
+    // A real channel-letter sign has illuminated acrylic faces and dark metal
+    // returns. The 3DS conversion keeps each letter as a separate mesh; split
+    // its actual extruded faces from its actual sides/back rather than drawing
+    // any replacement typography. The source faces point along local -Z, which
+    // becomes the visitor-facing +Z after the mount's Y rotation below.
+    // The acrylic is self-lit: colour comes from emission, not a white key light
+    // reflected across the sign.  High roughness keeps every letter even and avoids
+    // the centre hot-spot that made the fascia look like it had a lens flare.
+    // Deep signal-red LED acrylic, deliberately matte.  Its restrained emission
+    // supplies the glow; with no metallic response it cannot generate a white
+    // highlight or central flare under the gallery's ambient illumination.
+    // Saturated red acrylic: light is generated at the letter face instead of
+    // reflected off it, which keeps this a channel-letter sign rather than pink paint.
+    const faceRed=new THREE.MeshStandardMaterial({color:'#c90008',metalness:0,roughness:.76,emissive:'#ff0608',emissiveIntensity:1.18,side:THREE.DoubleSide});
+    const returnBlack=new THREE.MeshBasicMaterial({color:'#030403',side:THREE.DoubleSide,toneMapped:false});
+    const caseMetal=finishMaterial({color:'#151b19',roughness:.47,metalness:.48,kind:'powder',repeat:[1.8,1],bumpScale:.006});
+    const caseEdge=finishMaterial({color:'#4c5652',roughness:.40,metalness:.60,kind:'steel',repeat:[1.4,3],bumpScale:.004});
+    // The arrival wall is intentionally quiet: with the competing photo and its
+    // frame gone, this real 3DS-derived sign is the wall's sole focal object.
+    // Its assembly is centred on the 64 m × 8 m wall in both axes.
+    const signCenterY=4.00,wallZ=18.58;
+    // This all sits clear of the actual arrival wall face (z≈18.86).  The previous
+    // mount was mostly buried in the wall, leaving only detached red letters visible.
+    // A proper shallow shadow-box creates an intentional real-world fascia, while the
+    // letters themselves remain exclusively the user's supplied 3DS-derived geometry.
+    const shadowBox=new THREE.Mesh(new THREE.BoxGeometry(13.65,2.12,.16),caseMetal);
+    shadowBox.position.set(0,signCenterY,wallZ);shadowBox.castShadow=shadowBox.receiveShadow=true;shadowBox.userData.role='arrival-wordmark-shadow-box';scene.add(shadowBox);
+    // The softly red-tinted recess suggests the reflected interior of a lit
+    // channel sign without putting a specular point source in front of it.
+    const recessMetal=new THREE.MeshStandardMaterial({color:'#050706',metalness:.08,roughness:.86,emissive:'#000000',emissiveIntensity:0});
+    const inset=new THREE.Mesh(new THREE.BoxGeometry(13.16,1.63,.035),recessMetal);
+    inset.position.set(0,signCenterY,wallZ-.102);inset.castShadow=inset.receiveShadow=true;inset.userData.role='arrival-wordmark-recess';scene.add(inset);
+    // Do not tint the cabinet red.  The halo belongs to each physical letter,
+    // leaving the recessed field a neutral charcoal at every viewing angle.
+    for(const y of [signCenterY-.93,signCenterY+.93]){
+      const rail=new THREE.Mesh(new THREE.BoxGeometry(13.92,.052,.13),caseEdge);
+      rail.position.set(0,y,wallZ-.12);rail.castShadow=rail.receiveShadow=true;rail.userData.role='arrival-wordmark-mounting-rail';scene.add(rail);
+    }
+    // No exposed standoffs: their metal caps were visible through the O/R/P
+    // counters and read as stray white flare marks.  The shallow fascia itself
+    // carries the channel letters cleanly.
+    // The converter bakes the supplied 3DS vertices at the GLB origin, so this
+    // is a direct mount of that supplied geometry--not a runtime pivot repair.
+    const wordmark=new THREE.Group();source.updateMatrixWorld(true);
+    source.traverse(object=>{
+      if(!object.isMesh)return;
+      const geometry=object.geometry.clone();
+      // Reorder the source triangles into two material groups.  The conversion's
+      // winding differs by letter, so both planar caps are red acrylic; this makes
+      // every visitor-facing letter consistently red while its actual extrusion
+      // remains the dark powder-coated return.
+      const normals=geometry.getAttribute('normal'),index=geometry.getIndex();
+      const front=[],returns=[];
+      const triangleCount=index?index.count/3:normals.count/3;
+      for(let triangle=0;triangle<triangleCount;triangle++){
+        const a=index?index.getX(triangle*3):triangle*3,b=index?index.getX(triangle*3+1):triangle*3+1,c=index?index.getX(triangle*3+2):triangle*3+2;
+        const nz=(normals.getZ(a)+normals.getZ(b)+normals.getZ(c))/3;
+        (Math.abs(nz)>.86?front:returns).push(a,b,c);
+      }
+      geometry.setIndex(front.concat(returns));geometry.clearGroups();
+      if(front.length)geometry.addGroup(0,front.length,0);
+      if(returns.length)geometry.addGroup(front.length,returns.length,1);
+      geometry.computeBoundingBox();geometry.computeBoundingSphere();
+      const letterPart=new THREE.Mesh(geometry,[faceRed,returnBlack]);
+      letterPart.castShadow=letterPart.receiveShadow=true;letterPart.frustumCulled=false;
+      wordmark.add(letterPart);
+      // Three slightly expanding copies of the supplied letter face create a
+      // compact LED halo.  Because these follow the original silhouette per
+      // letter they cannot become a rectangular red wash or central flare.
+      for(const [scaleFactor,opacity] of [[1.022,.16],[1.050,.075],[1.085,.028]]){
+        const haloGeometry=geometry.clone();haloGeometry.computeBoundingBox();
+        const haloCenter=haloGeometry.boundingBox.getCenter(new THREE.Vector3());
+        // Converted 3DS meshes retain their sign-wide coordinates. Re-center a
+        // copy before scaling so every bloom expands around its own letter,
+        // never around the middle of the entire wordmark.
+        haloGeometry.translate(-haloCenter.x,-haloCenter.y,-haloCenter.z);
+        const halo=new THREE.Mesh(haloGeometry,new THREE.MeshBasicMaterial({color:'#ff0708',transparent:true,opacity,depthWrite:false,depthTest:true,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,toneMapped:false}));
+        halo.scale.set(scaleFactor,scaleFactor,1);
+        halo.position.copy(haloCenter);halo.position.z-=.012;
+        halo.renderOrder=-1;halo.castShadow=false;halo.receiveShadow=false;halo.frustumCulled=false;
+        halo.userData.role='arrival-wordmark-letter-led-halo';wordmark.add(halo);
+      }
+    });
+    sign.add(wordmark);
+    // Keep the letter faces unambiguously in front of the fascia. The sign has
+    // 85 mm of real 3DS extrusion after scale, while the fascia begins 260 mm
+    // behind it, so the arrival view cannot be occluded by its own shadow box.
+    // The original 3DS was authored facing the opposite wall. Turn the actual
+    // supplied mesh (rather than mirroring or redrawing it) so PORSCHE reads
+    // correctly to visitors approaching the arrival wall from the gallery.
+    sign.scale.set(scale,scale,scale);sign.rotation.y=Math.PI;sign.position.set(0,signCenterY,18.24);sign.userData.role='arrival-wordmark-3ds';scene.add(sign);
+    // No arrival-side point/spot light is created.  Red comes exclusively from
+    // the LED-channel material, with a deliberately subdued physical recess.
+    window.__arrivalWordmarkPresentation={source:'user-supplied 3DS converted to GLB',targetWidth,scale,center:{x:0,y:signCenterY,z:18.24},case:{width:13.65,height:2.12,rails:2,standoffs:0,finish:'neutral charcoal'},lighting:{faceEmission:1.18,letterHalos:3,recessBounce:0,diffuseRedBounce:0,arrivalPointFixtures:0,arrivalSpotFixtures:0}};
+    freezeStaticTransforms(sign);
+  }).then(ok=>{if(!ok)window.__arrivalWordmarkMounting=false});
+}
+installArrivalWordmarkFrom3DS();
+function installBackWallCrest(){
+  queueMuseumAsset({source:'./models/porsche_emblem/porsche_emblem.js',global:'PORSCHE_EMBLEM_BASE64'},gltf=>{
+    const crest=gltf.scene,mount=new THREE.Group();
+    crest.traverse(object=>{if(!object.isMesh)return;object.castShadow=object.receiveShadow=true;object.frustumCulled=true;const materials=Array.isArray(object.material)?object.material:[object.material];materials.forEach(material=>{if(!material)return;if(material.map){material.map.encoding=THREE.sRGBEncoding;material.map.needsUpdate=true}material.side=THREE.DoubleSide;material.needsUpdate=true})});
+    // The exported badge is Z-up and carries an approximately 54-degree source tilt.
+    // Correct it before measuring: local Z is the shield height, local Y is its relief.
+    crest.rotation.x=.948;
+    mount.add(crest);mount.updateMatrixWorld(true);
+    const sourceBounds=new THREE.Box3().setFromObject(mount),sourceSize=sourceBounds.getSize(new THREE.Vector3());
+    if(!Number.isFinite(sourceSize.y)||sourceSize.y<=0)return;
+    const badgeScale=3.15/sourceSize.y;
+    // Keep a visible 140 mm sculpted relief and a 55 mm standoff from the backing.
+    // The former 0.18 depth multiplier flattened the 3D badge to only 39 mm.
+    const relief=.14,mountingGap=.055,backingFront=-130.80+.035/2;
+    mount.scale.set(badgeScale,badgeScale,relief/sourceSize.z);mount.updateMatrixWorld(true);
+    const bounds=new THREE.Box3().setFromObject(mount),center=bounds.getCenter(new THREE.Vector3());
+    // Visitors approach this wall from +Z. With the source correction above, the
+    // badge face is upright and forward-facing (+Z), just proud of the pale mount.
+    const crestBacking=finishMaterial({color:'#e5e3dc',roughness:.66,metalness:.02,kind:'plaster',repeat:[1.1,1],bumpScale:.008,emissive:'#363831',emissiveIntensity:.01});
+    box(0,3.72,-130.80,6.10,3.50,.035,crestBacking);
+    mount.position.set(-center.x,3.72-center.y,backingFront+mountingGap-bounds.min.z);mount.userData.role='rear-wall-crest';mount.userData.relief=relief;mount.userData.mountingGap=mountingGap;scene.add(mount);
+    for(const dx of[-.52,.52])for(const dy of[-.25,.55])box(dx,3.72+dy,backingFront+mountingGap/2,.045,.045,mountingGap,dark);
+    const light=new THREE.SpotLight(museumLighting.ceiling,1.65,12,.62,.76,1.4);light.position.set(0,6.25,-125.4);light.target.position.set(0,3.72,-130.72);scene.add(light,light.target);
+    freezeStaticTransforms(mount);
+  });
+}
+installBackWallCrest();
+// Gallery architecture remains, but procedural stand-in vehicles never render.
+cars.forEach(anchor=>anchor.clear());
+museumDetails();
+// Architecture, lighting, signs, plinths, and route anchors never animate. Freezing
+// them keeps the per-frame scene update focused on the camera and currently visible cars.
+scene.traverse(object=>{if(object!==scene){object.updateMatrix();object.matrixAutoUpdate=false}});scene.updateMatrixWorld(true);
+
+const authenticAssets={0:{source:'./models/718_rsk/porsche_718_rsk.js',global:'PORSCHE_718_RSK_BASE64',length:3.9},3:{source:'./models/917k/porsche_917k.js',global:'PORSCHE_917K_BASE64',length:4.2},4:{source:'./models/p959/p959.js',global:'PORSCHE_959_BASE64',length:5.55},5:{source:'./models/boxster/porsche_boxster_spyder_2010.js',global:'PORSCHE_BOXSTER_SPIDER_BASE64',length:5.25},6:{source:'./models/gt1/gt1.js',global:'PORSCHE_GT1_BASE64',length:5.8},7:{source:'./models/cayenne/cayenne.js',global:'PORSCHE_CAYENNE_BASE64',length:5.8},8:{source:'./models/carrera_gt/carrera_gt.js',global:'PORSCHE_CARRERA_GT_BASE64',length:5.75},9:{source:'./models/gt2/porsche_911_gt2_993.js',global:'PORSCHE_911_GT2_993_BASE64',length:4.56},10:{source:'./models/918/porsche_918.js',global:'PORSCHE_918_BASE64',length:5.55},11:{source:'./models/taycan/taycan.js',global:'PORSCHE_TAYCAN_BASE64',length:5.7}};
+// glTF parsing is main-thread work in this Three.js build. The old proximity-driven
+// prefetch could begin a huge script evaluation and parse right beside a visitor,
+// causing the reported lock-up and flash. Assets now warm one at a time only while
+// the landing veil is present or after the visitor has been still for a short beat.
+const authenticRequests=new Set(),authenticLoadState=new Map(),authenticLoadMetrics=[];
+let lastVisitorMovementAt=performance.now(),backgroundWarmTimer=null,backgroundWarmIndex=0;
+function ensureAuthentic(i,reason='direct'){
+  const asset=authenticAssets[i];
+  if(!asset||authenticRequests.has(i))return authenticLoadState.get(i)?.promise;
+  authenticRequests.add(i);
+  const started=performance.now();
+  let settle;
+  const promise=new Promise(resolve=>{settle=resolve});
+  authenticLoadState.set(i,{status:'fetching',reason,started,promise});
+  authenticLoadState.set(i,{status:'queued',reason,started,promise});
+  loadAuthenticVehicle(i,asset,asset.length,ok=>{
+    const elapsed=Math.round(performance.now()-started);
+    authenticLoadState.set(i,{status:ok?'ready':'failed',reason,started,elapsed,promise});
+    if(!ok)authenticRequests.delete(i);
+    authenticLoadMetrics.push({index:i,reason,ok,elapsed});settle(ok);
+    updateCollectionProgress();scheduleBackgroundWarmup(180);
+  });
+  return promise;
+}
+const arrivalAuthenticExhibits=Object.freeze([0,1]);
+const backgroundWarmOrder=Object.freeze([...arrivalAuthenticExhibits,...Array.from({length:cars.length},(_,i)=>i).filter(i=>!arrivalAuthenticExhibits.includes(i))]);
+const introIsVisible=()=>!document.querySelector('#intro')?.classList.contains('off');
+// A brief quiet frame is enough to keep parsing off the movement path.  Do not
+// require a conspicuous multi-second idle before the next exhibit may prepare.
+const visitorIsStationary=()=>performance.now()-lastVisitorMovementAt>420;
+function mayWarmInBackground(){return introIsVisible()||visitorIsStationary()}
+function scheduleBackgroundWarmup(delay=320){
+  if(backgroundWarmTimer!==null)return;
+  backgroundWarmTimer=window.setTimeout(()=>{
+    backgroundWarmTimer=null;
+    if(!mayWarmInBackground()){scheduleBackgroundWarmup(420);return}
+    while(backgroundWarmIndex<backgroundWarmOrder.length&&authenticRequests.has(backgroundWarmOrder[backgroundWarmIndex]))backgroundWarmIndex++;
+    const next=backgroundWarmOrder[backgroundWarmIndex++];
+    if(next===undefined)return;
+    // Only one complete high-detail asset is allowed in the warm lane at once.
+    Promise.resolve(ensureAuthentic(next,'background-warmup')).finally(()=>scheduleBackgroundWarmup(360));
+  },delay);
+}
+// The visitor enters from the south arrival wall at positive Z. In Three.js a
+// yaw of 0 looks down local -Z, into the gallery; Math.PI turned the opening
+// view back toward the arrival wall and the wordmark.
+setTimeout(()=>scheduleBackgroundWarmup(40),40);let yaw=0,pitch=0,keys={},drag=false,last;
+window.__museumAssetWarmupState=()=>({
+  active:Boolean(backgroundWarmTimer),
+  nextIndex:backgroundWarmOrder[backgroundWarmIndex]??null,
+  movementQuietForMs:Math.round(performance.now()-lastVisitorMovementAt),
+  states:[...authenticLoadState.entries()].map(([index,state])=>({index,status:state.status,reason:state.reason,elapsed:state.elapsed??Math.round(performance.now()-state.started)})),
+  completed:authenticLoadMetrics.slice(),parseQueue:{busy:museumJobBusy,pending:museumJobs.length,metrics:museumJobMetrics.slice()}
+});
+// Visitor navigation is always at a standing eye height above the hall floor.
+// A prior entry-scene adjustment mistakenly used display height here (3.82 m),
+// which made free-roam feel airborne until a map or guide teleport reset it.
+const visitorEyeHeight=1.72;
+camera.position.set(0,visitorEyeHeight,10.25);camera.rotation.set(pitch,yaw,0,'YXZ');
+// Every visitor-facing reference to a chapter is derived from this one state.
+// This prevents a nearby vehicle, the HUD, map selection, and the E-action from
+// referring to different exhibits after free-roam movement or a panel close.
+function setActiveExhibit(index,distance=Infinity){
+  // This is called by the free-roam loop. Do not rebuild the HUD and every
+  // map control on every animation frame when the visitor has not crossed an
+  // exhibit boundary; that DOM work competes directly with WebGL on laptops.
+  const proximity=index===null?'none':distance<8?'enter':'approach';
+  if(setActiveExhibit.index===index&&setActiveExhibit.proximity===proximity)return;
+  setActiveExhibit.index=index;setActiveExhibit.proximity=proximity;
+  active=index;
+  if(index===null){nearEl.innerHTML='<h2>The collection awaits</h2><p>Move through the galleries</p>'}else{
+    const chapter=required[index],display=displayVehicleNames[index]||chapter[1];
+    nearEl.innerHTML='<h2>'+display+'</h2><p>'+plaqueThemes[index]+' · '+(distance<8?'Press E to explore':'Walk closer to discover')+'</p>';
+  }
+  map.querySelectorAll('button').forEach((button,i)=>button.classList.toggle('active',i===index));
+}
+function nearestDisplay(){
+  let hit=null,distance=Infinity;
+  cars.forEach((display,index)=>{
+    // Navigation is on the gallery floor: use the planar distance to the
+    // actual exhibit anchor, not a stale chapter index or a 3D eye-height bias.
+    const dx=display.position.x-camera.position.x,dz=display.position.z-camera.position.z;
+    const candidate=Math.hypot(dx,dz);
+    if(candidate<distance){distance=candidate;hit=index}
+  });
+  return {index:distance<8?hit:null,distance};
+}
+function syncExhibitFromLocation(){const nearest=nearestDisplay();setActiveExhibit(nearest.index,nearest.distance);return nearest.index}
+// Keep the full-resolution vehicle assets in memory, but render them only inside the
+// portion of the hall where the fog has begun to reveal them. The small overlap past
+// the fog range makes the transition invisible while eliminating distant glTF draw calls.
+function updateVehicleVisibility(){
+  // Cull only beyond fully opaque fog. There is no near-exhibit reveal gate and
+  // no unloading: approaching any prepared exhibit always shows the real car.
+  const range=scene.fog.far+12;
+  cars.forEach(display=>{const vehicle=display.userData.authentic;if(vehicle)vehicle.visible=Math.hypot(display.position.x-camera.position.x,display.position.z-camera.position.z)<=range});
+}
+authenticAssets[12]={source:'./models/rwb/porsche_911_rauh_welt.js',global:'PORSCHE_RWB_BASE64',length:4.30};
+// One period-correct 911 asset serves both the 901 origin and the first production-car chapter.
+// The second placement is a cloned scene with shared geometry/textures, not a second 25 MB parse.
+authenticAssets[1]={source:'./models/early911/porsche_911.js',global:'PORSCHE_911_BASE64',length:4.17};
+authenticAssets[2]={source:'./models/930_turbo/free_1975_porsche_911_930_turbo.js',global:'PORSCHE_911_930_TURBO_BASE64',length:4.29};
+
+
+
+// Real-world overall lengths in metres. The 1.72 m camera is an appropriate eye height for a 6 ft visitor.
+Object.assign(authenticAssets[0],{length:3.90});Object.assign(authenticAssets[3],{length:4.20});Object.assign(authenticAssets[4],{length:4.26});Object.assign(authenticAssets[5],{length:4.34});Object.assign(authenticAssets[6],{length:4.75});Object.assign(authenticAssets[7],{length:4.85});Object.assign(authenticAssets[8],{length:4.61});Object.assign(authenticAssets[9],{length:4.56});Object.assign(authenticAssets[10],{length:4.64});Object.assign(authenticAssets[11],{length:4.97});Object.assign(authenticAssets[12],{length:4.30});
+function goTo(i,openIt){
+  ensureAuthentic(i);let c=cars[i];camera.position.set(c.position.x,c.position.y+visitorEyeHeight,c.position.z+4.2);yaw=0;pitch=0;
+  // Map and guided arrivals select their intended display immediately; the
+  // free-roam loop resumes exact nearest-display selection once unlocked.
+  setActiveExhibit(i,4.2);updateVehicleVisibility();
+  if(openIt)openChapter(i)
+}
+document.querySelector('#begin').onclick=()=>{/* The arrival wall is behind the visitor at +Z. Reassert the forward corridor view on every entry, even after a browser restores transient input state. */yaw=0;pitch=0;keys={};camera.position.set(0,visitorEyeHeight,10.25);camera.rotation.set(pitch,yaw,0,'YXZ');document.querySelector('#intro').classList.add('off');document.querySelector('#intro').inert=true;map.inert=false;syncExhibitFromLocation()};
+// Looking is opt-in: click the gallery to acquire relative mouse control, while
+// drag remains a first-class fallback for touch and browsers that refuse lock.
+// Crucially, a loss of lock/focus never leaves the visitor in a dead input state.
+const lookHint=document.createElement('div');
+lookHint.className='look-resume-hint';
+lookHint.setAttribute('role','status');
+lookHint.hidden=true;
+document.body.append(lookHint);
+renderer.domElement.tabIndex=0;
+renderer.domElement.setAttribute('aria-label','3D museum gallery. Click to resume mouse look; drag to look on touch devices.');
+let experienceStarted=false,pointerLockPending=false;
+const clearMovement=()=>{Object.keys(keys).forEach(key=>delete keys[key]);drag=false;last=undefined};
+const canLook=()=>experienceStarted&&!locked&&!panel.classList.contains('open')&&document.querySelector('#intro').classList.contains('off');
+const showLookHint=(message='Click the gallery to resume look')=>{
+  if(!experienceStarted||locked||panel.classList.contains('open')||document.hidden){lookHint.hidden=true;return}
+  lookHint.textContent=message;lookHint.hidden=false;
+};
+const hideLookHint=()=>lookHint.hidden=true;
+const leavePointerLock=()=>{if(document.pointerLockElement===renderer.domElement)document.exitPointerLock?.();clearMovement()};
+const acquirePointerLock=()=>{
+  if(!canLook()||pointerLockPending)return;
+  renderer.domElement.focus({preventScroll:true});
+  if(document.pointerLockElement!==renderer.domElement){pointerLockPending=true;const request=renderer.domElement.requestPointerLock?.();request?.catch(error=>{pointerLockPending=false;showLookHint('Drag to look, or click the gallery to retry')})}
+};
+document.querySelector('#begin').addEventListener('click',()=>{experienceStarted=true;window.__museumExperienceStarted=true;hideLookHint();acquirePointerLock()});
+document.addEventListener('pointerlockchange',()=>{
+  pointerLockPending=false;const hasLock=document.pointerLockElement===renderer.domElement;
+  clearMovement();
+  if(hasLock)hideLookHint();else showLookHint();
+});
+document.addEventListener('pointerlockerror',()=>{pointerLockPending=false;showLookHint('Drag to look, or click the gallery to retry')});
+addEventListener('blur',()=>{clearMovement();leavePointerLock()});
+addEventListener('focus',()=>{clearMovement();showLookHint()});
+document.addEventListener('visibilitychange',()=>{clearMovement();if(document.hidden)leavePointerLock();else showLookHint()});
+new MutationObserver(()=>{if(panel.classList.contains('open')){leavePointerLock();hideLookHint()}else showLookHint()}).observe(panel,{attributes:true,attributeFilter:['class']});
+document.querySelector('#close').addEventListener('pointerdown',leavePointerLock,{capture:true});
+document.querySelector('#map').addEventListener('pointerdown',leavePointerLock,{capture:true});
+document.querySelector('#guided').addEventListener('pointerdown',leavePointerLock,{capture:true});
+renderer.domElement.addEventListener('pointerdown',e=>{
+  if(locked)return;
+  drag=true;last=e;if(e.pointerType!=='mouse')renderer.domElement.setPointerCapture?.(e.pointerId);
+});
+// Browsers and assistive mouse drivers do not all surface a PointerEvent before
+// a trusted click. Keep the same explicit canvas gesture as a safe retry path.
+renderer.domElement.addEventListener('click',()=>{
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches)acquirePointerLock();
+});
+renderer.domElement.addEventListener('pointermove',e=>{
+  if(!drag||locked||document.pointerLockElement===renderer.domElement)return;
+  lastVisitorMovementAt=performance.now();yaw-=(e.clientX-last.clientX)*.004;
+  pitch=Math.max(-.45,Math.min(.35,pitch-(e.clientY-last.clientY)*.003));last=e;
+});
+const stopDrag=e=>{drag=false;last=undefined;if(e?.pointerId!==undefined&&renderer.domElement.hasPointerCapture?.(e.pointerId))renderer.domElement.releasePointerCapture?.(e.pointerId)};
+renderer.domElement.addEventListener('pointerup',stopDrag);
+renderer.domElement.addEventListener('pointercancel',stopDrag);
+renderer.domElement.addEventListener('lostpointercapture',()=>{drag=false;last=undefined});
+addEventListener('mousemove',e=>{if(document.pointerLockElement===renderer.domElement&&!locked){if(e.movementX||e.movementY)lastVisitorMovementAt=performance.now();yaw-=e.movementX*.0025;pitch=Math.max(-.45,Math.min(.35,pitch-e.movementY*.002))}});
+// Movement input stays lightweight here. Exhibit activation is owned by the
+// capture-phase handler below so E cannot be swallowed by a stale pointer-lock
+// state after a map jump, a panel close, or a focus transition.
+addEventListener('keydown',e=>{const key=e.key.toLowerCase();if(e.defaultPrevented||!canLook()||e.target.closest?.('button,nav,aside,input,textarea,a'))return;if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright','shift'].includes(key)){e.preventDefault();keys[key]=true;lastVisitorMovementAt=performance.now()}});
+addEventListener('keyup',e=>delete keys[e.key.toLowerCase()]);
+syncMuseumLightSources();
+const walkForward=new THREE.Vector3(),walkRight=new THREE.Vector3(),worldUp=new THREE.Vector3(0,1,0);let clock=new THREE.Clock();function loop(){let dt=Math.min(clock.getDelta(),.08);camera.rotation.set(pitch,yaw,0,'YXZ');if(canLook()){let speed=(keys.shift?14:8.8)*dt,deltaX=0,deltaZ=0;camera.getWorldDirection(walkForward);walkForward.y=0;walkForward.normalize();walkRight.crossVectors(walkForward,worldUp).normalize();if(keys.w||keys.arrowup){deltaX+=walkForward.x*speed;deltaZ+=walkForward.z*speed}if(keys.s||keys.arrowdown){deltaX-=walkForward.x*speed;deltaZ-=walkForward.z*speed}if(keys.a||keys.arrowleft){deltaX-=walkRight.x*speed;deltaZ-=walkRight.z*speed}if(keys.d||keys.arrowright){deltaX+=walkRight.x*speed;deltaZ+=walkRight.z*speed}if(deltaX||deltaZ){lastVisitorMovementAt=performance.now();moveVisitor(deltaX,deltaZ)}syncExhibitFromLocation()}updateVehicleVisibility();updateMuseumLights();renderer.render(scene,camera);requestAnimationFrame(loop)}loop();addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});if(!renderer.capabilities.isWebGL2&&!renderer.capabilities.isWebGL){document.querySelector('#fallback').style.display='block'}
+// The exhibit card separates the physical reference vehicle from the historical
+// chapter. Its heading deliberately matches the physical gallery plaque.
+function openChapter(i){
+  if(i===null||!required[i])return;
+  setActiveExhibit(i,0);ensureAuthentic(i);
+  const e=required[i],cardTitle=plaqueThemes[i]||e[1],displayName=displayVehicleNames[i]||e[1];
+  const facts=exhibitFacts[i].map(([label,value])=>'<div><small>'+label+'</small>'+value+'</div>').join('');
+  detail.innerHTML='<div class="eyebrow">Gallery '+String(i+1).padStart(2,'0')+' · '+displayName+'</div><h1>'+cardTitle+'</h1><p class="lede">'+e[2]+'</p><div class="specs">'+facts+'</div><section class="card-section"><h2>In context</h2><p>'+e[3]+'</p></section><section class="card-section displayed-reference"><h2>A closer look</h2><p>'+displayedVehicleNotes[i]+'</p></section><footer class="asset-credit"><span>3D model attribution</span>'+assetAttributions[i]+'</footer>';
+  if(!panel.classList.contains('open'))window.museumReturnFocus=document.activeElement;
+  panel.inert=false;panel.setAttribute('aria-hidden','false');panel.classList.add('open');panel.scrollTop=0;locked=true;
+  document.querySelector('#close').focus({preventScroll:true});
+}
+</script><style id="panel-interaction-layer">.panel{z-index:12}.panel button{position:relative;z-index:1;width:44px;height:44px;font-size:25px;line-height:1;touch-action:manipulation}</style>
+<style id="look-resume-affordance">.look-resume-hint{position:fixed;z-index:6;left:50%;bottom:calc(112px + env(safe-area-inset-bottom));transform:translateX(-50%);padding:8px 11px;border:1px solid rgba(232,226,216,.32);background:rgba(12,13,11,.82);box-shadow:0 8px 22px rgba(0,0,0,.18);backdrop-filter:blur(9px);color:#e8e2d8;font:9px/1.2 'DM Mono',monospace;letter-spacing:.09em;text-transform:uppercase;pointer-events:none;white-space:nowrap}@media(max-width:760px){.look-resume-hint{bottom:calc(94px + env(safe-area-inset-bottom));font-size:8px}}</style>
+<style id="guided-timeline-interaction-layer">
+  .guide-status{position:fixed;z-index:10;left:32px;top:92px;display:flex;align-items:center;gap:10px;max-width:min(560px,calc(100vw - 64px));padding:9px 10px 9px 13px;border:1px solid rgba(232,226,216,.32);background:rgba(12,13,11,.83);box-shadow:0 8px 24px rgba(0,0,0,.18);backdrop-filter:blur(10px);color:#e8e2d8;font:10px 'DM Mono',monospace;letter-spacing:.09em;text-transform:uppercase}
+  .guide-status[hidden]{display:none}.guide-status strong{min-width:44px;color:#d3a76f;font-weight:500}.guide-status button{border:1px solid rgba(232,226,216,.23);background:transparent;color:inherit;min-height:32px;padding:7px 9px;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit}.guide-status button:hover{background:#e8e2d8;color:#111}.guide-status button:focus-visible{outline:2px solid #d3a76f;outline-offset:2px}
+  @media(max-width:760px){.top #guided{display:block;padding:9px 10px;font-size:8px}.guide-status{left:18px;top:66px;gap:7px;max-width:calc(100vw - 36px);padding:7px 8px 7px 10px;font-size:8px}.guide-status strong{min-width:36px}.guide-status button{min-height:29px;padding:6px 7px}}
+</style>
+<script id="guided-timeline-interaction">
+/* A guided route is deliberately a UI mode, rather than a side-effect of camera
+   pointer-lock. That keeps the timeline usable by mouse, touch, and keyboard. */
+(()=>{
+  const guideButton=document.querySelector('#guided');
+  const introEl=document.querySelector('#intro');
+  const status=document.createElement('section');
+  status.className='guide-status';status.hidden=true;status.setAttribute('aria-label','Guided timeline controls');status.setAttribute('aria-live','polite');
+  status.innerHTML='<span>Guided route</span><strong aria-live="polite"></strong><button type="button" data-guide-next>Next exhibit</button><button type="button" data-guide-exit>Exit guide</button>';
+  document.body.append(status);
+  const step=status.querySelector('strong'),next=status.querySelector('[data-guide-next]'),exit=status.querySelector('[data-guide-exit]');
+  /* Keep a route position separate from the nearest free-roam car. `active`
+     changes as visitors move, and must never decide which stop comes next. */
+  const chronologicalRoute=Object.freeze(required.map((_,index)=>index));
+  let routeActive=false,routePosition=0,routeTimer=null,routeEpoch=0;
+  const clearRouteTimer=()=>{if(routeTimer!==null){clearTimeout(routeTimer);routeTimer=null};routeEpoch++};
+  const normaliseRoutePosition=index=>((index%chronologicalRoute.length)+chronologicalRoute.length)%chronologicalRoute.length;
+  const syncRouteUi=()=>{
+    step.textContent=String(routePosition+1).padStart(2,'0')+' / '+String(chronologicalRoute.length).padStart(2,'0');
+    next.textContent=routePosition===chronologicalRoute.length-1?'Restart route':'Next exhibit';
+    guideButton.textContent=routeActive?'Exit guided timeline':'Guided timeline';
+    status.hidden=!routeActive;
+    status.dataset.routePosition=String(routePosition);
+  };
+  const setRouteView=(position,{schedule=true}={})=>{
+    routePosition=normaliseRoutePosition(position);
+    clearRouteTimer();
+    /* Leave pointer-lock before changing the view. A stale relative mouse delta
+       was the source of the ceiling-facing arrival in the previous route. */
+    if(document.pointerLockElement===renderer.domElement)document.exitPointerLock?.();
+    drag=false;pitch=0;
+    const exhibitIndex=chronologicalRoute[routePosition];
+    const exhibit=cars[exhibitIndex];
+    camera.position.set(exhibit.position.x,visitorEyeHeight,exhibit.position.z+4.35);
+    const dx=exhibit.position.x-camera.position.x,dz=exhibit.position.z-camera.position.z;
+    yaw=Math.atan2(-dx,-dz);
+    camera.rotation.set(pitch,yaw,0,'YXZ');
+    setActiveExhibit(exhibitIndex,4.35);updateVehicleVisibility();openChapter(exhibitIndex);syncRouteUi();
+    if(schedule&&routeActive&&!panel.classList.contains('open')){
+      const epoch=routeEpoch;
+      routeTimer=setTimeout(()=>{if(routeActive&&epoch===routeEpoch)setRouteView(routePosition+1)},14000);
+    }
+  };
+  const startRoute=()=>{
+    routeActive=true;experienceStarted=true;map.inert=false;
+    if(introEl){introEl.classList.add('off');introEl.setAttribute('aria-hidden','true');introEl.inert=true}
+    /* The guided experience is repeatable: always enter at Gallery 01. */
+    setRouteView(0);
+  };
+  const exitRoute=(returnFocus=false)=>{
+    routeActive=false;clearRouteTimer();syncRouteUi();
+    if(returnFocus)guideButton.focus();
+  };
+  guideButton.onclick=()=>routeActive?exitRoute(true):startRoute();
+  next.onclick=()=>{if(routeActive)setRouteView(routePosition+1)};
+  exit.onclick=()=>exitRoute(true);
+  /* Closing a guided card is an unambiguous exit: it also cancels the pending
+     automatic arrival so a visitor is never pulled back into a card they closed. */
+  document.addEventListener('museum:chapter-closed',()=>{if(routeActive)exitRoute(false)});
+  addEventListener('keydown',event=>{if(event.key==='Escape'&&routeActive)exitRoute(true)});
+  /* A non-mutating in-page regression probe for QA. It validates all adjacent
+     route pairs plus the explicit Gallery 13 -> Gallery 01 restart edge. */
+  window.__porscheGuideTimelineValidation=()=>{
+    const transitions=chronologicalRoute.map((exhibitIndex,position)=>({step:position+1,exhibitIndex,nextStep:(position+1)%chronologicalRoute.length+1,nextExhibitIndex:chronologicalRoute[(position+1)%chronologicalRoute.length]}));
+    const sequential=transitions.every(({exhibitIndex,nextExhibitIndex})=>nextExhibitIndex===(exhibitIndex+1)%chronologicalRoute.length);
+    return Object.freeze({ok:chronologicalRoute.length===13&&sequential,length:chronologicalRoute.length,transitions});
+  };
+  const guideValidation=window.__porscheGuideTimelineValidation();
+  if(!guideValidation.ok)console.error('Guided timeline regression failed',guideValidation);
+})();
+</script><style id="responsive-navigation-repair">/* Preserve the spacious desktop index; deliberately become a scrollable rail before labels would be crushed. */.map{left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(1040px,calc(100vw - 56px));gap:5px}.map button{min-height:64px;padding:7px 5px;font:clamp(7.5px,.58vw,8.6px)/1.27 'DM Mono';letter-spacing:.035em}.map button:focus-visible{position:relative;z-index:2;outline:1px solid #d3a76f;outline-offset:2px}@media(min-width:761px){.hud{bottom:108px}}@media(max-width:1120px){.map{left:18px;right:18px;width:auto;transform:none;grid-template-columns:repeat(var(--chapter-count),112px);gap:5px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:34px;overscroll-behavior-inline:contain;padding:4px 34px 5px 4px;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:rgba(232,226,216,.82) rgba(8,9,8,.72);box-shadow:inset -34px 0 24px -20px rgba(0,0,0,.96)}.map::after{content:'SCROLL  →';position:absolute;z-index:3;top:4px;right:0;bottom:5px;width:30px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(8,9,8,0),rgba(8,9,8,.94) 38%);color:#e6dfd2;font:600 6.5px/1 'DM Mono';letter-spacing:.08em;writing-mode:vertical-rl;pointer-events:none}.map button{min-height:64px;padding-inline:9px;font-size:8.5px;scroll-snap-align:start;scroll-snap-stop:always}}@media(max-width:760px){.map{left:12px;right:12px;bottom:max(14px,env(safe-area-inset-bottom));grid-template-columns:repeat(var(--chapter-count),104px);padding-right:30px}.map button{min-height:62px;padding-inline:7px;font-size:8px}.hud{inset:auto 18px 98px}}@media(prefers-reduced-motion:reduce){.map{scroll-behavior:auto}}</style><script id="responsive-navigation-interaction">(()=>{
+const rail=document.querySelector('#map'),buttons=[...rail.querySelectorAll('button')];
+rail.setAttribute('aria-label','Chronological exhibits');
+rail.addEventListener('keydown',event=>{
+  const current=buttons.indexOf(document.activeElement);let index=current;
+  if(event.key==='ArrowRight')index=Math.min(buttons.length-1,current+1);
+  else if(event.key==='ArrowLeft')index=Math.max(0,current-1);
+  else if(event.key==='Home')index=0;
+  else if(event.key==='End')index=buttons.length-1;else return;
+  event.preventDefault();event.stopPropagation();buttons[index].focus();buttons[index].scrollIntoView({block:'nearest',inline:'nearest'});
+});
+new MutationObserver(()=>{const current=rail.querySelector('button.active');if(current)current.setAttribute('aria-current','step');for(const b of buttons)if(b!==current)b.removeAttribute('aria-current')}).observe(rail,{subtree:true,attributes:true,attributeFilter:['class']});
+})();</script>
+<style id="landing-anniversary-reset">/* The masthead owns the Porsche wordmark; the landing artwork is intentionally the 75 symbol only. */.intro{padding:38px 24px;background:rgba(8,10,9,.66);backdrop-filter:blur(4px)}.intro>div{width:min(540px,calc(100% - 32px));max-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}.intro .anniversary-mark{display:block;width:clamp(112px,10vw,146px);margin:0 auto 14px;filter:drop-shadow(0 5px 12px rgba(0,0,0,.28))}.intro .anniversary-mark img{display:block;width:100%;height:auto}.intro .k{font-size:9px;letter-spacing:.2em}.intro h1{margin:15px 0 12px;font:500 clamp(46px,5.2vw,64px)/.91 'Playfair Display';letter-spacing:-.055em}.intro p{max-width:410px;margin:0;font-size:13px;line-height:1.52}.begin{margin-top:16px}@media(max-height:640px) and (min-width:761px){.intro{padding-block:22px}.intro .anniversary-mark{width:104px;margin-bottom:9px}.intro h1{margin:10px 0 9px;font-size:clamp(42px,5vw,54px)}.intro p{font-size:12px;line-height:1.42}.begin{margin-top:11px;padding:12px 17px}}@media(max-width:760px){.intro{padding:26px 18px}.intro>div{width:min(420px,100%)}.intro .anniversary-mark{width:110px;margin-bottom:11px}.intro h1{margin:12px 0 10px;font-size:clamp(42px,13vw,58px)}.intro p{font-size:12px;line-height:1.5}.begin{margin-top:14px;padding:13px 17px}}@media(max-height:540px){.intro .anniversary-mark{width:78px;margin-bottom:5px}.intro .k{font-size:8px}.intro h1{margin:7px 0;font-size:42px}.intro p{font-size:11px}.begin{margin-top:9px;padding:10px 14px}}</style><script id="landing-anniversary-reset-script">(()=>{const intro=document.querySelector('#intro'),eyebrow=intro?.querySelector('.k'),mark=intro?.querySelector('.anniversary-mark img'),heading=intro?.querySelector('h1');if(eyebrow)eyebrow.remove();if(mark){mark.src='./assets/porsche-75-mark.png';mark.alt='Porsche 75 anniversary mark'}if(heading)heading.innerHTML='There is<br>no substitute.'})()</script>
+<script id="panel-close-interaction-repair">
+/*
+  The detail drawer is an interaction boundary: it always owns Escape, E, and
+  its visible close button, even when the preceding canvas interaction was
+  pointer-locked.  Closing deliberately does not reacquire lock; the next
+  intentional gallery click does that, which keeps mouse and touch behaviour
+  identical and prevents surprise camera movement while leaving a card.
+*/
+(()=>{
+  const drawer=document.querySelector('#panel');
+  const closeButton=document.querySelector('#close');
+  const gallery=renderer.domElement;
+  const isOpen=()=>drawer.classList.contains('open');
+  const closeExhibit=()=>{
+    clearMovement();
+    leavePointerLock();
+    drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');drawer.inert=true;
+    document.dispatchEvent(new Event('museum:chapter-closed'));
+    (window.museumReturnFocus?.isConnected?window.museumReturnFocus:gallery).focus({preventScroll:true});
+    locked=false;
+    syncExhibitFromLocation();
+    // MutationObserver handles the normal UI hint.  This fallback is useful
+    // in browsers that defer the observer until after a pointer-lock change.
+    requestAnimationFrame(()=>{if(!isOpen())showLookHint()});
+    return !isOpen();
+  };
+
+  // Pointer-down is intentionally earlier than click: a first click after a
+  // pointer-locked roam is sufficient to close, not merely to relinquish lock.
+  closeButton.onclick=closeExhibit;
+
+  addEventListener('keydown',event=>{
+    const key=event.key.toLowerCase();
+    if(key==='escape'){
+      if(isOpen())closeExhibit();else{leavePointerLock();showLookHint()}
+      return;
+    }
+    if(key==='e'&&!event.repeat&&!introIsVisible()){
+      if(isOpen()){
+        event.preventDefault();
+        closeExhibit();
+      }else if(!event.repeat){
+        event.preventDefault();
+        // `active` is deliberately a render-loop cache. Resolve it again at
+        // the moment of the visitor's explicit E action, rather than letting
+        // a stale/null cache make a nearby exhibit appear non-interactive.
+        const selected=syncExhibitFromLocation();
+        if(selected!==null)openChapter(selected);
+      }
+    }
+  },true);
+
+  // Kept intentionally tiny and deterministic for browser regression checks.
+  // It tests the same event paths used by the real button and keyboard.
+  window.__museumPanelRegression={
+    state:()=>({open:isOpen(),locked,pointerLocked:document.pointerLockElement===gallery,active}),
+    open:(index=active??0)=>{openChapter(index);return window.__museumPanelRegression.state()},
+    clickClose:()=>{closeButton.click();return window.__museumPanelRegression.state()},
+    toggleWithE:()=>{dispatchEvent(new KeyboardEvent('keydown',{key:'e',bubbles:true,cancelable:true}));return window.__museumPanelRegression.state()}
+  };
+})();
+</script>
+
+<script id="arrival-engine-study">
+(()=>{
+  const x=-6.55,z=9.45,baseY=.255;
+  const standBase=finishMaterial({color:'#53605b',roughness:.56,metalness:.19,kind:'satin',repeat:[1.05,1.35],bumpScale:.008});
+  const standCap=finishMaterial({color:'#46534f',roughness:.47,metalness:.21,kind:'honed',repeat:[1.15,1.55],bumpScale:.016});
+  const standMetal=finishMaterial({color:'#232d2a',roughness:.34,metalness:.64,kind:'powder',repeat:[1.4,2.4],bumpScale:.006});
+  // The source already includes a thin black service frame. A shallow 24 cm plinth
+  // gives its feet a museum surface without burying or duplicating that frame.
+  const plinthW=2.10,plinthD=1.82;
+  box(x,.11,z,plinthW,.22,plinthD,standBase);
+  const deck=box(x,.226,z,plinthW-.10,.018,plinthD-.10,standCap);
+  const edgeY=.244,edge=.045;
+  for(const dz of[-(plinthD-edge)/2,(plinthD-edge)/2])box(x,edgeY,z+dz,plinthW,edge,edge,standMetal);
+  for(const dx of[-(plinthW-edge)/2,(plinthW-edge)/2])box(x+dx,edgeY,z,edge,edge,plinthD-edge*2,standMetal);
+  addExhibitCollision(x,z,plinthW+.04,plinthD+.04,'1967-engine-study');
+
+  // The descriptive plaque belongs to the stand: its lower edge rests just above
+  // the deck and its face leans toward the arrival aisle, rather than floating at
+  // eye level in front of the model.
+  const labelCanvas=document.createElement('canvas');labelCanvas.width=1024;labelCanvas.height=332;
+  const labelContext=labelCanvas.getContext('2d');
+  labelContext.fillStyle='rgba(20,25,24,.96)';labelContext.fillRect(0,0,1024,332);
+  labelContext.fillStyle='#f2eee5';labelContext.textAlign='center';labelContext.textBaseline='middle';
+  labelContext.font='600 62px monospace';labelContext.fillText('AIR-COOLED FLAT-SIX',512,76);
+  labelContext.fillStyle='#d8d2c7';labelContext.font='400 34px monospace';
+  labelContext.fillText('Opposed cylinders and cooling fan',512,176);
+  labelContext.fillText('An early 911 engineering study',512,245);
+  const labelTexture=new THREE.CanvasTexture(labelCanvas);labelTexture.encoding=THREE.sRGBEncoding;
+  const plaque=new THREE.Group();plaque.position.set(0,.168,plinthD/2-.16);plaque.rotation.x=-.8;plaque.userData.role='arrival-engine-label';
+  const plaqueBack=new THREE.Mesh(fabricatedBoxGeometry(1.56,.40,.035),standMetal);
+  const plaqueFace=new THREE.Mesh(new THREE.PlaneGeometry(1.53,.375),new THREE.MeshStandardMaterial({map:labelTexture,roughness:.66,metalness:.03,emissive:'#f2eee5',emissiveMap:labelTexture,emissiveIntensity:.025}));
+  plaqueFace.position.z=.019;plaqueFace.userData.role='arrival-engine-label-face';plaque.add(plaqueBack,plaqueFace);
+  deck.add(plaque);
+
+  queueMuseumAsset({source:'./models/1967_engine/porsche_motor_von_1967.js',global:'PORSCHE_MOTOR_1967_BASE64'},gltf=>{
+    const engine=gltf.scene,study=new THREE.Group();
+    engine.traverse(object=>{
+      if(!object.isMesh)return;
+      object.castShadow=object.receiveShadow=true;object.frustumCulled=true;
+      const materials=Array.isArray(object.material)?object.material:[object.material];
+      materials.forEach(material=>{if(!material)return;if(material.map){material.map.encoding=THREE.sRGBEncoding;material.map.needsUpdate=true}material.needsUpdate=true});
+    });
+    study.add(engine);study.updateMatrixWorld(true);
+    const sourceBounds=new THREE.Box3().setFromObject(study),sourceSize=sourceBounds.getSize(new THREE.Vector3());
+    if(!Number.isFinite(sourceSize.x)||!Number.isFinite(sourceSize.y)||!Number.isFinite(sourceSize.z)||sourceSize.z<=0){console.warn('Engine study has no measurable geometry');return}
+    // Uniform display calibration: engine plus authored frame measure 1.40 m
+    // across X, about .94 m high and 1.06 m deep. This is an interpretive museum
+    // scale, not a surveyed factory dimension.
+    study.rotation.y=Math.PI;
+    study.scale.setScalar(1.40/sourceSize.x);study.updateMatrixWorld(true);
+    const bounds=new THREE.Box3().setFromObject(study),center=bounds.getCenter(new THREE.Vector3());
+    study.position.set(x-center.x,baseY-bounds.min.y,z-center.z);study.userData.role='arrival-engine-study';scene.add(study);
+    const key=new THREE.SpotLight(museumLighting.key,.78,7,.58,.72,1.4);key.position.set(x-1.15,5.1,z+1.3);key.target.position.set(x,1.1,z);scene.add(key,key.target);
+    const rim=new THREE.PointLight('#dbeef0',.12,4.8,2);rim.position.set(x+1.25,2.55,z-.95);scene.add(rim);
+    freezeStaticTransforms(study);
+  });
+})();
+</script>
+<style id="chapter-navigation-finish">.map button{flex-direction:column;gap:5px;font-size:10px;line-height:1.25;overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:nowrap;letter-spacing:0}.chapter-meta{color:#aaa99f;font-size:8px;letter-spacing:.04em}.map button.active .chapter-meta{color:#d3a76f}.guide-status{z-index:13}.guide-status button{min-height:44px}@media(max-width:760px){.guide-status{top:auto;bottom:14px;left:12px;right:12px;max-width:none;justify-content:space-between;background:#111713}.panel{padding-bottom:100px}}</style></body>
+</html>
