@@ -4,9 +4,9 @@
 
 Explore thirteen exhibits in a quiet, contemporary gallery—from lightweight sports racers and the first 911s to Le Mans legends, electric performance, and reimagined classics.
 
-[**Enter the museum →**](https://jonfairbanks.github.io/porsche-3d-museum/)
+[**Enter the museum →**](https://fairbanks.io/porsche-3d-museum/)
 
-[![Inside the Porsche 3D Museum](assets/museum-preview.png)](https://jonfairbanks.github.io/porsche-3d-museum/)
+[![Inside the Porsche 3D Museum](assets/museum-preview.png)](https://fairbanks.io/porsche-3d-museum/)
 
 ## Take your time
 
