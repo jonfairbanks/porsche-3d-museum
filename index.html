@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Porsche Museum — 3D Collection</title><link rel="icon" href="./assets/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png"><link rel="apple-touch-icon" href="./assets/apple-touch-icon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet"><style>
-:root{--p:#e8e2d8;--b:#090a09;--a:#d3a76f;--l:rgba(232,226,216,.18)}*{box-sizing:border-box}html,body,#app{margin:0;width:100%;height:100%;overflow:hidden;background:var(--b);color:var(--p);font:14px Manrope,Arial}button{font:inherit;color:inherit}button:focus-visible{outline:2px solid var(--a);outline-offset:3px}canvas{position:fixed;inset:0;display:block;touch-action:none}.veil{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 49%,transparent 28%,rgba(0,0,0,.57) 100%);z-index:1}.top{position:fixed;z-index:4;inset:0 0 auto;display:flex;justify-content:space-between;align-items:flex-start;padding:28px 32px;background:linear-gradient(#050505a0,transparent);pointer-events:none}.brand{font-size:12px;letter-spacing:.17em;font-weight:600}.brand small{display:block;margin-top:4px;color:#b7b1a7;font:9px 'DM Mono';letter-spacing:.11em}.top button,.map button{pointer-events:auto;background:#0c0d0b9c;border:1px solid var(--l);padding:10px 13px;cursor:pointer;font:10px 'DM Mono';letter-spacing:.11em;text-transform:uppercase;transition:.2s}.top button:hover,.map button:hover{background:var(--p);color:#111}.hud{position:fixed;z-index:3;inset:auto 32px 28px;display:flex;justify-content:space-between;align-items:end;pointer-events:none}.keys{font:10px/1.8 'DM Mono';color:#cac4ba}.keys b{color:white}.near{text-align:right;max-width:320px}.near h2{margin:0 0 5px;font:500 27px/1 'Playfair Display'}.near p{margin:0;color:#cfaa7b;font:10px 'DM Mono';letter-spacing:.09em;text-transform:uppercase}.cross{position:fixed;z-index:2;left:50%;top:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}.cross:before,.cross:after{content:"";position:absolute;background:#fff8}.cross:before{left:6px;width:1px;height:13px}.cross:after{top:6px;width:13px;height:1px}.map{position:fixed;z-index:4;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:5px;max-width:48vw;overflow:auto;padding:4px;background:#0809088a;backdrop-filter:blur(8px)}.map button{min-width:76px;padding:7px 8px;color:#bbb6ac;font-size:8px}.map button.active{color:#fff;border-color:#d3a76f}.panel{position:fixed;z-index:7;inset:0 0 0 auto;width:min(500px,100%);padding:40px 44px;overflow:auto;background:#e7e2d8;color:#191a17;transform:translateX(104%);transition:transform .55s cubic-bezier(.2,.8,.2,1)}.panel.open{transform:none}.panel button{float:right;width:38px;height:38px;border-radius:50%;border:1px solid #aaa198;background:none;cursor:pointer;font-size:22px}.panel .eyebrow{padding-top:80px;color:#806343;font:10px 'DM Mono';letter-spacing:.15em;text-transform:uppercase}.panel h1{margin:16px 0 22px;font:500 clamp(45px,5vw,70px)/.9 'Playfair Display';letter-spacing:-.06em}.panel .lede{font-size:18px;line-height:1.5}.specs{display:grid;grid-template-columns:1fr 1fr;gap:18px;border-top:1px solid #aaa198;border-bottom:1px solid #aaa198;padding:18px 0;margin:28px 0}.specs small{display:block;color:#786f64;font:9px 'DM Mono';letter-spacing:.11em;text-transform:uppercase}.story{color:#4e4a43;line-height:1.75}.card-section{margin:30px 0}.card-section h2{margin:0 0 9px;color:#262722;font:600 10px 'DM Mono';letter-spacing:.13em;text-transform:uppercase}.card-section p{margin:0;color:#4e4a43;line-height:1.75}.displayed-reference{padding:18px 18px 17px;border-left:2px solid #806343;background:rgba(128,99,67,.075)}.asset-credit{margin:38px -2px 0;padding:13px 2px 0;border-top:1px solid #bbb2a7;color:#756f66;font-size:11px;line-height:1.55}.asset-credit span{display:block;margin-bottom:3px;color:#8a8278;font:9px 'DM Mono';letter-spacing:.11em;text-transform:uppercase}.asset-credit a{color:#70512c;text-underline-offset:2px}.intro{position:fixed;z-index:8;inset:0;display:grid;place-items:center;background:#070807bd;backdrop-filter:blur(5px);transition:.5s}.intro.off{opacity:0;pointer-events:none}.intro>div{width:min(470px,calc(100% - 48px));text-align:center}.intro .k{color:#d7ac76;font:10px 'DM Mono';letter-spacing:.17em;text-transform:uppercase}.intro h1{margin:18px 0;font:500 54px/.9 'Playfair Display';letter-spacing:-.06em}.intro p{color:#c5c0b7;line-height:1.65}.begin{margin-top:12px;padding:14px 19px;border:1px solid #e6dfd2;background:#e6dfd2;color:#121310;cursor:pointer;font:600 10px 'DM Mono';letter-spacing:.14em;text-transform:uppercase}.begin:hover{background:var(--a);border-color:var(--a)}.fallback{display:none;position:fixed;z-index:9;inset:0;padding:40px;overflow:auto;background:#e7e2d8;color:#181916}.fallback h1{font:500 48px 'Playfair Display'}@media(max-width:760px){.top{padding:18px}.top button{display:none}.hud{inset:auto 18px 94px}.keys{display:none}.map{left:18px;right:18px;bottom:19px;transform:none;max-width:none}.near h2{font-size:22px}.panel{padding:28px 25px}.panel .eyebrow{padding-top:58px}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style><style id="exhibit-card-typography-refinement">.panel{width:clamp(430px,38vw,560px);padding:30px 38px 34px;scrollbar-color:#aa9f92 transparent;scrollbar-width:thin}.panel #close{position:absolute;top:24px;right:26px;float:none;display:grid;place-items:center;width:36px;height:36px;line-height:1;border-color:#b8afa4;color:#302e29;z-index:1}.panel .eyebrow{padding:2px 52px 0 0;margin:0 0 11px;color:#735c40;font:9.5px/1.45 "DM Mono";letter-spacing:.12em;text-transform:uppercase}.panel h1{max-inline-size:17ch;margin:0 0 15px;color:#1e201d;font:500 clamp(34px,3.25vw,51px)/.98 "Playfair Display";letter-spacing:-.045em;text-wrap:balance;overflow-wrap:normal}.panel .lede{max-inline-size:34ch;margin:0;color:#3f3c36;font-size:16px;line-height:1.5}.specs{gap:0;margin:23px 0 24px;padding:0;border-color:#b9b0a5}.specs>div{min-height:68px;padding:12px 12px 11px 0;font-size:13px;line-height:1.35}.specs>div:nth-child(odd){padding-left:0;border-right:1px solid #c9c1b7}.specs>div:nth-child(even){padding-left:14px}.specs>div:nth-child(-n+2){border-bottom:1px solid #c9c1b7}.specs small{margin-bottom:5px;font-size:8px;letter-spacing:.12em}.card-section{margin:22px 0}.card-section h2{margin-bottom:8px;font-size:9px;letter-spacing:.14em}.card-section p,.story{font-size:13px;line-height:1.67}.displayed-reference{margin-top:24px;padding:15px 16px 16px;border-left-width:2px}.asset-credit{margin:25px 0 0;padding:10px 0 0;color:#8b8379;font-size:9px;line-height:1.4;opacity:.86}.asset-credit span{margin-bottom:3px;font-size:8px;letter-spacing:.1em}.asset-credit a{color:inherit}@media(max-width:620px){.panel{width:100%;padding:25px 24px 28px}.panel #close{top:17px;right:18px}.panel .eyebrow{padding-right:48px;font-size:8.5px}.panel h1{max-inline-size:18ch;font-size:clamp(32px,10.5vw,42px)}.panel .lede{font-size:15px}.specs>div{font-size:12px}}@media(max-height:720px) and (min-width:621px){.panel{padding-top:22px;padding-bottom:24px}.panel #close{top:16px}.panel .eyebrow{padding-top:0;margin-bottom:8px}.panel h1{margin-bottom:11px;font-size:clamp(31px,3vw,43px)}.panel .lede{font-size:15px}.specs{margin:17px 0 18px}.specs>div{min-height:58px;padding-top:9px;padding-bottom:8px}.card-section{margin:17px 0}.displayed-reference{margin-top:18px}.asset-credit{margin-top:18px}}</style><style id="collection-index-refinement">/* Every chapter remains reachable: a compact grid on wide displays and a deliberate, keyboard-accessible horizontal rail below 1120px. */.map{left:50%;bottom:22px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(var(--chapter-count),minmax(0,1fr));gap:4px;width:min(860px,calc(100vw - 44px));max-width:none;overflow:visible}.map button{min-width:0;min-height:60px;padding:6px 4px;font:clamp(7.2px,.55vw,8.25px)/1.24 'DM Mono';letter-spacing:.035em;white-space:normal;overflow-wrap:anywhere;word-break:normal;hyphens:auto;text-align:center;text-wrap:balance;display:flex;align-items:center;justify-content:center;overflow:hidden}.map button:focus-visible{position:relative;z-index:1}@media(min-width:761px){.hud{bottom:104px}.top{z-index:9}}@media(max-width:1120px){.map{left:18px;right:18px;width:auto;grid-template-columns:repeat(var(--chapter-count),minmax(112px,1fr));overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scroll-padding-inline:2px;overscroll-behavior-inline:contain;transform:none;scrollbar-width:thin;scrollbar-color:rgba(232,226,216,.34) rgba(8,9,8,.62)}.map button{min-height:64px;padding-inline:8px;font-size:8.5px;scroll-snap-align:start}}@media(max-width:760px){.map{bottom:19px;grid-template-columns:repeat(var(--chapter-count),104px)}.map button{min-height:62px;padding-inline:7px;font-size:8px}.hud{inset:auto 18px 94px}.keys{display:none}.top{padding:18px}.top button{display:none}.near h2{font-size:22px}.panel{padding:28px 25px}}@media(prefers-reduced-motion:reduce){.map{scroll-behavior:auto}}</style><style id="museum-refinement">.begin:disabled{opacity:.55;cursor:progress}#collection-progress{font:10px/1.5 'DM Mono',monospace;margin-top:12px;min-height:15px;color:#c5c0b7}.intro{z-index:20}.panel #close{width:44px;height:44px}.top button:disabled{opacity:.4;cursor:progress}@media(max-width:760px){.top button{display:block;padding:10px;font-size:8px;min-height:44px}.brand{font-size:10px}.brand small{font-size:8px}.map::after{display:none}}.map button[aria-current="step"]{border-color:var(--a)}.guide-status{z-index:13}@media(max-width:760px){.guide-status{left:12px;top:74px;max-width:calc(100vw - 24px);font-size:8px;gap:6px}}</style></head><body><div id="app"></div><div class="veil"></div><header class="top"><div class="brand">PORSCHE MUSEUM<small>STUTTGART / WORLDWIDE</small></div><button id="guided">Guided timeline</button></header><div class="cross"></div><div class="hud"><div class="keys">MOVE&nbsp; <b>W A S D</b> / ARROWS<br>LOOK&nbsp; <b>MOUSE / TOUCH</b><br>DISCOVER&nbsp; <b>E</b></div><div class="near" id="near"><h2>The collection awaits</h2><p>Move through the galleries</p></div></div><nav class="map" id="map" aria-label="Accessible exhibit map"></nav><aside class="panel" id="panel" role="dialog" aria-label="Exhibit details" aria-hidden="true" inert><button id="close" aria-label="Close exhibit">×</button><div id="detail"></div></aside><section class="intro" id="intro"><div><span class="anniversary-mark"><img src="./assets/porsche-75-anniversary.png" alt="Porsche 75 anniversary mark"></span><div class="k">A navigable 3D collection</div><h1>There is no substitute.</h1><p>Walk through a cinematic museum of engineering, racing, and the sports cars that changed Porsche.</p><button class="begin" id="begin" disabled>Preparing the collection</button><p id="collection-progress" role="status" aria-live="polite">Preparing 13 exhibits…</p></div></section><section class="fallback" id="fallback"><h1>Collection index</h1><p>Your device does not support the 3D gallery. Explore the collection below.</p><div id="fallbackList"></div></section>
-<script src="./vendor/three-r126.min.js"></script><script src="./vendor/GLTFLoader-r126.js"></script><script src="./assets/archive-photos.js"></script><style id="landing-anniversary-mark">.intro .anniversary-mark{display:block;width:clamp(72px,7vw,94px);margin:0 auto 12px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}.intro .anniversary-mark img{display:block;width:100%;height:auto}@media(max-width:760px){.intro .anniversary-mark{width:72px;margin-bottom:10px}}</style><script>
+:root{--p:#f0f2f1;--b:#101212;--a:#dce2e0;--l:rgba(240,242,241,.18)}*{box-sizing:border-box}html,body,#app{margin:0;width:100%;height:100%;overflow:hidden;background:var(--b);color:var(--p);font:14px Manrope,Arial}button{font:inherit;color:inherit}button:focus-visible{outline:2px solid var(--a);outline-offset:3px}canvas{position:fixed;inset:0;display:block;touch-action:none}.veil{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 49%,transparent 28%,rgba(0,0,0,.57) 100%);z-index:1}.top{position:fixed;z-index:4;inset:0 0 auto;display:flex;justify-content:space-between;align-items:flex-start;padding:28px 32px;background:linear-gradient(#050505a0,transparent);pointer-events:none}.brand{font-size:12px;letter-spacing:.17em;font-weight:600}.brand small{display:block;margin-top:4px;color:#b6bfbc;font:9px 'DM Mono';letter-spacing:.11em}.top button,.map button{pointer-events:auto;background:#0c0d0b9c;border:1px solid var(--l);padding:10px 13px;cursor:pointer;font:10px 'DM Mono';letter-spacing:.11em;text-transform:uppercase;transition:.2s}.top button:hover,.map button:hover{background:var(--p);color:#111}.hud{position:fixed;z-index:3;inset:auto 32px 28px;display:flex;justify-content:space-between;align-items:end;pointer-events:none}.keys{font:10px/1.8 'DM Mono';color:#c8cecc}.keys b{color:white}.near{text-align:right;max-width:320px}.near h2{margin:0 0 5px;font:500 27px/1 'Playfair Display'}.near p{margin:0;color:#d5ddda;font:10px 'DM Mono';letter-spacing:.09em;text-transform:uppercase}.cross{position:fixed;z-index:2;left:50%;top:50%;width:13px;height:13px;transform:translate(-50%,-50%);pointer-events:none}.cross:before,.cross:after{content:"";position:absolute;background:#fff8}.cross:before{left:6px;width:1px;height:13px}.cross:after{top:6px;width:13px;height:1px}.map{position:fixed;z-index:4;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:5px;max-width:48vw;overflow:auto;padding:4px;background:#0809088a;backdrop-filter:blur(8px)}.map button{min-width:76px;padding:7px 8px;color:#bbc4c0;font-size:8px}.map button.active{color:#fff;border-color:var(--a);background:rgba(218,229,223,.16)}.panel{position:fixed;z-index:7;inset:0 0 0 auto;width:min(500px,100%);padding:40px 44px;overflow:auto;background:#f0f2f1;color:#202524;transform:translateX(104%);transition:transform .55s cubic-bezier(.2,.8,.2,1)}.panel.open{transform:none}.panel button{float:right;width:38px;height:38px;border-radius:50%;border:1px solid #b7bfbc;background:none;cursor:pointer;font-size:22px}.panel .eyebrow{padding-top:80px;color:#65736d;font:10px 'DM Mono';letter-spacing:.15em;text-transform:uppercase}.panel h1{margin:16px 0 22px;font:500 clamp(45px,5vw,70px)/.9 'Playfair Display';letter-spacing:-.06em}.panel .lede{font-size:18px;line-height:1.5}.specs{display:grid;grid-template-columns:1fr 1fr;gap:18px;border-top:1px solid #b7bfbc;border-bottom:1px solid #b7bfbc;padding:18px 0;margin:28px 0}.specs small{display:block;color:#66726c;font:9px 'DM Mono';letter-spacing:.11em;text-transform:uppercase}.story{color:#46504c;line-height:1.75}.card-section{margin:30px 0}.card-section h2{margin:0 0 9px;color:#29322e;font:600 10px 'DM Mono';letter-spacing:.13em;text-transform:uppercase}.card-section p{margin:0;color:#46504c;line-height:1.75}.displayed-reference{padding:18px 18px 17px;border-left:2px solid #65736d;background:rgba(60,78,68,.075)}.asset-credit{margin:38px -2px 0;padding:13px 2px 0;border-top:1px solid #c2cac6;color:#65716b;font-size:11px;line-height:1.55}.asset-credit span{display:block;margin-bottom:3px;color:#6c7872;font:9px 'DM Mono';letter-spacing:.11em;text-transform:uppercase}.asset-credit a{color:#405c50;text-underline-offset:2px}.intro{position:fixed;z-index:8;inset:0;display:grid;place-items:center;background:#070807bd;backdrop-filter:blur(5px);transition:.5s}.intro.off{opacity:0;pointer-events:none}.intro>div{width:min(470px,calc(100% - 48px));text-align:center}.intro .k{color:#dce2e0;font:10px 'DM Mono';letter-spacing:.17em;text-transform:uppercase}.intro h1{margin:18px 0;font:500 54px/.9 'Playfair Display';letter-spacing:-.06em}.intro p{color:#c4cdca;line-height:1.65}.begin{margin-top:12px;padding:14px 19px;border:1px solid #eef2f0;background:#eef2f0;color:#161c19;cursor:pointer;font:600 10px 'DM Mono';letter-spacing:.14em;text-transform:uppercase}.begin:hover{background:#dce2e0;border-color:#dce2e0}.fallback{display:none;position:fixed;z-index:9;inset:0;padding:40px;overflow:auto;background:#f0f2f1;color:#202524}.fallback h1{font:500 48px 'Playfair Display'}@media(max-width:760px){.top{padding:18px}.top button{display:none}.hud{inset:auto 18px 94px}.keys{display:none}.map{left:18px;right:18px;bottom:19px;transform:none;max-width:none}.near h2{font-size:22px}.panel{padding:28px 25px}.panel .eyebrow{padding-top:58px}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style><style id="exhibit-card-typography-refinement">.panel{width:clamp(430px,38vw,560px);padding:30px 38px 34px;scrollbar-color:#a6b2ac transparent;scrollbar-width:thin}.panel #close{position:absolute;top:24px;right:26px;float:none;display:grid;place-items:center;width:36px;height:36px;line-height:1;border-color:#b7c2bc;color:#303a35;z-index:1}.panel .eyebrow{padding:2px 52px 0 0;margin:0 0 11px;color:#5c6c63;font:9.5px/1.45 "DM Mono";letter-spacing:.12em;text-transform:uppercase}.panel h1{max-inline-size:17ch;margin:0 0 15px;color:#202824;font:500 clamp(34px,3.25vw,51px)/.98 "Playfair Display";letter-spacing:-.045em;text-wrap:balance;overflow-wrap:normal}.panel .lede{max-inline-size:34ch;margin:0;color:#424e47;font-size:16px;line-height:1.5}.specs{gap:0;margin:23px 0 24px;padding:0;border-color:#bac5bf}.specs>div{min-height:68px;padding:12px 12px 11px 0;font-size:13px;line-height:1.35}.specs>div:nth-child(odd){padding-left:0;border-right:1px solid #cbd3cf}.specs>div:nth-child(even){padding-left:14px}.specs>div:nth-child(-n+2){border-bottom:1px solid #cbd3cf}.specs small{margin-bottom:5px;font-size:8px;letter-spacing:.12em}.card-section{margin:22px 0}.card-section h2{margin-bottom:8px;font-size:9px;letter-spacing:.14em}.card-section p,.story{font-size:13px;line-height:1.67}.displayed-reference{margin-top:24px;padding:15px 16px 16px;border-left-width:2px}.asset-credit{margin:25px 0 0;padding:10px 0 0;color:#647269;font-size:9px;line-height:1.4;opacity:.86}.asset-credit span{margin-bottom:3px;font-size:8px;letter-spacing:.1em}.asset-credit a{color:inherit}@media(max-width:620px){.panel{width:100%;padding:25px 24px 28px}.panel #close{top:17px;right:18px}.panel .eyebrow{padding-right:48px;font-size:8.5px}.panel h1{max-inline-size:18ch;font-size:clamp(32px,10.5vw,42px)}.panel .lede{font-size:15px}.specs>div{font-size:12px}}@media(max-height:720px) and (min-width:621px){.panel{padding-top:22px;padding-bottom:24px}.panel #close{top:16px}.panel .eyebrow{padding-top:0;margin-bottom:8px}.panel h1{margin-bottom:11px;font-size:clamp(31px,3vw,43px)}.panel .lede{font-size:15px}.specs{margin:17px 0 18px}.specs>div{min-height:58px;padding-top:9px;padding-bottom:8px}.card-section{margin:17px 0}.displayed-reference{margin-top:18px}.asset-credit{margin-top:18px}}</style><style id="collection-index-refinement">/* Every chapter remains reachable: a compact grid on wide displays and a deliberate, keyboard-accessible horizontal rail below 1120px. */.map{left:50%;bottom:22px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(var(--chapter-count),minmax(0,1fr));gap:4px;width:min(860px,calc(100vw - 44px));max-width:none;overflow:visible}.map button{min-width:0;min-height:60px;padding:6px 4px;font:clamp(7.2px,.55vw,8.25px)/1.24 'DM Mono';letter-spacing:.035em;white-space:normal;overflow-wrap:anywhere;word-break:normal;hyphens:auto;text-align:center;text-wrap:balance;display:flex;align-items:center;justify-content:center;overflow:hidden}.map button:focus-visible{position:relative;z-index:1}@media(min-width:761px){.hud{bottom:104px}.top{z-index:9}}@media(max-width:1120px){.map{left:18px;right:18px;width:auto;grid-template-columns:repeat(var(--chapter-count),minmax(112px,1fr));overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scroll-padding-inline:2px;overscroll-behavior-inline:contain;transform:none;scrollbar-width:thin;scrollbar-color:rgba(240,242,241,.34) rgba(8,9,8,.62)}.map button{min-height:64px;padding-inline:8px;font-size:8.5px;scroll-snap-align:start}}@media(max-width:760px){.map{bottom:19px;grid-template-columns:repeat(var(--chapter-count),104px)}.map button{min-height:62px;padding-inline:7px;font-size:8px}.hud{inset:auto 18px 94px}.keys{display:none}.top{padding:18px}.top button{display:none}.near h2{font-size:22px}.panel{padding:28px 25px}}@media(prefers-reduced-motion:reduce){.map{scroll-behavior:auto}}</style><style id="museum-refinement">.begin:disabled{opacity:.55;cursor:progress}#collection-progress{font:10px/1.5 'DM Mono',monospace;margin-top:12px;min-height:15px;color:#c4cdca}.intro{z-index:20}.panel #close{width:44px;height:44px}.top button:disabled{opacity:.4;cursor:progress}@media(max-width:760px){.top button{display:block;padding:10px;font-size:8px;min-height:44px}.brand{font-size:10px}.brand small{font-size:8px}.map::after{display:none}}.map button[aria-current="step"]{border-color:var(--a)}.guide-status{z-index:13}@media(max-width:760px){.guide-status{left:12px;top:74px;max-width:calc(100vw - 24px);font-size:8px;gap:6px}}</style></head><body><div id="app"></div><div class="veil"></div><header class="top"><div class="brand">PORSCHE MUSEUM<small>STUTTGART / WORLDWIDE</small></div><button id="guided">Guided timeline</button></header><div class="cross"></div><div class="hud"><div class="keys">MOVE&nbsp; <b>W A S D</b> / ARROWS<br>LOOK&nbsp; <b>MOUSE / TOUCH</b><br>DISCOVER&nbsp; <b>E</b></div><div class="near" id="near"><h2>The collection awaits</h2><p>Move through the galleries</p></div></div><nav class="map" id="map" aria-label="Accessible exhibit map"></nav><aside class="panel" id="panel" role="dialog" aria-label="Exhibit details" aria-hidden="true" inert><button id="close" aria-label="Close exhibit">×</button><div id="detail"></div></aside><section class="intro" id="intro"><div><span class="anniversary-mark"><img src="./assets/porsche-75-anniversary.png" alt="Porsche 75 anniversary mark"></span><div class="k">A navigable 3D collection</div><h1>There is no substitute.</h1><p>Walk through a cinematic museum of engineering, racing, and the sports cars that changed Porsche.</p><button class="begin" id="begin" disabled>Preparing the collection</button><p id="collection-progress" role="status" aria-live="polite">Preparing the collection…</p><p id="collection-detail">Every exhibit is prepared before the gallery opens.</p><button class="retry-assets" id="retry-assets" type="button" hidden>Retry missing items</button></div></section><section class="fallback" id="fallback"><h1>Collection index</h1><p>Your device does not support the 3D gallery. Explore the collection below.</p><div id="fallbackList"></div></section>
+<script src="./vendor/three-r126.min.js"></script><script src="./vendor/GLTFLoader-r126.js"></script><style id="loading-progress-refinement">#collection-progress,#collection-detail{font:10px/1.5 'DM Mono',monospace;margin:12px 0 0;min-height:15px;color:#c4cdca}#collection-detail{margin-top:3px;color:#9eaaa5}.retry-assets{margin-top:11px;padding:8px 11px;border:1px solid rgba(240,242,241,.42);background:transparent;color:#eef2f0;cursor:pointer;font:600 9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.retry-assets:hover{background:#eef2f0;color:#161c19}</style><style id="landing-anniversary-mark">.intro .anniversary-mark{display:block;width:clamp(72px,7vw,94px);margin:0 auto 12px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}.intro .anniversary-mark img{display:block;width:100%;height:auto}@media(max-width:760px){.intro .anniversary-mark{width:72px;margin-bottom:10px}}</style><script>
 
 const required=[["1948–1962","Lightweight beginnings","Agility began with making every kilogram count.","The compact 356 and the purpose-built 550 and 718 racers established a recurring Porsche idea: performance could come from reducing mass as well as adding power. Road and competition cars placed their engines differently, but shared small dimensions and an emphasis on efficiency. This culture of lightweight engineering helped shape the cars that followed.","Low weight · compact size","Road and competition","Foundations of the 911","#9f251c","roadster"],["1963","901 / early 911","A new six-cylinder car gave Porsche an enduring silhouette.","Presented as the 901 in Frankfurt in 1963, the successor to the 356 brought a rear-mounted flat-six into a more spacious 2+2 body. Production began in 1964, followed shortly by the change of name to 911. F. A. Porsche’s design made the new car recognisable without simply enlarging its predecessor.","2.0L flat-six","130 hp","F. A. Porsche","#d8d2c4","coupe"],["1964","First production 911","The 911 evolved by testing how far its original architecture could go.","From the first production cars in 1964, Porsche developed the 911 around a rear-mounted flat-six. The 930 Turbo brought a new scale of performance to that arrangement when customer deliveries began in 1975. Wider bodywork and a prominent rear spoiler made the engineering change visible while preserving the familiar roofline.","1,991 cc flat-six","130 hp","Rear-engine / RWD","#315b5e","coupe"],["1970","917K","Winning at Le Mans required stability and endurance as well as speed.","The 917 turned Porsche’s long pursuit of overall victory into a breakthrough at Le Mans in 1970. Developing the short-tail body helped make its formidable performance more manageable. Hans Herrmann and Richard Attwood won in the red-and-white Salzburg entry, establishing the 917 as a defining endurance racer.","4.5L flat-12","630 hp","First overall Le Mans win","#d8d5ce","race"],["1986","959","The 959 treated the road car as a laboratory for interacting technologies.","Conceived during the Group B era, the 959 combined all-wheel drive, sequential turbocharging and advanced materials. Its significance lay in how these systems worked together to make performance usable across changing conditions. Ideas developed here later entered more familiar Porsche road cars.","2.85L twin-turbo","450 hp","PSK variable AWD","#aeb0aa","super"],["1996","986 Boxster","The Boxster paired a new business direction with an old roadster instinct.","Introduced in 1996, the Boxster broadened Porsche’s range at a difficult moment for the company. Its mid-engine layout and open body recalled the compact sports racers of earlier decades. Shared development and production thinking with the 911 helped make that return to the roadster commercially viable.","2.5L flat-six","201 hp","Mid-engine / RWD","#a7927c","roadster"],["1996","911 GT1","A familiar face concealed a racing car built around a different layout.","The 1996 911 GT1 explored the boundary between production sports cars and purpose-built racers. Its mid-engine architecture departed from the road-going 911, while recognisable styling maintained the family connection. The rules required road versions, making the relationship between racing and showroom cars unusually direct.","3.2L twin-turbo flat-six","~600 hp","Le Mans / GT1","#e8e3da","race"],["2002","Cayenne","The Cayenne tested whether Porsche’s identity could extend beyond the sports car.","When it arrived in 2002, the Cayenne joined the 911 and Boxster as a third model line. Its combination of everyday space, all-wheel drive and performance brought Porsche into a different market. The resulting growth changed the company’s scale and broadened the possibilities for future development.","4.5L V8 Turbo","450 hp","All-wheel drive","#725943","suv"],["2004","Carrera GT","Racing-derived construction met the direct demands of a manual road car.","The Carrera GT brought a naturally aspirated V10 and carbon-fibre structure into a road-going supercar. Its six-speed manual gearbox placed gear selection firmly with the driver. At a time when high-performance cars were becoming increasingly automated, it made light construction and mechanical involvement central to the experience.","5.7L V10","612 hp","Carbon-fibre monocoque","#a9a7a1","super"],["2000s","The GT lineage","Porsche’s GT cars bring different answers to the same road-and-track question.","From the 1990s onward, GT2, GT3 and RS models connected road-car development with the demands of competition. Turbocharged power and naturally aspirated response offered different experiences, while weight reduction, aerodynamics and chassis precision remained recurring concerns. There was never just one way to make a 911 more focused.","Naturally aspirated + turbo","GT2 · GT3 · RS","Road and circuit","#d84b28","race"],["2013","918 Spyder","Electrification became a means of adding performance as well as efficiency.","Introduced in 2013, the 918 Spyder combined a high-revving V8 with two electric motors. The motors could contribute immediately while the combustion engine built speed, and recovered braking energy could be used again. The result expanded the engineering possibilities of a Porsche supercar.","V8 + two e-motors","887 hp","Carbon monocoque","#b2b4aa","super"],["2019","Taycan","The electric transition brought new engineering demands to a familiar performance brief.","The Taycan’s arrival in 2019 made a battery-electric sports saloon part of Porsche’s core range. Its 800-volt architecture, thermal management and low-mounted battery addressed charging, repeatable performance and weight distribution. The challenge was to make these new systems serve the driver as coherently as the mechanical systems they replaced.","800-volt architecture","Dual-motor AWD","Performance EV","#e0ddd2","electric",{"x":-7,"z":-125}],["Contemporary","Classic 911, reimagined","The classic 911 has become a starting point for competing ideas of renewal.","Independent builders reinterpret the air-cooled 911 in distinct ways. Singer combines restoration with bespoke design and engineering; RWB is known for dramatic wide-body conversions; Gunther Werks develops the 993 around modern materials and performance. Together they show how preservation and reinvention can lead to very different cars.","Classic 911 foundations","Singer · RWB · Gunther Werks","Restoration and reinvention","#453c32","restomod",{"x":7,"z":-125}]];
 // One measured 11 m cadence runs the whole collection.  The former finale
@@ -50,6 +50,80 @@ function galleryEnvironment(){
   const source=new THREE.CanvasTexture(canvas);source.encoding=THREE.sRGBEncoding;source.mapping=THREE.EquirectangularReflectionMapping;
   const pmrem=new THREE.PMREMGenerator(renderer);const environment=pmrem.fromEquirectangular(source).texture;scene.environment=environment;source.dispose();pmrem.dispose();
 }galleryEnvironment();
+// Car-only reflections: the floor and architecture retain their original environment.
+function makeVehicleEnvironment(){
+  const room=new THREE.Scene();
+  const roomMaterial=new THREE.MeshBasicMaterial({color:new THREE.Color(.24,.25,.24),side:THREE.BackSide});
+  const shell=new THREE.Mesh(new THREE.BoxGeometry(18,9,24),roomMaterial);shell.position.y=2;room.add(shell);
+  const add=(x,y,z,w,h,d,color)=>{const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshBasicMaterial({color:new THREE.Color(...color)}));mesh.position.set(x,y,z);room.add(mesh)};
+  // Long overhead luminaires and broad pale walls produce legible, quiet panel reflections.
+  add(0,6.35,0,17.7,.05,23.7,[.48,.48,.45]);
+  add(0,-2.45,0,17.7,.05,23.7,[.055,.062,.060]);
+  for(const x of[-4.5,4.5])add(x,6.2,0,1.3,.04,18,[3.2,3.1,2.9]);
+  for(const x of[-8.85,8.85])add(x,1.8,0,.04,3.2,20,[.65,.67,.65]);
+  const generator=new THREE.PMREMGenerator(renderer),target=generator.fromScene(room,.03,.1,50);
+  generator.dispose();room.traverse(o=>{o.geometry?.dispose();o.material?.dispose()});
+  return target.texture;
+}
+const vehicleEnvironment=makeVehicleEnvironment();
+function applyVehicleReflections(root){
+  const seen=new Set();root.traverse(mesh=>{
+    if(!mesh.isMesh)return;
+    for(const material of(Array.isArray(mesh.material)?mesh.material:[mesh.material])){
+      if(!material?.isMeshStandardMaterial||seen.has(material))continue;seen.add(material);
+      material.envMap=vehicleEnvironment;material.needsUpdate=true;
+    }
+  });
+}
+// Bake contact once per prepared model. No shadow lights or shadow renders are
+// added to the walking loop, and the resulting small texture stays on the cap.
+function bakeVehicleContact(index){
+  const root=cars[index].userData.authentic;if(!root)return;
+  const bounds=preciseModelBounds(root),size=bounds.getSize(new THREE.Vector3());
+  const display=cars[index],cap=scene.children.find(o=>o.userData.role==='plinth-display-cap'&&Math.abs(o.position.x-display.position.x)<.01&&Math.abs(o.position.z-display.position.z)<.01);
+  const capBounds=cap?new THREE.Box3().setFromObject(cap):bounds;
+  const minX=Math.max(bounds.min.x-.15,capBounds.min.x+.025),maxX=Math.min(bounds.max.x+.15,capBounds.max.x-.025);
+  const minZ=Math.max(bounds.min.z-.15,capBounds.min.z+.025),maxZ=Math.min(bounds.max.z+.15,capBounds.max.z-.025);
+  const center=new THREE.Vector3((minX+maxX)/2,.19,(minZ+maxZ)/2),width=maxX-minX,depth=maxZ-minZ,resolution=256;
+  const target=new THREE.WebGLRenderTarget(resolution,resolution,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter});
+  const view=new THREE.OrthographicCamera(-width/2,width/2,depth/2,-depth/2,.01,size.y+2);
+  view.position.set(center.x,.19-1,center.z);view.up.set(0,0,-1);view.lookAt(center.x,.19,center.z);view.updateMatrixWorld();
+  const material=new THREE.ShaderMaterial({side:THREE.DoubleSide,uniforms:{contactY:{value:.19}},vertexShader:'varying float heightAboveCap; uniform float contactY; void main(){vec4 p=modelMatrix*vec4(position,1.0);heightAboveCap=max(0.0,p.y-contactY);gl_Position=projectionMatrix*viewMatrix*p;}',fragmentShader:'varying float heightAboveCap; void main(){float a=.82*exp(-heightAboveCap*4.0);gl_FragColor=vec4(0.0,0.0,0.0,a);}',toneMapped:false});
+  const originals=[];root.traverse(mesh=>{if(mesh.isMesh){originals.push([mesh,mesh.material,mesh.visible]);const list=Array.isArray(mesh.material)?mesh.material:[mesh.material];mesh.visible=mesh.visible&&list.some(m=>!m.transparent);mesh.material=material}});
+  const previousTarget=renderer.getRenderTarget(),previousColor=renderer.getClearColor(new THREE.Color()),previousAlpha=renderer.getClearAlpha(),parent=root.parent;
+  const bakeScene=new THREE.Scene();bakeScene.add(root);
+  const pixels=new Uint8Array(resolution*resolution*4);
+  try{renderer.setRenderTarget(target);renderer.setClearColor(0x000000,0);renderer.clear();renderer.render(bakeScene,view);renderer.readRenderTargetPixels(target,0,0,resolution,resolution,pixels)}
+  finally{parent.add(root);for(const [mesh,original,visible]of originals){mesh.material=original;mesh.visible=visible}renderer.setRenderTarget(previousTarget);renderer.setClearColor(previousColor,previousAlpha);target.dispose();material.dispose();root.updateMatrixWorld(true)}
+  const raw=document.createElement('canvas');raw.width=raw.height=resolution;const context=raw.getContext('2d'),data=context.createImageData(resolution,resolution);
+  // Underside meshes are often open or disconnected. A continuous chassis bed
+  // closes those exporter gaps; the measured mask still supplies tyre contacts.
+  // Work in metres so the soft edge has the same scale on a roadster and an SUV.
+  const fitted=root.userData.fittedDimensions;
+  const bodyHalfWidth=fitted.width*.43,bodyHalfDepth=fitted.length*.44;
+  const headingCos=Math.cos(root.rotation.y),headingSin=Math.sin(root.rotation.y);
+  const footprintCenter=bounds.getCenter(new THREE.Vector3());
+  const cornerRadius=Math.min(.24,bodyHalfWidth*.28),softEdge=.14;
+  for(let y=0;y<resolution;y++)for(let x=0;x<resolution;x++){
+    const src=((resolution-1-y)*resolution+(resolution-1-x))*4,dst=(y*resolution+x)*4;
+    const wx=center.x+((x+.5)/resolution-.5)*width-footprintCenter.x;
+    const wz=center.z+((y+.5)/resolution-.5)*depth-footprintCenter.z;
+    const dx=Math.abs(headingCos*wx-headingSin*wz)-(bodyHalfWidth-cornerRadius);
+    const dz=Math.abs(headingSin*wx+headingCos*wz)-(bodyHalfDepth-cornerRadius);
+    const edgeDistance=Math.hypot(Math.max(dx,0),Math.max(dz,0))+Math.min(Math.max(dx,dz),0)-cornerRadius;
+    const fade=Math.max(0,Math.min(1,(softEdge-edgeDistance)/(softEdge*2)));
+    const chassisAlpha=148*fade*fade*(3-2*fade);
+    // Max union avoids stacking dark patches where the masks overlap.
+    data.data[dst+3]=Math.max(pixels[src+3],chassisAlpha);
+  }
+  context.putImageData(data,0,0);
+  const canvas=document.createElement('canvas');canvas.width=canvas.height=resolution;const blur=canvas.getContext('2d');blur.filter='blur(2px)';blur.drawImage(raw,0,0);
+  const texture=new THREE.CanvasTexture(canvas),shade=new THREE.Mesh(new THREE.PlaneGeometry(width,depth),new THREE.MeshBasicMaterial({map:texture,transparent:true,depthWrite:false,toneMapped:false,opacity:.78}));
+  shade.rotation.x=-Math.PI/2;shade.position.set(center.x,.188,center.z);shade.renderOrder=1;shade.userData.role='vehicle-contact-shade';scene.add(shade);freezeStaticTransforms(shade);
+  const old=cars[index].userData.contactShade;if(old){scene.remove(old);old.geometry.dispose();old.material.map?.dispose();old.material.dispose()}
+  cars[index].userData.contactShade=shade;
+}
+
 // Porsche Museum interiors are intentionally quiet: broad, nearly seamless white surfaces,
 // a pale slab floor, and only a few charcoal metal joints. The previous stone/wood/bronze
 // maps read as visual static at walking height and competed with the collection.
@@ -459,7 +533,6 @@ const assetAttributions=[
   '<a href="https://sketchfab.com/3d-models/porsche-911-rauh-welt-free-0e1f5e1c0ddc4c3f88b8484461146a79" target="_blank" rel="noopener">Porsche 911 RAUH-Welt [FREE]</a> by autoNgraphic · CC BY 4.0'
 ];
 buildCollectionIndex();
-function base64Buffer(value){const raw=atob(value),bytes=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);return bytes.buffer}
 // r126 cannot select arbitrary glTF UV channels per texture. The patched loader
 // records each authored channel; this pass makes an explicit, conservative choice
 // for it. Materials whose primary paint/albedo texture is wholly authored on UV1
@@ -675,9 +748,33 @@ function stabilizeVehicleMaterials(vehicle,index){
         material.emissiveIntensity=0;if('clearcoat'in material)material.clearcoat=0;
         material.needsUpdate=true;
       }
+      // The 718 source uses one pale shared finish for both wheel faces and
+      // tyre sidewalls. Separate the two authored material slots here so the
+      // small race car reads as rubber on machined alloy rather than chalk.
+      if(index===0&&material.name==='Vehicle_Exterior_mm_wheel'){
+        // Keep the authored spoke/disc map; its dark pixels need a brighter
+        // neutral base and a softer alloy response to avoid reading as black.
+        material.color.set('#ffffff').convertSRGBToLinear();
+        material.metalness=.64;material.roughness=.34;material.envMapIntensity=.82;
+        material.emissiveIntensity=0;material.needsUpdate=true;
+      }
+      if(index===0&&material.name==='Vehicle_Exterior_mm_tyre'){
+        material.color.set('#242827').convertSRGBToLinear();
+        material.metalness=.04;material.roughness=.78;material.envMapIntensity=.22;
+        material.emissiveIntensity=0;material.needsUpdate=true;
+      }
       const redLamp=/red[_ -]?glass|rojo|(?:^|_)r_glass|brake[_ -]?light|brakelight|rear[_ -]?lamps?|rearlamps?|tail[_ -]?lamps?|taillights?|lightssss+/.test(name);
       const amberLamp=/orange[_ -]?glass|(?:^|_)o_glass|amber[_ -]?glass|indicators?|intermitente/.test(name);
       const windshield=!(index===7&&name==='glasssurr')&&/window|windshield|glass|vidri/.test(name)&&!redLamp&&!amberLamp&&!/headlight|light[_ -]?glass|brake|rear[_ -]?lamp|tail[_ -]?lamp/.test(name);
+      if(index===4&&material.name==='Porsche_Canepa959_1988Window_Material'){
+        // This glass has no transmission map in the legacy runtime. A slightly
+        // denser, cool-neutral surface gives the 959 a readable reflection and
+        // preserves the source cabin without making it look open to the air.
+        material.transparent=true;material.opacity=.64;material.depthWrite=false;material.side=THREE.FrontSide;
+        mesh.renderOrder=1;material.color.set('#82949a').convertSRGBToLinear();material.metalness=0;material.roughness=.055;material.envMapIntensity=1.08;
+        if('clearcoat'in material){material.clearcoat=.20;material.clearcoatRoughness=.08}
+        material.emissive?.setRGB(0,0,0);material.emissiveIntensity=0;material.needsUpdate=true;return;
+      }
       if(redLamp){
         if(index===7&&name==='red_glass')calibrateCayenneRedGlass(mesh,material);
         else if(material.map)calibrateAuthoredLens(material,'red');
@@ -688,8 +785,8 @@ function stabilizeVehicleMaterials(vehicle,index){
       }else if(index===7&&name==='light_glass'){
         calibrateCayenneOuterLampGlass(mesh,material);
       }else if(windshield){
-        material.transparent=true;material.opacity=.32;material.depthWrite=false;material.side=THREE.DoubleSide;
-        mesh.renderOrder=1;material.vertexColors=false;material.color?.set('#3d5a62');material.metalness=.03;material.roughness=.12;material.needsUpdate=true;
+        material.transparent=true;material.opacity=.42;material.depthWrite=false;material.side=THREE.FrontSide;
+        mesh.renderOrder=1;material.vertexColors=false;material.color?.set('#a8b7b8').convertSRGBToLinear();material.metalness=0;material.roughness=.075;material.envMapIntensity=1.1;material.needsUpdate=true;
       }
     });
   });
@@ -699,34 +796,41 @@ function stabilizeVehicleMaterials(vehicle,index){
 // White lacquer needs headroom for highlights, while authored race-car atlases
 // retain their hue and decals with a modest, uniform reflectance adjustment.
 const vehiclePaintProfiles={
-  0:{match:/^Vehicle_Exterior_mm_ext$/,gain:.90,roughness:.16,environment:.66},
-  1:{match:/^Lack$/,color:'#b6251c',roughness:.16,environment:.62},
-  3:{match:/^body$/,gain:.96,roughness:.20,environment:.66},
-  4:{match:/Porsche_Canepa959_1988Paint_Material/i,gain:.90,metalness:0,roughness:.14,environment:.58},
-  5:{match:/GEOMETRYCARSKIN_SKIN2/i,color:'#b0b5ad',roughness:.24,environment:.42},
+  0:{match:/^Vehicle_Exterior_mm_ext$/,gain:.94,roughness:.19,environment:.76,clearcoat:.55,clearcoatRoughness:.12},
+  1:{match:/^Lack$/,color:'#b6251c',roughness:.24,environment:.62,clearcoat:.32},
+  3:{match:/^body$/,gain:.98,roughness:.20,environment:.76,clearcoat:.55,clearcoatRoughness:.12},
+  4:{match:/Porsche_Canepa959_1988Paint_Material/i,gain:.82,metalness:0,roughness:.24,environment:.70,clearcoat:.62},
+  5:{match:/GEOMETRYCARSKIN_SKIN2/i,color:'#b0b5ad',roughness:.26,environment:.62,clearcoat:.6},
   // User-selected Jet Green Metallic, a display interpretation of the 2011 color.
-  7:{match:/^CarPaint$/,color:'#28473a',metalness:.38,roughness:.25,environment:.62},
-  9:{match:/^PaletteMaterial003$/,gain:.88,roughness:.85,environment:.68}
+  7:{match:/^CarPaint$/,color:'#28473a',metalness:.24,roughness:.14,environment:.90,clearcoat:1,clearcoatRoughness:.045},
+  9:{match:/^PaletteMaterial003$/,gain:.93,roughness:.24,environment:.74,clearcoat:.58,clearcoatRoughness:.13},
+  8:{match:/^C1_Paint$/,roughness:.24,environment:.65,clearcoat:.62},
+  10:{match:/pPorsche_918SpyderRewardRecycled_2015Paint_Material1/,roughness:.22,environment:.65,clearcoat:.65},
+  11:{match:/porschePorsche_TaycanTurboGTReward_2025Paint_Material1/,roughness:.22,environment:.65,clearcoat:.65},
+  12:{match:/^remap$/,gain:.95,roughness:.28,environment:.65,clearcoat:.5}
 };
 function calibrateVehiclePaint(index,vehicle){
   const profile=vehiclePaintProfiles[index];if(!profile)return;
-  const seen=new Set();
-  vehicle.traverse(mesh=>{
-    if(!mesh.isMesh)return;
-    (Array.isArray(mesh.material)?mesh.material:[mesh.material]).forEach(material=>{
-      if(!material||seen.has(material.uuid)||!profile.match.test(material.name||''))return;
-      seen.add(material.uuid);
-      if(profile.color)material.color.set(profile.color).convertSRGBToLinear();
-      else material.color.multiplyScalar(profile.gain);
-      material.roughness=profile.roughness;
-      if(profile.metalness!==undefined)material.metalness=profile.metalness;
-      material.envMapIntensity=profile.environment;
-      // Body panels reflect the room; only the separate lamp materials emit light.
-      material.emissiveIntensity=0;
-      material.toneMapped=true;
-      material.needsUpdate=true;
-    });
-  });
+  const calibrated=new Map();
+  const tune=source=>{
+    if(!source||!profile.match.test(source.name||''))return source;
+    if(calibrated.has(source))return calibrated.get(source);
+    let material=source;
+    if(profile.clearcoat!==undefined&&!source.isMeshPhysicalMaterial){
+      material=new THREE.MeshPhysicalMaterial();
+      THREE.MeshStandardMaterial.prototype.copy.call(material,source);
+      material.defines={STANDARD:'',PHYSICAL:''};
+    }
+    if(profile.color)material.color.set(profile.color).convertSRGBToLinear();
+    else if(profile.gain!==undefined)material.color.multiplyScalar(profile.gain);
+    material.roughness=profile.roughness;
+    if(profile.metalness!==undefined)material.metalness=profile.metalness;
+    if(profile.clearcoat!==undefined){material.clearcoat=profile.clearcoat;material.clearcoatRoughness=profile.clearcoatRoughness??.13}
+    material.envMapIntensity=profile.environment;material.emissiveIntensity=0;
+    material.toneMapped=true;material.needsUpdate=true;calibrated.set(source,material);return material;
+  };
+  vehicle.traverse(mesh=>{if(mesh.isMesh)mesh.material=Array.isArray(mesh.material)?mesh.material.map(tune):tune(mesh.material)});
+  for(const [source,material]of calibrated)if(source!==material)source.dispose();
 }
 function calibrateCayenneHeadlamps(index,vehicle){
   if(index!==7)return;
@@ -734,7 +838,18 @@ function calibrateCayenneHeadlamps(index,vehicle){
     if(!mesh.isMesh)return;
     const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
     materials.forEach(material=>{
-      if(!material||(material.name||'').toLowerCase()!=='lights')return;
+      if(!material)return;
+      const name=(material.name||'').toLowerCase();
+      if(name==='light_ref'){
+        // The imported auxiliary lamp reflectors carried an emissive atlas.
+        // Keep their reflective hardware unlit while the vehicle is parked.
+        material.emissiveMap=null;material.emissive?.setRGB(0,0,0);material.emissiveIntensity=0;
+        material.color.set('#adb4b8').convertSRGBToLinear();
+        material.metalness=.92;material.roughness=.15;material.envMapIntensity=.80;
+        if('clearcoat'in material)material.clearcoat=0;
+        material.needsUpdate=true;return;
+      }
+      if(name!=='lights')return;
       // This one source material is shared by the front projectors and the
       // rear lamp facets. Removing the green atlas is necessary, but imposing
       // a warm-white glow here is what bleaches the rear lamp through its lens.
@@ -747,20 +862,57 @@ function calibrateCayenneHeadlamps(index,vehicle){
       material.roughness=.25;
       if('envMapIntensity'in material)material.envMapIntensity=.28;
       material.needsUpdate=true;
+      // One authored primitive spans the front and rear lamps. Split its draw
+      // groups at the vehicle midpoint so only the headlamp bowls become chrome.
+      if(!Array.isArray(mesh.material)&&mesh.geometry.index){
+        vehicle.updateMatrixWorld(true);
+        const inverse=new THREE.Matrix4().copy(vehicle.matrixWorld).invert();
+        const relative=new THREE.Matrix4().multiplyMatrices(inverse,mesh.matrixWorld);
+        const positions=mesh.geometry.attributes.position,indices=mesh.geometry.index,point=new THREE.Vector3();
+        const depths=new Float32Array(positions.count);let min=Infinity,max=-Infinity;
+        for(let i=0;i<positions.count;i++){point.fromBufferAttribute(positions,i).applyMatrix4(relative);depths[i]=point.z;min=Math.min(min,point.z);max=Math.max(max,point.z)}
+        const split=(min+max)/2,front=[],rear=[];
+        for(let i=0;i<indices.count;i+=3){const a=indices.getX(i),b=indices.getX(i+1),c=indices.getX(i+2);((depths[a]+depths[b]+depths[c])/3>split?front:rear).push(a,b,c)}
+        if(front.length&&rear.length){
+          const geometry=mesh.geometry.clone();geometry.setIndex(rear.concat(front));geometry.clearGroups();geometry.addGroup(0,rear.length,0);geometry.addGroup(rear.length,front.length,1);
+          const reflector=material.clone();reflector.name='Cayenne headlamp reflectors';reflector.color.set('#8d979d').convertSRGBToLinear();reflector.metalness=.90;reflector.roughness=.16;reflector.envMapIntensity=.85;
+          mesh.geometry=geometry;mesh.material=[material,reflector];mesh.userData.headlampTriangles=front.length/3;
+        }
+      }
     });
   });
+}
+
+// Keep valid authored cabin and wheel-well geometry. Large local-coordinate
+// bounds are not defects when parent transforms scale them back into the car.
+function restore930Geometry(vehicle){
+  const floor=vehicle.getObjectByName('Object_140');if(floor?.parent)floor.parent.remove(floor);
+  vehicle.updateMatrixWorld(true);
+  const coat=vehicle.getObjectByName('Object_32');if(!coat)return;
+  const envelope=preciseModelBounds(coat).expandByScalar(.06),point=new THREE.Vector3();
+  const repairs=[];
+  // Only these two parts contain genuine spikes above the roof after transforms.
+  for(const name of ['Object_49','Object_76']){
+    const mesh=vehicle.getObjectByName(name),source=mesh?.geometry;if(!source?.index)continue;
+    const positions=source.attributes.position,inside=new Uint8Array(positions.count),kept=[];
+    for(let i=0;i<positions.count;i++){point.fromBufferAttribute(positions,i).applyMatrix4(mesh.matrixWorld);inside[i]=envelope.containsPoint(point)?1:0}
+    for(let i=0;i<source.index.count;i+=3){const a=source.index.getX(i),b=source.index.getX(i+1),c=source.index.getX(i+2);if(inside[a]&&inside[b]&&inside[c])kept.push(a,b,c)}
+    if(!kept.length||kept.length===source.index.count)continue;
+    const filtered=source.clone();filtered.setIndex(kept);
+    // Compact unused outlier vertices too: physical fitting measures positions.
+    mesh.geometry=filtered.toNonIndexed();filtered.dispose();mesh.geometry.computeBoundingBox();mesh.geometry.computeBoundingSphere();
+    repairs.push({name,keptTriangles:kept.length/3,removedTriangles:(source.index.count-kept.length)/3});
+  }
+  const lining=vehicle.getObjectByName('Object_55');
+  if(lining?.material){lining.material=lining.material.clone();lining.material.side=THREE.BackSide}
+  vehicle.userData.geometryRepairs=repairs;
 }
 
 function placeAuthenticVehicle(index,gltf,targetLength){
   const placeholder=cars[index];
   try{
     const vehicle=gltf.scene,anchor=new THREE.Group();
-    // The downloaded 930 has a handful of malformed exporter shards. They are
-    // duplicate body/chrome fragments with absurd 9–244 m bounds; treating
-    // those as vehicle geometry reduces the real 4.29 m car to a model-car.
-    // The intact, overlapping body meshes remain, so remove only the bad
-    // shards before *any* centering or physical-dimension calculation.
-    if(index===2){['Plane.007_28','Object_76','Object_49','Object_55','Object_68','Object_34','Object_61','Plane.015_62','Object_140'].forEach(name=>{const stray=vehicle.getObjectByName(name)||vehicle.getObjectByName(name.replace(/\./g,''));if(stray?.parent)stray.parent.remove(stray)})}
+    if(index===2)restore930Geometry(vehicle);
     vehicle.visible=true;
     vehicle.traverse(object=>{
       if(!object.isMesh)return;
@@ -774,6 +926,7 @@ function placeAuthenticVehicle(index,gltf,targetLength){
     stabilizeVehicleMaterials(vehicle,index);
     calibrateCarreraGtLamps(index,vehicle);
     calibrateVehiclePaint(index,vehicle);
+    applyVehicleReflections(vehicle);
     calibrateCayenneHeadlamps(index,vehicle);
     if(index===7)calibrateCayenneMetalwork(vehicle);
     if(index===1)calibrateEarly911Wheels(vehicle);
@@ -789,12 +942,12 @@ function placeAuthenticVehicle(index,gltf,targetLength){
   }catch(error){console.error('Vehicle placement failed: '+error.message,error)}
 }
 // [width, height, length] in metres. Width allows for the model's exterior mirrors and aero, where present.
-// The 930 includes an oversized authored shadow plane (Plane.015_62), removed
+// The 930 includes an oversized authored shadow plane (Object_140), removed
 // before measuring. Fit its remaining body uniformly by length: independent axis
 // targets would distort the intact Turbo silhouette, wheel track, and tyre profiles.
 // All vehicles now use uniform length fitting; width/height stay source-proportional.
 // This also removes the roughly 7% width squeeze on the 917K and GT2.
-const physicalDimensions={0:[1.55,.95,3.90],1:[1.61,1.32,4.163],2:[2.15,1.31,4.29],3:[2.00,.94,4.29],4:[1.86,1.28,4.26],5:[1.98,1.23,4.342],6:[2.07,1.38,4.75],7:[2.16,1.705,4.846],8:[2.00,1.166,4.613],9:[1.88,1.29,4.56],10:[2.06,1.167,4.645],11:[2.144,1.378,4.968],12:[1.89,1.29,4.30]};
+const physicalDimensions={0:[1.510,.880,3.600],1:[1.61,1.32,4.163],2:[2.15,1.31,4.29],3:[1.980,.940,4.120],4:[1.86,1.28,4.26],5:[1.98,1.23,4.342],6:[2.07,1.38,4.75],7:[2.16,1.705,4.846],8:[2.00,1.166,4.613],9:[1.855,1.270,4.245],10:[2.06,1.167,4.645],11:[2.144,1.378,4.968],12:[1.89,1.29,4.30]};
 // Rotated mesh AABBs overestimate visible size. Measure the vertices once during
 // queued preparation; no bounds traversal is performed while the visitor walks.
 function preciseModelBounds(root){
@@ -818,12 +971,30 @@ function fitPhysicalDimensions(index){
   const sourceBox=preciseModelBounds(anchor),sourceSize=sourceBox.getSize(new THREE.Vector3());
   const targetLength=base[2]*vehiclePresentationScale;
   if(!Number.isFinite(sourceSize.z)||sourceSize.z<=0)return;
-  const fit=targetLength/sourceSize.z;
+  let fit=targetLength/sourceSize.z,sourceWheelbase=0;
+  // The RWB wing extends beyond the body. Fit its axle spacing instead of
+  // shrinking the chassis to force that entire aero envelope into a stock length.
+  // Porsche's 964/993 reference wheelbase is 2.272 m; retain the shared display scale.
+  if(index===12){
+    const tyres=anchor.getObjectByName('wheel_tyre_0'),positions=tyres?.geometry?.attributes?.position;
+    if(positions){
+      const tyreBounds=preciseModelBounds(tyres),split=(tyreBounds.min.z+tyreBounds.max.z)/2;
+      const ends=[Infinity,-Infinity,Infinity,-Infinity],point=new THREE.Vector3();
+      for(let vertex=0;vertex<positions.count;vertex++){
+        point.fromBufferAttribute(positions,vertex).applyMatrix4(tyres.matrixWorld);
+        const offset=point.z<split?0:2;
+        ends[offset]=Math.min(ends[offset],point.z);ends[offset+1]=Math.max(ends[offset+1],point.z);
+      }
+      sourceWheelbase=(ends[2]+ends[3]-ends[0]-ends[1])/2;
+      if(Number.isFinite(sourceWheelbase)&&sourceWheelbase>0)fit=2.272*vehiclePresentationScale/sourceWheelbase;
+    }
+  }
   anchor.scale.multiplyScalar(fit);anchor.rotation.y=yaw;
   const fittedBox=preciseModelBounds(anchor),center=fittedBox.getCenter(new THREE.Vector3());
   anchor.position.set(placeholder.position.x-center.x,placeholder.position.y-fittedBox.min.y+.19,placeholder.position.z-center.z);
   anchor.updateMatrixWorld(true);
-  anchor.userData.fittedDimensions={length:targetLength,width:sourceSize.x*fit,height:sourceSize.y*fit,nominalLength:base[2],presentationScale:vehiclePresentationScale};
+  anchor.userData.fittedDimensions={length:sourceSize.z*fit,width:sourceSize.x*fit,height:sourceSize.y*fit,nominalLength:base[2],presentationScale:vehiclePresentationScale};
+  if(sourceWheelbase>0)Object.assign(anchor.userData.fittedDimensions,{scaleReference:'wheelbase',nominalWheelbase:2.272,wheelbase:sourceWheelbase*fit});
 }
 
 // Several source assets represent a wheel, brake, or interior assembly as hundreds
@@ -872,24 +1043,6 @@ function batchRepeatedStaticMeshes(root,minMeshes=16){
   });
   return reduced;
 }
-// Shared, low-resolution contact shading grounds the cars on their display
-// caps. The footprint stays inside each cap; the preserved museum floor is untouched.
-function addVehicleContactShade(index){
-  if(cars[index].userData.contactShade)return;
-  if(!addVehicleContactShade.material){
-    const canvas=document.createElement('canvas');canvas.width=canvas.height=128;
-    const context=canvas.getContext('2d'),gradient=context.createRadialGradient(64,64,8,64,64,62);
-    gradient.addColorStop(0,'rgba(0,0,0,.8)');gradient.addColorStop(.48,'rgba(0,0,0,.52)');gradient.addColorStop(1,'rgba(0,0,0,0)');
-    context.fillStyle=gradient;context.fillRect(0,0,128,128);
-    const texture=new THREE.CanvasTexture(canvas);
-    addVehicleContactShade.material=new THREE.MeshBasicMaterial({map:texture,transparent:true,opacity:.38,depthWrite:false,toneMapped:false});
-  }
-  const dims=physicalDimensions[index],shade=new THREE.Mesh(new THREE.PlaneGeometry(dims[0]*vehiclePresentationScale*.86,dims[2]*vehiclePresentationScale*.86),addVehicleContactShade.material);
-  shade.rotation.set(-Math.PI/2,0,-cars[index].rotation.y);shade.position.set(cars[index].position.x,.188,cars[index].position.z);
-  shade.userData.role='vehicle-contact-shade';shade.renderOrder=1;scene.add(shade);freezeStaticTransforms(shade);cars[index].userData.contactShade=shade;
-}
-
-
 // The collection is deliberately static: visitor movement changes only the camera.
 // Freeze completed asset transforms so Three.js does not recalculate every node in
 // every high-detail glTF on each frame. Visibility changes still work normally.
@@ -935,21 +1088,101 @@ function warmModelResources(root){
   modelWarmCamera.position.copy(center).add(new THREE.Vector3(span,span*.45,span*1.6));modelWarmCamera.lookAt(center);
   const previous=renderer.getRenderTarget();renderer.setRenderTarget(modelWarmTarget);renderer.render(scene,modelWarmCamera);renderer.setRenderTarget(previous);
 }
-const museumJobs=[],museumJobMetrics=[];
-let museumJobBusy=false,museumJobTimer=null;
+// Downloads can make progress in parallel without touching Three.js.  Parsing,
+// material work, and GPU preparation remain in this one-job lane so walking is
+// never interrupted by several glTF parses on the main thread.
+const museumJobs=[],museumDownloadQueue=[],museumJobMetrics=[],museumSceneJobs=[],museumLatestSceneJobs=new Map();
+const museumDownloadConcurrency=2,museumBufferedDownloadLimit=2,museumFetchTimeoutMs=45000,museumFetchAttempts=2,museumSceneAssetCount=16;
+let museumJobBusy=false,museumJobTimer=null,museumDownloadsActive=0,museumProgressTimer=null;
 function museumMayPrepare(){return !document.querySelector('#intro').classList.contains('off')||visitorIsStationary()}
+function formatMuseumBytes(value){return value>=1048576?(value/1048576).toFixed(value>=10485760?0:1)+' MB':Math.ceil(value/1024)+' KB'}
+function requestCollectionProgress(){
+  if(museumProgressTimer!==null)return;
+  museumProgressTimer=setTimeout(()=>{museumProgressTimer=null;updateCollectionProgress()},120);
+}
 function updateCollectionProgress(){
-  const completed=authenticLoadMetrics.filter(item=>item.ok).length;
-  const settled=authenticLoadState.size===13&&[...authenticLoadState.values()].every(item=>['ready','failed'].includes(item.status));
-  const ready=settled&&!museumJobBusy&&!museumJobs.length;
-  const button=document.querySelector('#begin'),status=document.querySelector('#collection-progress');
-  button.disabled=!ready;button.textContent=ready?'Enter the museum':'Preparing the collection';
-  document.querySelector('#guided').disabled=!ready;
+  const states=[...authenticLoadState.values()],completed=states.filter(item=>item.status==='ready').length;
+  const sceneJobs=[...museumLatestSceneJobs.values()],failedJobs=sceneJobs.filter(job=>job.state==='failed'),sceneFailures=failedJobs.length;
+  const missingNames=failedJobs.map(job=>Number.isInteger(job.spec.exhibitIndex)?displayVehicleNames[job.spec.exhibitIndex]:({PORSCHE_MOTOR_1967_BASE64:'flat-six engine showcase',PORSCHE_WORDMARK_3DS_BASE64:'entrance sign',PORSCHE_EMBLEM_BASE64:'wall crest'}[job.spec.id]||'gallery item'));
+  const sceneSettled=sceneJobs.length===museumSceneAssetCount&&sceneJobs.every(job=>['ready','failed'].includes(job.state));
+  const ready=sceneSettled&&!museumJobBusy&&!museumJobs.length;
+  const downloaded=sceneJobs.filter(job=>['downloaded','preparing','ready'].includes(job.state)).length;
+  const downloading=sceneJobs.filter(job=>job.state==='downloading');
+  const loadedBytes=downloading.reduce((total,job)=>total+(job.downloadedBytes||0),0);
+  const expectedBytes=downloading.reduce((total,job)=>total+(job.downloadTotal||0),0);
+  const button=document.querySelector('#begin'),status=document.querySelector('#collection-progress'),detail=document.querySelector('#collection-detail'),retry=document.querySelector('#retry-assets');
+  button.disabled=!ready;button.textContent=ready?(sceneFailures?'Enter available exhibits':'Enter the museum'):'Preparing the collection';
+  document.querySelector('#guided').disabled=!ready||sceneFailures>0;
   map.inert=introIsVisible();
-  status.textContent=ready?(completed===13?'13 exhibits ready · WASD to walk · E to discover':'Some exhibits could not load. Select their chapter to retry.'):`Preparing the collection · ${completed} / 13`;
+  if(ready)status.textContent=sceneFailures?`${completed} of 13 vehicles ready · ${sceneFailures} gallery item${sceneFailures===1?'':'s'} unavailable`:'13 exhibits ready · WASD to walk · E to discover';
+  else if(downloading.length)status.textContent=`Downloading ${downloaded} of ${museumSceneAssetCount} collection pieces${expectedBytes?` · ${formatMuseumBytes(loadedBytes)} / ${formatMuseumBytes(expectedBytes)}`:''}`;
+  else status.textContent=`Preparing exhibits · ${completed} of 13 ready`;
+  detail.textContent=sceneFailures?`Unable to load: ${missingNames.join(', ')}. Retry now, or explore the available exhibits.`:`${downloaded} of ${museumSceneAssetCount} collection pieces downloaded · ${completed} of 13 exhibits prepared.`;
+  retry.hidden=sceneFailures===0;
 }
 function queueMuseumAsset(spec,onLoad){
-  return new Promise(resolve=>{museumJobs.push({spec,onLoad,resolve});scheduleMuseumJob()});
+  return new Promise(resolve=>{
+    const job={spec,onLoad,resolve,state:'queued',downloadedBytes:0,downloadTotal:0,downloadAttempts:0,buffer:null};
+    museumJobs.push(job);museumDownloadQueue.push(job);museumSceneJobs.push(job);museumLatestSceneJobs.set(spec.id,job);pumpMuseumDownloads();scheduleMuseumJob();requestCollectionProgress();
+  });
+}
+async function readMuseumResponse(response,onProgress){
+  const total=Number(response.headers.get('content-length'))||0;
+  if(!response.body?.getReader){const buffer=await response.arrayBuffer();onProgress(buffer.byteLength,total||buffer.byteLength);return buffer}
+  const reader=response.body.getReader(),chunks=[];let loaded=0;
+  while(true){const {done,value}=await reader.read();if(done)break;chunks.push(value);loaded+=value.byteLength;onProgress(loaded,total)}
+  const bytes=new Uint8Array(loaded);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength}
+  return bytes.buffer;
+}
+async function fetchMuseumResponse(url,onProgress){
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),museumFetchTimeoutMs);
+  try{
+    const response=await fetch(url,{signal:controller.signal,cache:'force-cache'});
+    if(!response.ok)return {response,buffer:null};
+    return {response,buffer:await readMuseumResponse(response,onProgress)};
+  }finally{clearTimeout(timer)}
+}
+async function unpackMuseumBinary(buffer,compressed){
+  const header=new Uint8Array(buffer,0,Math.min(2,buffer.byteLength));
+  if(header[0]===0x1f&&header[1]===0x8b){
+    if(!compressed)throw new Error('Compressed model requires browser decompression');
+    return new Response(new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+  }
+  return buffer;
+}
+async function fetchMuseumBinary(source,onProgress){
+  // A compressed binary avoids evaluating megabytes of Base64 JavaScript.
+  // The browser handles streaming decompression; older browsers use the raw GLB.
+  const compressed=typeof DecompressionStream==='function';
+  const primary=compressed?source+'.gz':source;
+  try{
+    const result=await fetchMuseumResponse(primary,onProgress);
+    if(!result.response.ok)throw new Error('Asset unavailable: '+primary+' ('+result.response.status+')');
+    return await unpackMuseumBinary(result.buffer,compressed);
+  }catch(compressedError){
+    if(!compressed)throw compressedError;
+    const fallback=await fetchMuseumResponse(source,onProgress);
+    if(!fallback.response.ok)throw new Error('Asset unavailable: '+source+' ('+fallback.response.status+'); compressed attempt failed: '+compressedError.message);
+    return unpackMuseumBinary(fallback.buffer,true);
+  }
+}
+function pendingMuseumBuffers(){return [...museumLatestSceneJobs.values()].filter(job=>['downloading','downloaded','preparing'].includes(job.state)).length}
+function pumpMuseumDownloads(){
+  while(museumDownloadsActive<museumDownloadConcurrency&&pendingMuseumBuffers()<museumBufferedDownloadLimit){
+    const job=museumDownloadQueue.find(candidate=>candidate.state==='queued');
+    if(!job)return;
+    museumDownloadsActive++;job.state='downloading';job.downloadAttempts++;requestCollectionProgress();
+    fetchMuseumBinary(job.spec.source,(loaded,total)=>{job.downloadedBytes=loaded;job.downloadTotal=total;requestCollectionProgress()})
+      .then(buffer=>{job.buffer=buffer;job.downloadedBytes=buffer.byteLength;job.downloadTotal=buffer.byteLength;job.state='downloaded'})
+      .catch(error=>{
+        if(job.downloadAttempts<museumFetchAttempts){job.state='queued';requestCollectionProgress();return}
+        job.state='failed';job.error=String(error);console.warn('Museum asset download failed',job.spec.source,error);
+        const queuedIndex=museumJobs.indexOf(job);
+        if(queuedIndex!==-1)museumJobs.splice(queuedIndex,1);
+        job.resolve(false);
+      })
+      .finally(()=>{museumDownloadsActive--;pumpMuseumDownloads();scheduleMuseumJob();updateCollectionProgress()});
+  }
 }
 function scheduleMuseumJob(){
   if(museumJobBusy||museumJobTimer!==null)return;
@@ -957,29 +1190,23 @@ function scheduleMuseumJob(){
     museumJobTimer=null;
     if(!museumJobs.length){updateCollectionProgress();return}
     if(!museumMayPrepare()){scheduleMuseumJob();return}
+    const first=museumJobs[0];
+    if(first.state==='failed'){
+      museumJobs.shift();first.resolve(false);updateCollectionProgress();scheduleMuseumJob();return;
+    }
+    if(first.state!=='downloaded'){pumpMuseumDownloads();scheduleMuseumJob();return}
     museumJobBusy=true;
-    const job=museumJobs.shift(),started=performance.now();
-    let element=null,ok=false;
+    const job=museumJobs.shift(),started=performance.now(),buffer=job.buffer;
+    job.buffer=null;job.state='preparing';
+    let ok=false;
     try{
-      if(job.spec.source&&!window[job.spec.global])await new Promise((resolve,reject)=>{
-        element=document.createElement('script');element.src=job.spec.source;
-        element.onload=resolve;element.onerror=()=>reject(new Error('Asset unavailable: '+job.spec.source));document.head.append(element);
-      });
-      // A visitor can start moving during fetch. Recheck before base64 decode,
-      // parsing, texture upload preparation, and placement begin.
-      while(!museumMayPrepare())await new Promise(resolve=>setTimeout(resolve,160));
       const parseStarted=performance.now(),quiet=visitorIsStationary(),intro=introIsVisible();
-      const payload=job.spec.global?window[job.spec.global]:job.spec.payload;
-      if(!payload)throw new Error('Empty museum asset');
-      const gltf=await new Promise((resolve,reject)=>new THREE.GLTFLoader().parse(base64Buffer(payload),'',resolve,reject));
+      const gltf=await new Promise((resolve,reject)=>new THREE.GLTFLoader().parse(buffer,'',resolve,reject));
       limitAssetTextures(gltf.scene);
       job.onLoad(gltf);syncMuseumLightSources();renderer.compile(scene,camera);warmModelResources(gltf.scene);ok=true;
-      museumJobMetrics.push({asset:job.spec.global||'asset',ok,parseStarted,intro,quiet,elapsed:Math.round(performance.now()-started)});
-    }catch(error){console.warn('Museum asset failed',job.spec.source||job.spec.global,error);museumJobMetrics.push({asset:job.spec.global,ok:false,error:String(error)})}
-    finally{
-      if(job.spec.global)delete window[job.spec.global];element?.remove();
-      job.resolve(ok);museumJobBusy=false;updateCollectionProgress();scheduleMuseumJob();
-    }
+      museumJobMetrics.push({asset:job.spec.id,ok,parseStarted,intro,quiet,elapsed:Math.round(performance.now()-started)});
+    }catch(error){console.warn('Museum asset failed',job.spec.source,error);museumJobMetrics.push({asset:job.spec.id,ok:false,error:String(error)})}
+    finally{job.state=ok?'ready':'failed';job.resolve(ok);museumJobBusy=false;pumpMuseumDownloads();updateCollectionProgress();scheduleMuseumJob()}
   },180);
 }
 const limitedTextures=new WeakSet(),limitedImages=new WeakMap();
@@ -996,11 +1223,79 @@ function limitTexture(texture,maxSize=1024){
 }
 function limitAssetTextures(root){root.traverse(object=>{if(!object.isMesh)return;for(const material of (Array.isArray(object.material)?object.material:[object.material])){if(material)for(const value of Object.values(material))if(value?.isTexture)limitTexture(value)}})}
 
+// The supplied 930 has open spoke rims without a visible brake assembly.
+// Add quiet backing hardware in each authored rim's frame, including its steering angle.
+function add930WheelDetail(anchor){
+  if(!anchor||anchor.userData.wheelDetail)return;
+  const rims=['Object_8','Object_11','Object_88','Object_117'].map(name=>anchor.getObjectByName(name));
+  if(rims.some(rim=>!rim?.isMesh))return;
+  const finish=(color,metalness,roughness)=>new THREE.MeshStandardMaterial({color:new THREE.Color(color).convertSRGBToLinear(),metalness,roughness,envMap:vehicleEnvironment,envMapIntensity:.55});
+  const rotorMaterial=finish('#747a77',.72,.56),hubMaterial=finish('#363c39',.5,.66),wellMaterial=finish('#161a18',.08,.9);
+  const discGeometry=new THREE.CylinderGeometry(1,1,1,48);discGeometry.rotateZ(Math.PI/2);
+  const barrelGeometry=new THREE.CylinderGeometry(1,1,1,48,1,true);barrelGeometry.rotateZ(Math.PI/2);
+  wellMaterial.side=THREE.DoubleSide;
+  const caliperShape=new THREE.Shape();caliperShape.moveTo(-.35,-.5);caliperShape.lineTo(.35,-.5);caliperShape.lineTo(.35,.5);caliperShape.lineTo(-.35,.5);caliperShape.closePath();
+  const caliperGeometry=new THREE.ExtrudeGeometry(caliperShape,{depth:.35,bevelEnabled:true,bevelThickness:.06,bevelSize:.08,bevelSegments:1,steps:1});caliperGeometry.center();caliperGeometry.rotateY(Math.PI/2);
+  anchor.updateMatrixWorld(true);const inverse=new THREE.Matrix4().copy(anchor.matrixWorld).invert();
+  for(const rim of rims){
+    rim.geometry.computeBoundingBox();const box=rim.geometry.boundingBox,center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());
+    const radius=Math.min(size.y,size.z)/2,relative=new THREE.Matrix4().multiplyMatrices(inverse,rim.matrixWorld);
+    const rootCenter=center.clone().applyMatrix4(relative),outward=Math.sign(rootCenter.x*relative.elements[0]);
+    const group=new THREE.Group();group.name='museum-930-brake-'+rim.name;group.position.copy(center);rim.add(group);
+    const add=(name,geometry,material,x,sx,sy,sz)=>{const mesh=new THREE.Mesh(geometry,material);mesh.name=name;mesh.position.x=x;mesh.scale.set(sx,sy,sz);group.add(mesh);return mesh};
+    // All parts stay behind the rim face. Dark inboard surfaces stop the
+    // opposite side of the car showing through; the disc remains distinct.
+    const rotorX=-outward*size.x*.20;
+    add('inner-wheel-backing',discGeometry,wellMaterial,-outward*size.x*.44,radius*.025,radius*.91,radius*.91);
+    add('inner-wheel-barrel',barrelGeometry,wellMaterial,-outward*size.x*.10,size.x*.66,radius*.91,radius*.91);
+    add('brake-disc',discGeometry,rotorMaterial,rotorX,radius*.055,radius*.70,radius*.70);
+    add('brake-hub',discGeometry,hubMaterial,rotorX+outward*radius*.035,radius*.10,radius*.29,radius*.29);
+    const caliper=add('brake-caliper',caliperGeometry,hubMaterial,rotorX+outward*radius*.018,radius*.40,radius*.55,radius*.35);caliper.position.z=radius*.60;
+  }
+  anchor.userData.wheelDetail={wheels:rims.length};
+}
+
+// Modest cabin detail for the exterior-view asset; all dimensions below are metres.
+function add930CabinDetail(anchor){
+  if(!anchor||anchor.userData.cabinDetail)return;
+  anchor.updateMatrixWorld(true);const inverse=new THREE.Matrix4().copy(anchor.matrixWorld).invert();
+  const wheelCenter=name=>{const m=anchor.getObjectByName(name);return m.geometry.boundingBox.getCenter(new THREE.Vector3()).applyMatrix4(m.matrixWorld).applyMatrix4(inverse)};
+  const front=wheelCenter('Object_11').z,rear=wheelCenter('Object_8').z,span=front-rear,unit=1/anchor.scale.x;
+  const floor=(.19-anchor.position.y)/anchor.scale.y,seatZ=rear+span*.47;
+  const cabin=new THREE.Group();cabin.name='museum-930-cabin';anchor.add(cabin);
+  const leather=new THREE.MeshStandardMaterial({color:new THREE.Color('#252a27').convertSRGBToLinear(),roughness:.68,metalness:.02,envMap:vehicleEnvironment,envMapIntensity:.3});
+  const trim=new THREE.MeshStandardMaterial({color:new THREE.Color('#161b18').convertSRGBToLinear(),roughness:.72,metalness:.08,envMap:vehicleEnvironment,envMapIntensity:.3});
+  const rounded=(w,h,d,r)=>{const shape=new THREE.Shape();shape.moveTo(-w/2+r,-h/2+r);shape.lineTo(w/2-r,-h/2+r);shape.lineTo(w/2-r,h/2-r);shape.lineTo(-w/2+r,h/2-r);shape.closePath();const g=new THREE.ExtrudeGeometry(shape,{depth:d-2*r,bevelEnabled:true,bevelSize:r,bevelThickness:r,bevelSegments:3,steps:1});g.center();return g};
+  const cushion=rounded(.49,.14,.49,.055),head=rounded(.27,.19,.14,.055);
+  const seatShape=new THREE.Shape();seatShape.moveTo(-.17,-.30);seatShape.lineTo(.17,-.30);seatShape.quadraticCurveTo(.22,-.30,.22,-.22);seatShape.lineTo(.23,.17);seatShape.quadraticCurveTo(.23,.29,.15,.30);seatShape.lineTo(-.15,.30);seatShape.quadraticCurveTo(-.23,.29,-.23,.17);seatShape.lineTo(-.22,-.22);seatShape.quadraticCurveTo(-.22,-.30,-.17,-.30);
+  const back=new THREE.ExtrudeGeometry(seatShape,{depth:.08,bevelEnabled:true,bevelSize:.025,bevelThickness:.025,bevelSegments:3,steps:1});back.center();
+  const add=(name,geometry,material,x,y,z)=>{const m=new THREE.Mesh(geometry,material);m.name=name;m.scale.setScalar(unit);m.position.set(x*unit,floor+y*unit,z);cabin.add(m);return m};
+  for(const side of[-1,1]){
+    add('front-seat-cushion',cushion,leather,side*.40,.32,seatZ);
+    const seat=add('front-seat-back',back,leather,side*.40,.65,seatZ-.20*unit);seat.rotation.x=-.13;
+    add('front-seat-headrest',head,leather,side*.40,.99,seatZ-.24*unit);
+    add('rear-seat-cushion',cushion,leather,side*.36,.36,rear+span*.10);
+  }
+  add('rear-seat-back',rounded(1.20,.34,.13,.03),leather,0,.56,rear-.10*unit);
+  add('dashboard',rounded(1.34,.16,.31,.035),trim,0,.80,rear+span*.66);
+  add('center-tunnel',rounded(.19,.22,.79,.035),trim,0,.26,seatZ+.12*unit);
+  const steering=add('steering-wheel',new THREE.TorusGeometry(.16,.016,8,40),trim,-.40,.82,seatZ+.36*unit);steering.rotation.x=.27;
+  const hub=add('steering-hub',new THREE.CylinderGeometry(.044,.044,.07,16),trim,-.40,.82,seatZ+.36*unit);hub.rotation.x=Math.PI/2+.27;
+  for(let i=0;i<3;i++){
+    const spoke=new THREE.Mesh(new THREE.BoxGeometry(.018,.13,.014),trim),angle=i*Math.PI*2/3;
+    spoke.position.set(Math.sin(angle)*.075,Math.cos(angle)*.075,0);spoke.rotation.z=-angle;steering.add(spoke);
+  }
+  anchor.userData.cabinDetail=true;
+}
+
 function loadAuthenticVehicle(index,spec,targetLength,onSettled){
-  queueMuseumAsset(spec,gltf=>{
+  queueMuseumAsset({...spec,exhibitIndex:index},gltf=>{
     placeAuthenticVehicle(index,gltf,targetLength);
-    fitPhysicalDimensions(index);addVehicleContactShade(index);
-    const anchor=cars[index].userData.authentic,batches=batchRepeatedStaticMeshes(anchor);
+    fitPhysicalDimensions(index);
+    const anchor=cars[index].userData.authentic;
+    if(index===2){add930WheelDetail(anchor);add930CabinDetail(anchor)}
+    const batches=batchRepeatedStaticMeshes(anchor);
+    bakeVehicleContact(index);
     if(batches)anchor.userData.batchedMeshes=batches;
     freezeStaticTransforms(anchor);
     if(!anchor)throw new Error('Vehicle placement failed');
@@ -1010,22 +1305,22 @@ function loadAuthenticVehicle(index,spec,targetLength,onSettled){
 // ratio inside proportional apertures. Source/provenance notes live in
 // assets/media/MANIFEST.md; the gallery itself carries no credit plaques.
 const chapterPhotos={
-  0:{file:'assets/media/lightness-finds-america.jpg',ratio:1.4326},
-  1:{file:'assets/media/architecture-endures.jpg',ratio:1.9048},
-  2:{file:'assets/media/architecture-endures.jpg',ratio:1.9048},
-  3:{file:'assets/media/le-mans-finally-won.webp',ratio:1.7778},
-  4:{file:'assets/media/959-laboratory.jpg',ratio:1.4981},
-  5:{file:'assets/media/boxster-sports-car-concept.jpeg',ratio:1.7734},
-  6:{file:'assets/media/gt1-homologation.jpg',ratio:1.7781},
-  7:{file:'assets/media/cayenne-strategy.png',ratio:1.9666},
-  8:{file:'assets/media/carrera-gt.jpg',ratio:1.3806},
-  9:{file:'assets/media/gt2-motorsport-road-legal.jpg',ratio:1.4993},
-  10:{file:'assets/media/918-spyder.jpg',ratio:1.7769},
-  11:{file:'assets/media/taycan-new-current.jpg',ratio:1.7769},
-  12:{file:'assets/media/singer-reauthored.jpg',ratio:1.7778}
+  0:{file:'assets/media/runtime/lightness-finds-america.jpg',ratio:1.4326},
+  1:{file:'assets/media/runtime/architecture-endures.jpg',ratio:1.9048},
+  2:{file:'assets/media/930-turbo-archive.jpg',ratio:1440/812},
+  3:{file:'assets/media/runtime/le-mans-finally-won.jpg',ratio:1.7778},
+  4:{file:'assets/media/runtime/959-laboratory.jpg',ratio:1.4981},
+  5:{file:'assets/media/runtime/boxster-sports-car-concept.jpg',ratio:1.7734},
+  6:{file:'assets/media/runtime/gt1-homologation.jpg',ratio:1.7781},
+  7:{file:'assets/media/runtime/cayenne-strategy.jpg',ratio:1.9666},
+  8:{file:'assets/media/runtime/carrera-gt.jpg',ratio:1.3806},
+  9:{file:'assets/media/runtime/gt2-motorsport-road-legal.jpg',ratio:1.4993},
+  10:{file:'assets/media/runtime/918-spyder.jpg',ratio:1.7769},
+  11:{file:'assets/media/runtime/taycan-new-current.jpg',ratio:1.7769},
+  12:{file:'assets/media/runtime/singer-reauthored.jpg',ratio:1.7778}
 };
 const localPhotoLoader=new THREE.TextureLoader();
-function localPhotoTexture(file){const texture=localPhotoLoader.load(window.PORSCHE_MEDIA_DATA?.[file]||file,loaded=>limitTexture(loaded,1600));texture.encoding=THREE.sRGBEncoding;texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());return texture}
+function localPhotoTexture(file){const texture=localPhotoLoader.load(file,loaded=>limitTexture(loaded,1600));texture.encoding=THREE.sRGBEncoding;texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());return texture}
 function mountArchivePhoto(index,side,z,frameMaterial,wallMaterial){
   const spec=chapterPhotos[index];if(!spec)return;
   // Every archive image now uses the same built-in wall-mount construction:
@@ -1115,7 +1410,7 @@ enrichGallery();
 function installArrivalWordmarkFrom3DS(){
   if(window.__arrivalWordmarkMounting)return;
   window.__arrivalWordmarkMounting=true;
-  queueMuseumAsset({source:'./models/porsche-wordmark/porsche-logo.js',global:'PORSCHE_WORDMARK_3DS_BASE64'},gltf=>{
+  queueMuseumAsset({source:'./models/porsche-wordmark/porsche-logo.glb',id:'PORSCHE_WORDMARK_3DS_BASE64'},gltf=>{
     const source=gltf.scene,sourceBounds=new THREE.Box3().setFromObject(source),sourceSize=sourceBounds.getSize(new THREE.Vector3());
     if(!Number.isFinite(sourceSize.x)||sourceSize.x<=0)return;
     const targetWidth=11.35,scale=targetWidth/sourceSize.x,sign=new THREE.Group();
@@ -1218,7 +1513,7 @@ function installArrivalWordmarkFrom3DS(){
 }
 installArrivalWordmarkFrom3DS();
 function installBackWallCrest(){
-  queueMuseumAsset({source:'./models/porsche_emblem/porsche_emblem.js',global:'PORSCHE_EMBLEM_BASE64'},gltf=>{
+  queueMuseumAsset({source:'./models/porsche_emblem/porsche_emblem.glb',id:'PORSCHE_EMBLEM_BASE64'},gltf=>{
     const crest=gltf.scene,mount=new THREE.Group();
     crest.traverse(object=>{if(!object.isMesh)return;object.castShadow=object.receiveShadow=true;object.frustumCulled=true;const materials=Array.isArray(object.material)?object.material:[object.material];materials.forEach(material=>{if(!material)return;if(material.map){material.map.encoding=THREE.sRGBEncoding;material.map.needsUpdate=true}material.side=THREE.DoubleSide;material.needsUpdate=true})});
     // The exported badge is Z-up and carries an approximately 54-degree source tilt.
@@ -1251,13 +1546,10 @@ museumDetails();
 // them keeps the per-frame scene update focused on the camera and currently visible cars.
 scene.traverse(object=>{if(object!==scene){object.updateMatrix();object.matrixAutoUpdate=false}});scene.updateMatrixWorld(true);
 
-const authenticAssets={0:{source:'./models/718_rsk/porsche_718_rsk.js',global:'PORSCHE_718_RSK_BASE64',length:3.9},3:{source:'./models/917k/porsche_917k.js',global:'PORSCHE_917K_BASE64',length:4.2},4:{source:'./models/p959/p959.js',global:'PORSCHE_959_BASE64',length:5.55},5:{source:'./models/boxster/porsche_boxster_spyder_2010.js',global:'PORSCHE_BOXSTER_SPIDER_BASE64',length:5.25},6:{source:'./models/gt1/gt1.js',global:'PORSCHE_GT1_BASE64',length:5.8},7:{source:'./models/cayenne/cayenne.js',global:'PORSCHE_CAYENNE_BASE64',length:5.8},8:{source:'./models/carrera_gt/carrera_gt.js',global:'PORSCHE_CARRERA_GT_BASE64',length:5.75},9:{source:'./models/gt2/porsche_911_gt2_993.js',global:'PORSCHE_911_GT2_993_BASE64',length:4.56},10:{source:'./models/918/porsche_918.js',global:'PORSCHE_918_BASE64',length:5.55},11:{source:'./models/taycan/taycan.js',global:'PORSCHE_TAYCAN_BASE64',length:5.7}};
-// glTF parsing is main-thread work in this Three.js build. The old proximity-driven
-// prefetch could begin a huge script evaluation and parse right beside a visitor,
-// causing the reported lock-up and flash. Assets now warm one at a time only while
-// the landing veil is present or after the visitor has been still for a short beat.
+const authenticAssets={0:{source:'./models/718_rsk/porsche_718_rsk.glb',id:'PORSCHE_718_RSK_BASE64',length:3.9},3:{source:'./models/917k/porsche_917k.glb',id:'PORSCHE_917K_BASE64',length:4.2},4:{source:'./models/p959/p959.glb',id:'PORSCHE_959_BASE64',length:5.55},5:{source:'./models/boxster/porsche_boxster_spyder_2010.glb',id:'PORSCHE_BOXSTER_SPIDER_BASE64',length:5.25},6:{source:'./models/gt1/gt1.glb',id:'PORSCHE_GT1_BASE64',length:5.8},7:{source:'./models/cayenne/cayenne.glb',id:'PORSCHE_CAYENNE_BASE64',length:5.8},8:{source:'./models/carrera_gt/carrera_gt.glb',id:'PORSCHE_CARRERA_GT_BASE64',length:5.75},9:{source:'./models/gt2/porsche_911_gt2_993.glb',id:'PORSCHE_911_GT2_993_BASE64',length:4.56},10:{source:'./models/918/porsche_918.glb',id:'PORSCHE_918_BASE64',length:5.55},11:{source:'./models/taycan/taycan.glb',id:'PORSCHE_TAYCAN_BASE64',length:5.7}};
+// Parse one binary model at a time, only during the intro or a stationary pause.
 const authenticRequests=new Set(),authenticLoadState=new Map(),authenticLoadMetrics=[];
-let lastVisitorMovementAt=performance.now(),backgroundWarmTimer=null,backgroundWarmIndex=0;
+let lastVisitorMovementAt=performance.now();
 function ensureAuthentic(i,reason='direct'){
   const asset=authenticAssets[i];
   if(!asset||authenticRequests.has(i))return authenticLoadState.get(i)?.promise;
@@ -1272,7 +1564,7 @@ function ensureAuthentic(i,reason='direct'){
     authenticLoadState.set(i,{status:ok?'ready':'failed',reason,started,elapsed,promise});
     if(!ok)authenticRequests.delete(i);
     authenticLoadMetrics.push({index:i,reason,ok,elapsed});settle(ok);
-    updateCollectionProgress();scheduleBackgroundWarmup(180);
+    updateCollectionProgress();
   });
   return promise;
 }
@@ -1282,30 +1574,29 @@ const introIsVisible=()=>!document.querySelector('#intro')?.classList.contains('
 // A brief quiet frame is enough to keep parsing off the movement path.  Do not
 // require a conspicuous multi-second idle before the next exhibit may prepare.
 const visitorIsStationary=()=>performance.now()-lastVisitorMovementAt>420;
-function mayWarmInBackground(){return introIsVisible()||visitorIsStationary()}
-function scheduleBackgroundWarmup(delay=320){
-  if(backgroundWarmTimer!==null)return;
-  backgroundWarmTimer=window.setTimeout(()=>{
-    backgroundWarmTimer=null;
-    if(!mayWarmInBackground()){scheduleBackgroundWarmup(420);return}
-    while(backgroundWarmIndex<backgroundWarmOrder.length&&authenticRequests.has(backgroundWarmOrder[backgroundWarmIndex]))backgroundWarmIndex++;
-    const next=backgroundWarmOrder[backgroundWarmIndex++];
-    if(next===undefined)return;
-    // Only one complete high-detail asset is allowed in the warm lane at once.
-    Promise.resolve(ensureAuthentic(next,'background-warmup')).finally(()=>scheduleBackgroundWarmup(360));
-  },delay);
-}
 // The visitor enters from the south arrival wall at positive Z. In Three.js a
 // yaw of 0 looks down local -Z, into the gallery; Math.PI turned the opening
 // view back toward the arrival wall and the wordmark.
-setTimeout(()=>scheduleBackgroundWarmup(40),40);let yaw=0,pitch=0,keys={},drag=false,last;
+// Register every exhibit immediately so two upcoming downloads can overlap.
+// The parse lane above still handles them strictly in order and only while the
+// intro is open or the visitor has stopped moving.
+setTimeout(()=>backgroundWarmOrder.forEach(index=>ensureAuthentic(index,'initial-preparation')),40);let yaw=0,pitch=0,keys={},drag=false,last;
 window.__museumAssetWarmupState=()=>({
-  active:Boolean(backgroundWarmTimer),
-  nextIndex:backgroundWarmOrder[backgroundWarmIndex]??null,
+  active:museumJobBusy||museumDownloadsActive>0,
+  nextIndex:[...museumLatestSceneJobs.values()].find(job=>!['ready','failed'].includes(job.state))?.spec.exhibitIndex??null,
   movementQuietForMs:Math.round(performance.now()-lastVisitorMovementAt),
   states:[...authenticLoadState.entries()].map(([index,state])=>({index,status:state.status,reason:state.reason,elapsed:state.elapsed??Math.round(performance.now()-state.started)})),
-  completed:authenticLoadMetrics.slice(),parseQueue:{busy:museumJobBusy,pending:museumJobs.length,metrics:museumJobMetrics.slice()}
+  completed:authenticLoadMetrics.slice(),parseQueue:{busy:museumJobBusy,pending:museumJobs.length,metrics:museumJobMetrics.slice()},
+  downloads:{active:museumDownloadsActive,bufferLimit:museumBufferedDownloadLimit,sceneAssets:[...museumLatestSceneJobs.values()].map(job=>({asset:job.spec.id,state:job.state,attempts:job.downloadAttempts,loaded:job.downloadedBytes,total:job.downloadTotal,error:job.error||null}))}
 });
+document.querySelector('#retry-assets').onclick=()=>{
+  for(const job of [...museumLatestSceneJobs.values()]){
+    if(job.state!=='failed')continue;
+    if(Number.isInteger(job.spec.exhibitIndex))ensureAuthentic(job.spec.exhibitIndex,'retry');
+    else queueMuseumAsset(job.spec,job.onLoad);
+  }
+  updateCollectionProgress();
+};
 // Visitor navigation is always at a standing eye height above the hall floor.
 // A prior entry-scene adjustment mistakenly used display height here (3.82 m),
 // which made free-roam feel airborne until a map or guide teleport reset it.
@@ -1331,10 +1622,11 @@ function setActiveExhibit(index,distance=Infinity){
 function nearestDisplay(){
   let hit=null,distance=Infinity;
   cars.forEach((display,index)=>{
-    // Navigation is on the gallery floor: use the planar distance to the
-    // actual exhibit anchor, not a stale chapter index or a 3D eye-height bias.
+    // Measure reach from the approximate vehicle footprint. Stepping back to
+    // frame a long car must not immediately disable its E interaction.
     const dx=display.position.x-camera.position.x,dz=display.position.z-camera.position.z;
-    const candidate=Math.hypot(dx,dz);
+    const reach=(display.userData.authentic?.userData.fittedDimensions?.length||0)/2;
+    const candidate=Math.max(0,Math.hypot(dx,dz)-reach);
     if(candidate<distance){distance=candidate;hit=index}
   });
   return {index:distance<8?hit:null,distance};
@@ -1349,23 +1641,57 @@ function updateVehicleVisibility(){
   const range=scene.fog.far+12;
   cars.forEach(display=>{const vehicle=display.userData.authentic;if(vehicle)vehicle.visible=Math.hypot(display.position.x-camera.position.x,display.position.z-camera.position.z)<=range});
 }
-authenticAssets[12]={source:'./models/rwb/porsche_911_rauh_welt.js',global:'PORSCHE_RWB_BASE64',length:4.30};
-// One period-correct 911 asset serves both the 901 origin and the first production-car chapter.
-// The second placement is a cloned scene with shared geometry/textures, not a second 25 MB parse.
-authenticAssets[1]={source:'./models/early911/porsche_911.js',global:'PORSCHE_911_BASE64',length:4.17};
-authenticAssets[2]={source:'./models/930_turbo/free_1975_porsche_911_930_turbo.js',global:'PORSCHE_911_930_TURBO_BASE64',length:4.29};
+authenticAssets[12]={source:'./models/rwb/porsche_911_rauh_welt.glb',id:'PORSCHE_RWB_BASE64',length:4.30};
+// The early 911 and the later 930 are distinct source assets.
+authenticAssets[1]={source:'./models/early911/porsche_911.glb',id:'PORSCHE_911_BASE64',length:4.17};
+authenticAssets[2]={source:'./models/930_turbo/free_1975_porsche_911_930_turbo.glb',id:'PORSCHE_911_930_TURBO_BASE64',length:4.29};
 
 
 
-// Real-world overall lengths in metres. The 1.72 m camera is an appropriate eye height for a 6 ft visitor.
-Object.assign(authenticAssets[0],{length:3.90});Object.assign(authenticAssets[3],{length:4.20});Object.assign(authenticAssets[4],{length:4.26});Object.assign(authenticAssets[5],{length:4.34});Object.assign(authenticAssets[6],{length:4.75});Object.assign(authenticAssets[7],{length:4.85});Object.assign(authenticAssets[8],{length:4.61});Object.assign(authenticAssets[9],{length:4.56});Object.assign(authenticAssets[10],{length:4.64});Object.assign(authenticAssets[11],{length:4.97});Object.assign(authenticAssets[12],{length:4.30});
-function goTo(i,openIt){
-  ensureAuthentic(i);let c=cars[i];camera.position.set(c.position.x,c.position.y+visitorEyeHeight,c.position.z+4.2);yaw=0;pitch=0;
-  // Map and guided arrivals select their intended display immediately; the
-  // free-roam loop resumes exact nearest-display selection once unlocked.
-  setActiveExhibit(i,4.2);updateVehicleVisibility();
-  if(openIt)openChapter(i)
+// One length reference per exhibit; approximate custom builds retain their documented reference.
+for(const [index,dimensions]of Object.entries(physicalDimensions))authenticAssets[index].length=dimensions[2];
+let chapterArrivalIndex=null;
+function frameChapterArrival(index,withCard){
+  const display=cars[index],model=display?.userData.authentic;if(!model)return;
+  const bounds=new THREE.Box3().setFromObject(model),center=bounds.getCenter(new THREE.Vector3());
+  const corners=[];for(const x of[bounds.min.x,bounds.max.x])for(const y of[bounds.min.y,bounds.max.y])for(const z of[bounds.min.z,bounds.max.z])corners.push(new THREE.Vector3(x,y,z));
+  // Fit to the canvas space that remains beside the drawer, above the rail.
+  // A full-width mobile drawer hides the scene; prepare a comfortable full view
+  // for when it closes instead of trying to squeeze a car behind the drawer.
+  const drawerWidth=withCard?panel.offsetWidth:0,beside=innerWidth-drawerWidth;
+  const right=withCard&&beside>=300?beside-28:innerWidth-28;
+  const railTop=map.getBoundingClientRect().top;
+  const area={left:28,right,top:112,bottom:Math.max(250,railTop-32)};
+  const targetX=(area.left+area.right)/innerWidth-1,targetY=1-(area.top+area.bottom)/innerHeight;
+  const tanV=Math.tan(THREE.MathUtils.degToRad(camera.fov/2)),tanH=tanV*camera.aspect;
+  let distance=Math.max(5.8,(bounds.max.z-display.position.z)+3.0);
+  const projected=new THREE.Vector3();
+  for(let attempt=0;attempt<70;attempt++,distance+=.25){
+    camera.position.set(display.position.x-Math.sign(display.position.x)*3.3,visitorEyeHeight,display.position.z+distance);
+    const dx=center.x-camera.position.x,dz=center.z-camera.position.z;
+    yaw=Math.atan2(-dx,-dz);pitch=Math.atan2(center.y-camera.position.y,Math.hypot(dx,dz));
+    for(let adjust=0;adjust<4;adjust++){
+      camera.rotation.set(pitch,yaw,0,'YXZ');camera.updateMatrixWorld(true);
+      let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+      for(const corner of corners){projected.copy(corner).project(camera);minX=Math.min(minX,projected.x);maxX=Math.max(maxX,projected.x);minY=Math.min(minY,projected.y);maxY=Math.max(maxY,projected.y)}
+      yaw+=Math.atan((targetX-(minX+maxX)/2)*tanH);
+      pitch-=Math.atan((targetY-(minY+maxY)/2)*tanV);
+    }
+    camera.rotation.set(pitch,yaw,0,'YXZ');camera.updateMatrixWorld(true);
+    const fits=corners.every(corner=>{projected.copy(corner).project(camera);const x=(projected.x+1)*innerWidth/2,y=(1-projected.y)*innerHeight/2;return projected.z>-1&&projected.z<1&&x>=area.left&&x<=area.right&&y>=area.top&&y<=area.bottom});
+    if(fits)break;
+  }
+  display.userData.arrivalFraming={distance,area};
 }
+function goTo(i,openIt){
+  clearMovement();leavePointerLock();chapterArrivalIndex=i;
+  ensureAuthentic(i);setActiveExhibit(i,0);
+  if(openIt)openChapter(i);
+  frameChapterArrival(i,Boolean(openIt)||panel.classList.contains('open'));
+  updateVehicleVisibility();
+}
+addEventListener('resize',()=>{if(chapterArrivalIndex!==null&&panel.classList.contains('open')){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();frameChapterArrival(chapterArrivalIndex,true)}});
+document.addEventListener('museum:chapter-closed',()=>{chapterArrivalIndex=null});
 document.querySelector('#begin').onclick=()=>{/* The arrival wall is behind the visitor at +Z. Reassert the forward corridor view on every entry, even after a browser restores transient input state. */yaw=0;pitch=0;keys={};camera.position.set(0,visitorEyeHeight,10.25);camera.rotation.set(pitch,yaw,0,'YXZ');document.querySelector('#intro').classList.add('off');document.querySelector('#intro').inert=true;map.inert=false;syncExhibitFromLocation()};
 // Looking is opt-in: click the gallery to acquire relative mouse control, while
 // drag remains a first-class fallback for touch and browsers that refuse lock.
@@ -1444,10 +1770,10 @@ function openChapter(i){
   document.querySelector('#close').focus({preventScroll:true});
 }
 </script><style id="panel-interaction-layer">.panel{z-index:12}.panel button{position:relative;z-index:1;width:44px;height:44px;font-size:25px;line-height:1;touch-action:manipulation}</style>
-<style id="look-resume-affordance">.look-resume-hint{position:fixed;z-index:6;left:50%;bottom:calc(112px + env(safe-area-inset-bottom));transform:translateX(-50%);padding:8px 11px;border:1px solid rgba(232,226,216,.32);background:rgba(12,13,11,.82);box-shadow:0 8px 22px rgba(0,0,0,.18);backdrop-filter:blur(9px);color:#e8e2d8;font:9px/1.2 'DM Mono',monospace;letter-spacing:.09em;text-transform:uppercase;pointer-events:none;white-space:nowrap}@media(max-width:760px){.look-resume-hint{bottom:calc(94px + env(safe-area-inset-bottom));font-size:8px}}</style>
+<style id="look-resume-affordance">.look-resume-hint{position:fixed;z-index:6;left:50%;bottom:calc(112px + env(safe-area-inset-bottom));transform:translateX(-50%);padding:8px 11px;border:1px solid rgba(240,242,241,.32);background:rgba(12,13,11,.82);box-shadow:0 8px 22px rgba(0,0,0,.18);backdrop-filter:blur(9px);color:#f0f2f1;font:9px/1.2 'DM Mono',monospace;letter-spacing:.09em;text-transform:uppercase;pointer-events:none;white-space:nowrap}@media(max-width:760px){.look-resume-hint{bottom:calc(94px + env(safe-area-inset-bottom));font-size:8px}}</style>
 <style id="guided-timeline-interaction-layer">
-  .guide-status{position:fixed;z-index:10;left:32px;top:92px;display:flex;align-items:center;gap:10px;max-width:min(560px,calc(100vw - 64px));padding:9px 10px 9px 13px;border:1px solid rgba(232,226,216,.32);background:rgba(12,13,11,.83);box-shadow:0 8px 24px rgba(0,0,0,.18);backdrop-filter:blur(10px);color:#e8e2d8;font:10px 'DM Mono',monospace;letter-spacing:.09em;text-transform:uppercase}
-  .guide-status[hidden]{display:none}.guide-status strong{min-width:44px;color:#d3a76f;font-weight:500}.guide-status button{border:1px solid rgba(232,226,216,.23);background:transparent;color:inherit;min-height:32px;padding:7px 9px;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit}.guide-status button:hover{background:#e8e2d8;color:#111}.guide-status button:focus-visible{outline:2px solid #d3a76f;outline-offset:2px}
+  .guide-status{position:fixed;z-index:10;left:32px;top:92px;display:flex;align-items:center;gap:10px;max-width:min(560px,calc(100vw - 64px));padding:9px 10px 9px 13px;border:1px solid rgba(240,242,241,.32);background:rgba(12,13,11,.83);box-shadow:0 8px 24px rgba(0,0,0,.18);backdrop-filter:blur(10px);color:#f0f2f1;font:10px 'DM Mono',monospace;letter-spacing:.09em;text-transform:uppercase}
+  .guide-status[hidden]{display:none}.guide-status strong{min-width:44px;color:#dce2e0;font-weight:500}.guide-status button{border:1px solid rgba(240,242,241,.23);background:transparent;color:inherit;min-height:32px;padding:7px 9px;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit}.guide-status button:hover{background:#f0f2f1;color:#111}.guide-status button:focus-visible{outline:2px solid #dce2e0;outline-offset:2px}
   @media(max-width:760px){.top #guided{display:block;padding:9px 10px;font-size:8px}.guide-status{left:18px;top:66px;gap:7px;max-width:calc(100vw - 36px);padding:7px 8px 7px 10px;font-size:8px}.guide-status strong{min-width:36px}.guide-status button{min-height:29px;padding:6px 7px}}
 </style>
 <script id="guided-timeline-interaction">
@@ -1482,12 +1808,7 @@ function openChapter(i){
     if(document.pointerLockElement===renderer.domElement)document.exitPointerLock?.();
     drag=false;pitch=0;
     const exhibitIndex=chronologicalRoute[routePosition];
-    const exhibit=cars[exhibitIndex];
-    camera.position.set(exhibit.position.x,visitorEyeHeight,exhibit.position.z+4.35);
-    const dx=exhibit.position.x-camera.position.x,dz=exhibit.position.z-camera.position.z;
-    yaw=Math.atan2(-dx,-dz);
-    camera.rotation.set(pitch,yaw,0,'YXZ');
-    setActiveExhibit(exhibitIndex,4.35);updateVehicleVisibility();openChapter(exhibitIndex);syncRouteUi();
+    goTo(exhibitIndex,true);syncRouteUi();
     if(schedule&&routeActive&&!panel.classList.contains('open')){
       const epoch=routeEpoch;
       routeTimer=setTimeout(()=>{if(routeActive&&epoch===routeEpoch)setRouteView(routePosition+1)},14000);
@@ -1520,7 +1841,7 @@ function openChapter(i){
   const guideValidation=window.__porscheGuideTimelineValidation();
   if(!guideValidation.ok)console.error('Guided timeline regression failed',guideValidation);
 })();
-</script><style id="responsive-navigation-repair">/* Preserve the spacious desktop index; deliberately become a scrollable rail before labels would be crushed. */.map{left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(1040px,calc(100vw - 56px));gap:5px}.map button{min-height:64px;padding:7px 5px;font:clamp(7.5px,.58vw,8.6px)/1.27 'DM Mono';letter-spacing:.035em}.map button:focus-visible{position:relative;z-index:2;outline:1px solid #d3a76f;outline-offset:2px}@media(min-width:761px){.hud{bottom:108px}}@media(max-width:1120px){.map{left:18px;right:18px;width:auto;transform:none;grid-template-columns:repeat(var(--chapter-count),112px);gap:5px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:34px;overscroll-behavior-inline:contain;padding:4px 34px 5px 4px;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:rgba(232,226,216,.82) rgba(8,9,8,.72);box-shadow:inset -34px 0 24px -20px rgba(0,0,0,.96)}.map::after{content:'SCROLL  →';position:absolute;z-index:3;top:4px;right:0;bottom:5px;width:30px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(8,9,8,0),rgba(8,9,8,.94) 38%);color:#e6dfd2;font:600 6.5px/1 'DM Mono';letter-spacing:.08em;writing-mode:vertical-rl;pointer-events:none}.map button{min-height:64px;padding-inline:9px;font-size:8.5px;scroll-snap-align:start;scroll-snap-stop:always}}@media(max-width:760px){.map{left:12px;right:12px;bottom:max(14px,env(safe-area-inset-bottom));grid-template-columns:repeat(var(--chapter-count),104px);padding-right:30px}.map button{min-height:62px;padding-inline:7px;font-size:8px}.hud{inset:auto 18px 98px}}@media(prefers-reduced-motion:reduce){.map{scroll-behavior:auto}}</style><script id="responsive-navigation-interaction">(()=>{
+</script><style id="responsive-navigation-repair">/* Preserve the spacious desktop index; deliberately become a scrollable rail before labels would be crushed. */.map{left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(1040px,calc(100vw - 56px));gap:5px}.map button{min-height:64px;padding:7px 5px;font:clamp(7.5px,.58vw,8.6px)/1.27 'DM Mono';letter-spacing:.035em}.map button:focus-visible{position:relative;z-index:2;outline:1px solid #dce2e0;outline-offset:2px}@media(min-width:761px){.hud{bottom:108px}}@media(max-width:1120px){.map{left:18px;right:18px;width:auto;transform:none;grid-template-columns:repeat(var(--chapter-count),112px);gap:5px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:34px;overscroll-behavior-inline:contain;padding:4px 34px 5px 4px;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:rgba(240,242,241,.82) rgba(8,9,8,.72);box-shadow:inset -34px 0 24px -20px rgba(0,0,0,.96)}.map::after{content:'SCROLL  →';position:absolute;z-index:3;top:4px;right:0;bottom:5px;width:30px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(8,9,8,0),rgba(8,9,8,.94) 38%);color:#eef2f0;font:600 6.5px/1 'DM Mono';letter-spacing:.08em;writing-mode:vertical-rl;pointer-events:none}.map button{min-height:64px;padding-inline:9px;font-size:8.5px;scroll-snap-align:start;scroll-snap-stop:always}}@media(max-width:760px){.map{left:12px;right:12px;bottom:max(14px,env(safe-area-inset-bottom));grid-template-columns:repeat(var(--chapter-count),104px);padding-right:30px}.map button{min-height:62px;padding-inline:7px;font-size:8px}.hud{inset:auto 18px 98px}}@media(prefers-reduced-motion:reduce){.map{scroll-behavior:auto}}</style><script id="responsive-navigation-interaction">(()=>{
 const rail=document.querySelector('#map'),buttons=[...rail.querySelectorAll('button')];
 rail.setAttribute('aria-label','Chronological exhibits');
 rail.addEventListener('keydown',event=>{
@@ -1631,7 +1952,7 @@ new MutationObserver(()=>{const current=rail.querySelector('button.active');if(c
   plaqueFace.position.z=.019;plaqueFace.userData.role='arrival-engine-label-face';plaque.add(plaqueBack,plaqueFace);
   deck.add(plaque);
 
-  queueMuseumAsset({source:'./models/1967_engine/porsche_motor_von_1967.js',global:'PORSCHE_MOTOR_1967_BASE64'},gltf=>{
+  queueMuseumAsset({source:'./models/1967_engine/porsche_motor_von_1967.glb',id:'PORSCHE_MOTOR_1967_BASE64'},gltf=>{
     const engine=gltf.scene,study=new THREE.Group();
     engine.traverse(object=>{
       if(!object.isMesh)return;
@@ -1655,5 +1976,5 @@ new MutationObserver(()=>{const current=rail.querySelector('button.active');if(c
   });
 })();
 </script>
-<style id="chapter-navigation-finish">.map button{flex-direction:column;gap:5px;font-size:10px;line-height:1.25;overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:nowrap;letter-spacing:0}.chapter-meta{color:#aaa99f;font-size:8px;letter-spacing:.04em}.map button.active .chapter-meta{color:#d3a76f}.guide-status{z-index:13}.guide-status button{min-height:44px}@media(max-width:760px){.guide-status{top:auto;bottom:14px;left:12px;right:12px;max-width:none;justify-content:space-between;background:#111713}.panel{padding-bottom:100px}}</style></body>
+<style id="chapter-navigation-finish">.map button{flex-direction:column;gap:5px;font-size:10px;line-height:1.25;overflow-wrap:normal;word-break:normal;hyphens:none;text-wrap:nowrap;letter-spacing:0}.chapter-meta{color:#aebbb4;font-size:8px;letter-spacing:.04em}.map button.active .chapter-meta{color:var(--a)}.map button:hover .chapter-meta{color:#424e47}.panel button:focus-visible{outline-color:#52645a}.guide-status{z-index:13}.guide-status button{min-height:44px}@media(max-width:760px){.guide-status{top:auto;bottom:14px;left:12px;right:12px;max-width:none;justify-content:space-between;background:#111713}.panel{padding-bottom:100px}}</style></body>
 </html>

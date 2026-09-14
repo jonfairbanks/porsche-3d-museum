@@ -5,11 +5,19 @@ composition is shown inside a recessed, proportionate exhibition aperture rather
 than center-cropped to a fixed screen ratio. This manifest is the gallery's
 complete provenance and licence record; there are no in-world credit plaques.
 
+The browser loads legacy photo bytes from `assets/media/runtime/`. They are
+generated losslessly from the former Base64 bundle with
+`node scripts/extract-archive-photos.mjs`; the original source files remain in
+this directory as provenance references and are not fetched by the gallery.
+Newly selected photographs, including `930-turbo-archive.jpg`, are loaded directly
+from this directory and are independent of the legacy extraction script.
+
 | Local asset | Installation | Source | Creator | Licence / reuse note |
 | --- | --- | --- | --- | --- |
 | `arrival-917k.jpg` | Arrival wall | [Porsche 917 K (40658738201)](https://commons.wikimedia.org/wiki/File:Porsche_917_K_(40658738201).jpg) | Guillaume Vachey | CC0 1.0. The original depicts a Porsche 917 K inside the Porsche Museum, Stuttgart. |
 | `lightness-finds-america.jpg` | Lightness Finds America bay | [User-supplied source image](https://images.clubexpress.com/579966/graphics/0938_732038770.jpg) | Not provided with the supplied URL | User-directed replacement, cached locally without a remote hotlink. The image depicts a Porsche race car in period competition; full 3873×2704 composition preserved in a 1.4326:1 aperture. |
-| `architecture-endures.jpg` | The Architecture Endures bay | [User-supplied source image](https://www.huntermoss.com/wp-content/uploads/2023/06/blog-porsche-history-911.jpg) | Not provided with the supplied URL | User-directed replacement, cached locally without a remote hotlink. Rights/licence were not asserted by the supplied image URL. Full 1200×630 composition is presented in a 1.9048:1 aperture. |
+| `architecture-endures.jpg` | The Defining Silhouette / early 911 bay | [User-supplied source image](https://www.huntermoss.com/wp-content/uploads/2023/06/blog-porsche-history-911.jpg) | Not provided with the supplied URL | User-directed replacement, cached locally without a remote hotlink. Rights/licence were not asserted by the supplied image URL. Full 1200×630 composition is presented in a 1.9048:1 aperture. |
+| `930-turbo-archive.jpg` | The Architecture Endures / 930 Turbo bay | [User-selected Porsche archive image, asset 281412](https://porschepictures.flowcenter.de/pmdb/thumbnail.cgi?id=281412&w=1440&h=812&crop=1&public=1&cs=c141610b08cab690) | Porsche archive; individual photographer not supplied | Exact user-selected 1440×812 JPEG cached locally; the source URL supplies a crop, which the gallery preserves without further cropping or stretching. No broader reuse licence is asserted. |
 | `le-mans-finally-won.webp` | Le Mans, Finally Won bay | [User-supplied source image](https://motorsportmagazine.b-cdn.net/wp-content/uploads/2021/08/Gulf-and-Martini-Porsche-917s-at-the-1971-Le-Mans-24-Hours.jpg.webp) | Not provided with the supplied URL | User-directed replacement, cached locally without a remote hotlink. Rights/licence were not asserted by the supplied image URL. Full 2000×1125 composition is presented in a 1.7778:1 aperture. |
 | `959-laboratory.jpg` | The Supercar as Laboratory bay | [User-supplied source image](https://hips.hearstapps.com/roa.h-cdn.co/assets/16/21/3200x2136/gallery-1464276379-porsche959lede.jpg) | Not provided with the supplied URL | User-directed replacement, cached locally without a remote hotlink. Rights/licence were not asserted by the supplied image URL. Full 3200×2136 composition is presented in a 1.4981:1 aperture. |
 | `boxster-sports-car-concept.jpeg` | The Roadster That Saved Porsche bay | [User-supplied source image](https://newsroom.porsche.com/.imaging/mte/porsche-templating-theme/teaser_720x406x2/dam/pnr/2021/History/Boxster-sports-car-concept/gallery-2/HDI-4409.jpeg/jcr:content/HDI-4409.jpeg) | Porsche Newsroom | User-directed replacement, cached locally without a remote hotlink. Full 1440×812 composition is presented in a 1.7734:1 aperture. |
